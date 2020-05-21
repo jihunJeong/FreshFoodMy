@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zDA-Bl-NRH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zDA-Bl-NRH">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -10,8 +10,8 @@
         <!--FoodListView-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="FoodListView" id="BYZ-38-t0r" customClass="FoodListViewController" customModule="FoodList" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="FoodListView" customModule="FreshFood">
+                <viewController title="FoodListView" id="BYZ-38-t0r" customClass="FoodListViewController" customModule="FreshFood" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -23,7 +23,7 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FoodListCell" id="lIe-oK-o5O" customClass="FoodListTableViewCell" customModule="FreshFood">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lIe-oK-o5O" id="FDv-wr-rLQ">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lIe-oK-o5O" id="FDv-wr-rLQ" customClass="FoodListTableViewCell" customModule="FreshFood">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -38,21 +38,28 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="mkk-Dr-LOV"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Hcp-eU-8Ul"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Mrs-YA-k2R"/>
+                    <connections>
+                        <outlet property="FoodListTableView" destination="4eC-oJ-t4a" id="hpf-QE-MM8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1953.6231884057972" y="114.50892857142857"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--FoodList-->
         <scene sceneID="aux-X1-nC3">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="zDA-Bl-NRH" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="FoodList" title="FoodList" automaticallyAdjustsScrollViewInsets="NO" id="zDA-Bl-NRH" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jhb-xS-Ekh">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -71,7 +78,7 @@
         <scene sceneID="FNV-YS-Rlg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jMZ-Ww-8Ze" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="UW4-VG-9bO"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="house" catalog="system" selectedImage="house.fill" id="UW4-VG-9bO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Grc-cW-3UL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -87,4 +94,8 @@
             <point key="canvasLocation" x="1047.8260869565217" y="114.50892857142857"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="house" catalog="system" width="128" height="110"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
+    </resources>
 </document>

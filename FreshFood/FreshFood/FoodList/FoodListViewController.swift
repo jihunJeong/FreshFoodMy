@@ -8,12 +8,25 @@
 
 import UIKit
 
-class FoodListViewController: UIViewController {
+class FoodListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet var FoodListTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        FoodListTableView.delegate = self
+        FoodListTableView.dataSource = self
         // Do any additional setup after loading the view.
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = self.FoodListTableView.dequeueReusableCell(withIdentifier: "FoodListCell", for: <#T##IndexPath#>)
+        
+        return cell
     }
     
 
