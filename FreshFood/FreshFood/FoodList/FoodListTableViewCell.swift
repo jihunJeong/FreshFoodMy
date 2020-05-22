@@ -2,7 +2,7 @@
 //  FoodListTableViewCell.swift
 //  FreshFood
 //
-//  Created by 정지훈 on 2020/05/21.
+//  Created by 정지훈 on 2020/05/22.
 //  Copyright © 2020 정지훈. All rights reserved.
 //
 
@@ -14,7 +14,7 @@ class FoodListTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
