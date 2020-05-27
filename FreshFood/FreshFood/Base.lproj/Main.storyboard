@@ -17,7 +17,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="0Ii-DM-HpT" kind="relationship" relationship="viewControllers" id="CNN-Ij-bIU"/>
+                        <segue destination="eDK-AP-BWf" kind="relationship" relationship="viewControllers" id="mjN-cw-QIH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xkC-15-M1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -29,10 +29,32 @@
             <objects>
                 <viewControllerPlaceholder storyboardName="FoodList" id="0Ii-DM-HpT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="ep7-Ic-dZe"/>
+                    <navigationItem key="navigationItem" id="P9S-Yl-dvQ"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cs6-bn-KIa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="866" y="115"/>
+            <point key="canvasLocation" x="1331" y="78"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="eu8-Kh-QKl">
+            <objects>
+                <navigationController id="eDK-AP-BWf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="house" catalog="system" selectedImage="house.fill" id="i8u-UB-7AM"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4b3-UX-Owj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="0Ii-DM-HpT" kind="relationship" relationship="rootViewController" id="g0W-ZA-lCq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1aL-j1-otq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="115"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="house" catalog="system" width="128" height="110"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
+    </resources>
 </document>
