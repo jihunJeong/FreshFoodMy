@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CA1EC6992476B361004A16F3 /* FoodListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1EC6962476B361004A16F3 /* FoodListTableViewCell.swift */; };
 		CA1EC69D2476B39C004A16F3 /* FoodListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1EC69C2476B39C004A16F3 /* FoodListViewController.swift */; };
 		CA9DB68A247829090088667D /* FoodList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA9DB688247829080088667D /* FoodList.storyboard */; };
+		CA9DB68F247FA3790088667D /* Stackview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA9DB68D247FA3790088667D /* Stackview.storyboard */; };
+		CA9DB691247FA7D80088667D /* FoodListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9DB690247FA7D80088667D /* FoodListCell.swift */; };
 		CAB6EA9E247699C2000CAD56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB6EA9D247699C2000CAD56 /* AppDelegate.swift */; };
 		CAB6EAA0247699C2000CAD56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB6EA9F247699C2000CAD56 /* SceneDelegate.swift */; };
 		CAB6EAA2247699C2000CAD56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB6EAA1247699C2000CAD56 /* ViewController.swift */; };
@@ -19,9 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CA1EC6962476B361004A16F3 /* FoodListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListTableViewCell.swift; sourceTree = "<group>"; };
 		CA1EC69C2476B39C004A16F3 /* FoodListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListViewController.swift; sourceTree = "<group>"; };
 		CA9DB689247829080088667D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FoodList.storyboard; sourceTree = "<group>"; };
+		CA9DB68E247FA3790088667D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Stackview.storyboard; sourceTree = "<group>"; };
+		CA9DB690247FA7D80088667D /* FoodListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodListCell.swift; sourceTree = "<group>"; };
 		CAB6EA9A247699C2000CAD56 /* FreshFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreshFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB6EA9D247699C2000CAD56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAB6EA9F247699C2000CAD56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,7 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				CA1EC69C2476B39C004A16F3 /* FoodListViewController.swift */,
-				CA1EC6962476B361004A16F3 /* FoodListTableViewCell.swift */,
+				CA9DB690247FA7D80088667D /* FoodListCell.swift */,
 			);
 			path = FoodList;
 			sourceTree = "<group>";
@@ -79,6 +81,7 @@
 				CA9DB688247829080088667D /* FoodList.storyboard */,
 				CAB6EAA6247699C5000CAD56 /* Assets.xcassets */,
 				CAB6EAA8247699C5000CAD56 /* LaunchScreen.storyboard */,
+				CA9DB68D247FA3790088667D /* Stackview.storyboard */,
 				CAB6EAAB247699C5000CAD56 /* Info.plist */,
 			);
 			path = FreshFood;
@@ -142,6 +145,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA9DB68F247FA3790088667D /* Stackview.storyboard in Resources */,
 				CAB6EAAA247699C5000CAD56 /* LaunchScreen.storyboard in Resources */,
 				CAB6EAA7247699C5000CAD56 /* Assets.xcassets in Resources */,
 				CA9DB68A247829090088667D /* FoodList.storyboard in Resources */,
@@ -158,9 +162,9 @@
 			files = (
 				CAB6EAA2247699C2000CAD56 /* ViewController.swift in Sources */,
 				CA1EC69D2476B39C004A16F3 /* FoodListViewController.swift in Sources */,
-				CA1EC6992476B361004A16F3 /* FoodListTableViewCell.swift in Sources */,
 				CAB6EA9E247699C2000CAD56 /* AppDelegate.swift in Sources */,
 				CAB6EAA0247699C2000CAD56 /* SceneDelegate.swift in Sources */,
+				CA9DB691247FA7D80088667D /* FoodListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +177,14 @@
 				CA9DB689247829080088667D /* Base */,
 			);
 			name = FoodList.storyboard;
+			sourceTree = "<group>";
+		};
+		CA9DB68D247FA3790088667D /* Stackview.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA9DB68E247FA3790088667D /* Base */,
+			);
+			name = Stackview.storyboard;
 			sourceTree = "<group>";
 		};
 		CAB6EAA3247699C2000CAD56 /* Main.storyboard */ = {
