@@ -8,8 +8,20 @@
 
 import UIKit
 
-class FoodListTableViewCell: UITableViewCell {
+class FoodListCell: UITableViewCell {
+    @IBOutlet weak var listCell: UIView!
+    @IBOutlet weak var foodName: UILabel!
+    @IBOutlet weak var limitDate: UILabel!
+    @IBOutlet weak var detailView: UIButton!
 
+    @IBAction func detailView(_ sender: Any) {
+        if detailView.isSelected == true {
+            detailView.isSelected = false
+        } else {
+            detailView.isSelected = true
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

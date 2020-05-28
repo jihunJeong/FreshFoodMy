@@ -8,9 +8,11 @@
 
 import UIKit
 
-class FoodListViewController: UIViewController {
+class FoodListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet var FoodListTableView: UITableView!
+
+    @IBOutlet weak var tableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,17 +21,18 @@ class FoodListViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    /*
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = self.FoodListTableView.dequeueReusableCell(withIdentifier: "FoodListCell", for: <#T##IndexPath#>)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FoodListCell", for: indexPath)
+
         return cell
     }
-    */
+    
+    
 
     /*
     // MARK: - Navigation
