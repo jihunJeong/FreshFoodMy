@@ -18,6 +18,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="eDK-AP-BWf" kind="relationship" relationship="viewControllers" id="mjN-cw-QIH"/>
+                        <segue destination="oaR-dG-xyL" kind="relationship" relationship="viewControllers" id="HQl-cA-4wn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xkC-15-M1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -38,9 +39,8 @@
         <!--모든 식재료-->
         <scene sceneID="eu8-Kh-QKl">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1aL-j1-otq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="eDK-AP-BWf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="모든 식재료" image="tabBarItem:i8u-UB-7AM:image" catalog="system" selectedImage="tabBarItem:i8u-UB-7AM:selectedImage" id="i8u-UB-7AM"/>
+                    <tabBarItem key="tabBarItem" title="모든 식재료" image="tabBarItem:i8u-UB-7AM:image" selectedImage="tabBarItem:i8u-UB-7AM:selectedImage" id="i8u-UB-7AM"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4b3-UX-Owj">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -49,12 +49,23 @@
                         <segue destination="0Ii-DM-HpT" kind="relationship" relationship="rootViewController" id="g0W-ZA-lCq"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1aL-j1-otq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="994" y="100"/>
         </scene>
+        <!--ShoppingList-->
+        <scene sceneID="vbD-Xy-06R">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ShoppingList" id="oaR-dG-xyL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="jDn-kc-qj5"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MzB-MC-MaR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="916" y="656"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="tabBarItem:i8u-UB-7AM:image" catalog="system" width="128" height="110">
+        <image name="tabBarItem:i8u-UB-7AM:image" width="128" height="110">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05T
 S2V5ZWRBcmNoaXZlctEICVRyb290gAGvEBELDBscIRkmKisyNThCSktPUlUkbnVsbNcNDg8QERITFBUW
@@ -15225,7 +15236,7 @@ AA3PeAANz34ADc+GAA3PiAANz4oADc+MAA3PjgAN4PoADeD/AA3hDAAN4Q8ADeEcAA3hIQAN4SkADeEs
 AA3hMQAN4TkAAAAAAAAEAQAAAAAAAABVAAAAAAAAAAAAAAAAAA3hPA
 </mutableData>
         </image>
-        <image name="tabBarItem:i8u-UB-7AM:selectedImage" catalog="system" width="128" height="106">
+        <image name="tabBarItem:i8u-UB-7AM:selectedImage" width="128" height="106">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05T
 S2V5ZWRBcmNoaXZlctEICVRyb290gAGvEBELDBscIRkmKisyNThCSktPUlUkbnVsbNcNDg8QERITFBUW

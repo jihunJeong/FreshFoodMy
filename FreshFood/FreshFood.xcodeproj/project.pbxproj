@@ -17,6 +17,7 @@
 		CAB6EAA5247699C2000CAD56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB6EAA3247699C2000CAD56 /* Main.storyboard */; };
 		CAB6EAA7247699C5000CAD56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAB6EAA6247699C5000CAD56 /* Assets.xcassets */; };
 		CAB6EAAA247699C5000CAD56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB6EAA8247699C5000CAD56 /* LaunchScreen.storyboard */; };
+		CD9E45F2247FBAD300126E03 /* ShoppingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD9E45F1247FBAD300126E03 /* ShoppingList.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		CAB6EAA6247699C5000CAD56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAB6EAA9247699C5000CAD56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CAB6EAAB247699C5000CAD56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD9E45F1247FBAD300126E03 /* ShoppingList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShoppingList.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				CAB6EAA1247699C2000CAD56 /* ViewController.swift */,
 				CAB6EAA3247699C2000CAD56 /* Main.storyboard */,
 				CA9DB688247829080088667D /* FoodList.storyboard */,
+				CD9E45F1247FBAD300126E03 /* ShoppingList.storyboard */,
 				CAB6EAA6247699C5000CAD56 /* Assets.xcassets */,
 				CAB6EAA8247699C5000CAD56 /* LaunchScreen.storyboard */,
 				CA9DB68D247FA3790088667D /* Stackview.storyboard */,
@@ -147,6 +150,7 @@
 			files = (
 				CA9DB68F247FA3790088667D /* Stackview.storyboard in Resources */,
 				CAB6EAAA247699C5000CAD56 /* LaunchScreen.storyboard in Resources */,
+				CD9E45F2247FBAD300126E03 /* ShoppingList.storyboard in Resources */,
 				CAB6EAA7247699C5000CAD56 /* Assets.xcassets in Resources */,
 				CA9DB68A247829090088667D /* FoodList.storyboard in Resources */,
 				CAB6EAA5247699C2000CAD56 /* Main.storyboard in Resources */,
