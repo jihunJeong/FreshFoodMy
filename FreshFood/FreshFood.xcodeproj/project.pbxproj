@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CA1EC69D2476B39C004A16F3 /* FoodListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1EC69C2476B39C004A16F3 /* FoodListViewController.swift */; };
-		CA9DB68A247829090088667D /* FoodList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA9DB688247829080088667D /* FoodList.storyboard */; };
 		CA9DB68F247FA3790088667D /* Stackview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA9DB68D247FA3790088667D /* Stackview.storyboard */; };
 		CA9DB691247FA7D80088667D /* FoodListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9DB690247FA7D80088667D /* FoodListCell.swift */; };
 		CAB6EA9E247699C2000CAD56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB6EA9D247699C2000CAD56 /* AppDelegate.swift */; };
@@ -22,7 +21,6 @@
 
 /* Begin PBXFileReference section */
 		CA1EC69C2476B39C004A16F3 /* FoodListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListViewController.swift; sourceTree = "<group>"; };
-		CA9DB689247829080088667D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FoodList.storyboard; sourceTree = "<group>"; };
 		CA9DB68E247FA3790088667D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Stackview.storyboard; sourceTree = "<group>"; };
 		CA9DB690247FA7D80088667D /* FoodListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodListCell.swift; sourceTree = "<group>"; };
 		CAB6EA9A247699C2000CAD56 /* FreshFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreshFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,7 +78,6 @@
 				CAB6EA9F247699C2000CAD56 /* SceneDelegate.swift */,
 				CAB6EAA1247699C2000CAD56 /* ViewController.swift */,
 				CAB6EAA3247699C2000CAD56 /* Main.storyboard */,
-				CA9DB688247829080088667D /* FoodList.storyboard */,
 				CD9E45F1247FBAD300126E03 /* ShoppingList.storyboard */,
 				CAB6EAA6247699C5000CAD56 /* Assets.xcassets */,
 				CAB6EAA8247699C5000CAD56 /* LaunchScreen.storyboard */,
@@ -152,7 +149,6 @@
 				CAB6EAAA247699C5000CAD56 /* LaunchScreen.storyboard in Resources */,
 				CD9E45F2247FBAD300126E03 /* ShoppingList.storyboard in Resources */,
 				CAB6EAA7247699C5000CAD56 /* Assets.xcassets in Resources */,
-				CA9DB68A247829090088667D /* FoodList.storyboard in Resources */,
 				CAB6EAA5247699C2000CAD56 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,14 +171,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CA9DB688247829080088667D /* FoodList.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CA9DB689247829080088667D /* Base */,
-			);
-			name = FoodList.storyboard;
-			sourceTree = "<group>";
-		};
 		CA9DB68D247FA3790088667D /* Stackview.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
