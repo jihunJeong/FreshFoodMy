@@ -13,19 +13,40 @@ class FoodListViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
-    var foodList: [String] = ["가지", "딸기", "포도", "사과", "대파", "쪽파", "가위"]
+    var foodList: [String] = ["가지", "딸기", "포도", "사과", "대파", "쪽파", "가위", "고추", "귤", "쌀", "계란", "만두", "새우"].sorted()
     let dateOfSection: [String] = ["유통기한 임박", "유통기한 1주", "유통기한 2주", "유통기한 3주", "유통기한 4주 이상"]
+    var initCharacter: [UnicodeScalar] = []
     
     var orderOption = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        for food in foodList {
+            initCharacter.append(splitText(text: food))
+        }
+    
+        
         self.reload()
     }
     
     func reload() {
         self.tableView.reloadData()
     }
+    
+    //Send information to Modal View
+    
+    func splitText(text: String) -> UnicodeScalar{
+           let text = text.first
+       
+           let val = (UnicodeScalar(String(text!))?.value)!
+           
+           let s = (val - 0xac00) / 28 / 21
+           let sc = UnicodeScalar(0x1100 + s)
+           
+           return sc!
+    }
+    
 }
 
 extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -33,7 +54,7 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         //Return Section Count
         if orderOption == 2 {
-            return Array(Set(self.foodList.map {$0.first! })).count
+            return Array(Set(self.initCharacter)).count
         }
         
         return dateOfSection.count
@@ -41,35 +62,36 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //Return number of rows in section
-        let charactor = Array(Set(self.foodList.map { $0.first!})).sorted()[section]
+        let charactor = Array(Set(self.initCharacter)).sorted()[section]
         
         //검색창이 비어있을 경우 section의 charactor과 이름의 첫글자가 일치하는 것만 리턴
         if self.searchBar.text?.isEmpty == true {
-            return self.foodList.filter { $0.first! == charactor }.count
+            return self.foodList.filter { splitText(text: $0) == charactor }.count
         }
         
         //검색창에 내용이 있는 경우 그 내용을 포함하는 이름들의 개수를 리턴
-        return self.foodList.filter { $0.first! == charactor }.filter { $0.contains(self.searchBar.text!)}.count
+        return self.foodList.filter { splitText(text: $0) == charactor }.filter { $0.contains(self.searchBar.text!)}.count
     }
     
     //Get Custom Cell Information
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //각 섹션의 첫 문자를 charactor로 선언
-        let charactor = Array(Set(self.foodList.map { $0.first! })).sorted()[indexPath.section]
+        let charactor = Array(Set(self.initCharacter)).sorted()[indexPath.section]
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodListCell", for: indexPath) as! FoodListCell
 
         // 검색창이 비어있을 경우 charactor와 같은 첫글자를 가진 이름들만 골라서 리턴
         if self.searchBar.text?.isEmpty == true {
-            cell.foodName.text = self.foodList.filter { $0.first! == charactor}[indexPath.row]
+            cell.foodName.text = self.foodList.filter { splitText(text: $0) == charactor}[indexPath.row]
         } else { // 검색창에 내용이 있는 경우 그 내용을 포함하는 이름들만 골라서 리턴
-            cell.foodName.text = self.foodList.filter { $0.first! == charactor}.filter {$0.contains(self.searchBar.text!) }[indexPath.row]
+            cell.foodName.text = self.foodList.filter { splitText(text: $0) == charactor}.filter {$0.contains(self.searchBar.text!) }[indexPath.row]
         }
      
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return String(Array(Set(foodList.map { $0.first! })).sorted()[section])
+        return String(Array(Set(initCharacter)).sorted()[section])
     }
     
     
@@ -79,14 +101,7 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
-    /*
-    //Send information to Modal View
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "MODAL_SEGUE", let vc = segue.destination as? listModalViewController {
-            vc.data = textField.text
-        }
-    }
-    */
+
     /*
     // MARK: - Navigation
 

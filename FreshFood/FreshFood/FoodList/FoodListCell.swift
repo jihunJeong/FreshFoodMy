@@ -11,7 +11,6 @@ import UIKit
 class FoodListCell: UITableViewCell {
     @IBOutlet weak var foodName: UILabel!
     @IBOutlet weak var limitDate: UILabel!
-    @IBOutlet weak var detailView: UIButton!
 
   
     

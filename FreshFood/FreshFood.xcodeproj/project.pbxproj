@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA05E82424824307003FFE88 /* detailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05E82324824307003FFE88 /* detailViewController.swift */; };
+		CA05E82624824338003FFE88 /* ListModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05E82524824338003FFE88 /* ListModalViewController.swift */; };
+		CA05E82824824941003FFE88 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05E82724824941003FFE88 /* SearchViewController.swift */; };
 		CA1EC69D2476B39C004A16F3 /* FoodListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1EC69C2476B39C004A16F3 /* FoodListViewController.swift */; };
 		CA9DB68F247FA3790088667D /* Stackview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA9DB68D247FA3790088667D /* Stackview.storyboard */; };
 		CA9DB691247FA7D80088667D /* FoodListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9DB690247FA7D80088667D /* FoodListCell.swift */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA05E82324824307003FFE88 /* detailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = detailViewController.swift; sourceTree = "<group>"; };
+		CA05E82524824338003FFE88 /* ListModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListModalViewController.swift; sourceTree = "<group>"; };
+		CA05E82724824941003FFE88 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CA1EC69C2476B39C004A16F3 /* FoodListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListViewController.swift; sourceTree = "<group>"; };
 		CA9DB68E247FA3790088667D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Stackview.storyboard; sourceTree = "<group>"; };
 		CA9DB690247FA7D80088667D /* FoodListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodListCell.swift; sourceTree = "<group>"; };
@@ -52,8 +58,11 @@
 		CA957F172476DEF900E800C6 /* FoodList */ = {
 			isa = PBXGroup;
 			children = (
+				CA05E82524824338003FFE88 /* ListModalViewController.swift */,
+				CA05E82324824307003FFE88 /* detailViewController.swift */,
 				CA1EC69C2476B39C004A16F3 /* FoodListViewController.swift */,
 				CA9DB690247FA7D80088667D /* FoodListCell.swift */,
+				CA05E82724824941003FFE88 /* SearchViewController.swift */,
 			);
 			path = FoodList;
 			sourceTree = "<group>";
@@ -166,8 +175,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA05E82824824941003FFE88 /* SearchViewController.swift in Sources */,
 				CAB6EAA2247699C2000CAD56 /* ViewController.swift in Sources */,
+				CA05E82424824307003FFE88 /* detailViewController.swift in Sources */,
 				CA1EC69D2476B39C004A16F3 /* FoodListViewController.swift in Sources */,
+				CA05E82624824338003FFE88 /* ListModalViewController.swift in Sources */,
 				CAB6EA9E247699C2000CAD56 /* AppDelegate.swift in Sources */,
 				CDE413C324820A4A004DEB4F /* ShoppingListViewController.swift in Sources */,
 				CDE413C124820A19004DEB4F /* ShoppingListTableViewCell.swift in Sources */,

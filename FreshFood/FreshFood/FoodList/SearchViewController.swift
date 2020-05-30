@@ -1,5 +1,5 @@
 //
-//  listModalViewController.swift
+//  SearchViewController.swift
 //  FreshFood
 //
 //  Created by 정지훈 on 2020/05/30.
@@ -8,11 +8,7 @@
 
 import UIKit
 
-class ListModalViewController: UIViewController {
-    
-    @IBAction func dismiss(_ sender: Any) {
-        self.dismiss(animated: true, completion: { () -> Void in})
-    }
+class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +16,7 @@ class ListModalViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
+
     /*
     // MARK: - Navigation
 
