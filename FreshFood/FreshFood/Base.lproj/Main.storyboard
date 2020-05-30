@@ -37,7 +37,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HME-tY-ql0">
                                 <rect key="frame" x="0.0" y="107" width="414" height="680"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" text="검색" translatesAutoresizingMaskIntoConstraints="NO" id="SH9-T0-iYU">
+                                    <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="SH9-T0-iYU">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
@@ -45,42 +45,53 @@
                                         <rect key="frame" x="0.0" y="56" width="414" height="624"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FoodListCell" id="i6F-90-GuY" customClass="FoodListCell" customModule="FreshFood">
-                                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FoodListCell" id="i6F-90-GuY" customClass="FoodListCell" customModule="FreshFood" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="414" height="44.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i6F-90-GuY" id="XPg-52-KVJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTn-rf-cn6">
-                                                            <rect key="frame" x="40" y="11" width="45" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="foodName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTn-rf-cn6">
+                                                            <rect key="frame" x="40" y="12" width="80" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6e-rm-xR4">
-                                                            <rect key="frame" x="318" y="11" width="36" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="limitDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6e-rm-xR4">
+                                                            <rect key="frame" x="286" y="12" width="68" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhK-6h-4mm">
-                                                            <rect key="frame" x="374" y="10" width="20" height="22.5"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhK-6h-4mm">
+                                                            <rect key="frame" x="374" y="11" width="20" height="22.5"/>
                                                             <state key="normal" image="exclamationmark.circle" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="detailView:" destination="i6F-90-GuY" eventType="touchUpInside" id="B5c-Sl-pGJ"/>
+                                                                <segue destination="lqB-oR-b4i" kind="presentation" id="ium-Od-L1N"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="uTn-rf-cn6" firstAttribute="top" secondItem="XPg-52-KVJ" secondAttribute="topMargin" id="0YZ-hl-0If"/>
-                                                        <constraint firstItem="lhK-6h-4mm" firstAttribute="trailing" secondItem="XPg-52-KVJ" secondAttribute="trailingMargin" id="5ob-LQ-ReE"/>
-                                                        <constraint firstItem="P6e-rm-xR4" firstAttribute="baseline" secondItem="lhK-6h-4mm" secondAttribute="firstBaseline" id="Hzy-zj-OgM"/>
-                                                        <constraint firstItem="lhK-6h-4mm" firstAttribute="bottom" secondItem="XPg-52-KVJ" secondAttribute="bottomMargin" id="YNO-YH-OpN"/>
-                                                        <constraint firstItem="uTn-rf-cn6" firstAttribute="baseline" secondItem="P6e-rm-xR4" secondAttribute="baseline" id="gAa-Uh-TCy"/>
-                                                        <constraint firstItem="lhK-6h-4mm" firstAttribute="baseline" secondItem="P6e-rm-xR4" secondAttribute="firstBaseline" id="hcM-Fx-IeC"/>
-                                                        <constraint firstItem="P6e-rm-xR4" firstAttribute="centerY" secondItem="lhK-6h-4mm" secondAttribute="centerY" id="iV8-Yj-b1G"/>
-                                                        <constraint firstItem="uTn-rf-cn6" firstAttribute="leading" secondItem="XPg-52-KVJ" secondAttribute="leadingMargin" constant="20" id="x6X-H5-fNo"/>
-                                                        <constraint firstItem="lhK-6h-4mm" firstAttribute="leading" secondItem="P6e-rm-xR4" secondAttribute="trailing" constant="20" id="z9w-O2-OEA"/>
+                                                        <constraint firstItem="lhK-6h-4mm" firstAttribute="trailing" secondItem="XPg-52-KVJ" secondAttribute="trailingMargin" id="7i1-77-swH"/>
+                                                        <constraint firstItem="uTn-rf-cn6" firstAttribute="centerY" secondItem="XPg-52-KVJ" secondAttribute="centerY" id="E2u-AR-qk9"/>
+                                                        <constraint firstItem="P6e-rm-xR4" firstAttribute="centerY" secondItem="lhK-6h-4mm" secondAttribute="centerY" id="J06-3X-OvV"/>
+                                                        <constraint firstItem="P6e-rm-xR4" firstAttribute="baseline" secondItem="uTn-rf-cn6" secondAttribute="firstBaseline" id="KD8-kZ-WZg"/>
+                                                        <constraint firstItem="P6e-rm-xR4" firstAttribute="baseline" secondItem="lhK-6h-4mm" secondAttribute="baseline" id="M9f-0v-nQU"/>
+                                                        <constraint firstItem="uTn-rf-cn6" firstAttribute="baseline" secondItem="P6e-rm-xR4" secondAttribute="baseline" id="Wr2-K0-7AN"/>
+                                                        <constraint firstItem="lhK-6h-4mm" firstAttribute="leading" secondItem="P6e-rm-xR4" secondAttribute="trailing" constant="20" id="faO-5P-5KA"/>
+                                                        <constraint firstItem="P6e-rm-xR4" firstAttribute="baseline" secondItem="lhK-6h-4mm" secondAttribute="firstBaseline" id="nab-Qe-k0N"/>
+                                                        <constraint firstItem="lhK-6h-4mm" firstAttribute="baseline" secondItem="P6e-rm-xR4" secondAttribute="firstBaseline" id="oBz-D5-BM6"/>
+                                                        <constraint firstItem="lhK-6h-4mm" firstAttribute="bottom" secondItem="XPg-52-KVJ" secondAttribute="bottomMargin" id="rcQ-O3-bSA"/>
+                                                        <constraint firstItem="uTn-rf-cn6" firstAttribute="leading" secondItem="XPg-52-KVJ" secondAttribute="leadingMargin" constant="20" id="whN-Uo-v6i"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="detailView" destination="lhK-6h-4mm" id="fpU-cN-DQ4"/>
+                                                    <outlet property="foodName" destination="uTn-rf-cn6" id="cfb-Bl-4xJ"/>
+                                                    <outlet property="limitDate" destination="P6e-rm-xR4" id="nWl-qF-hWP"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
@@ -119,12 +130,28 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="모든 식재료" image="house" catalog="system" selectedImage="house.fill" id="Brm-gQ-csL"/>
                     <connections>
-                        <outlet property="tableView" destination="I6F-YV-PjI" id="jkd-es-qVL"/>
+                        <outlet property="searchBar" destination="SH9-T0-iYU" id="eJG-mO-Upy"/>
+                        <outlet property="tableView" destination="I6F-YV-PjI" id="4SX-JP-vcO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mFC-ac-5ny" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1002.8985507246377" y="114.50892857142857"/>
+        </scene>
+        <!--List Modal View Controller-->
+        <scene sceneID="ib7-EL-FIs">
+            <objects>
+                <viewController id="lqB-oR-b4i" customClass="listModalViewController" customModule="FreshFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yhd-ic-AA1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Hp5-9h-b88"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EAq-9c-3BX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1775" y="115"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="shB-1p-Wf1">
@@ -156,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXE-IX-S6R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1767" y="115"/>
+            <point key="canvasLocation" x="2523" y="115"/>
         </scene>
         <!--ShoppingList-->
         <scene sceneID="vbD-Xy-06R">
