@@ -12,4 +12,5 @@ target 'FreshFood' do
 
   inherit! :search_paths
 
+#comments for git
 end
