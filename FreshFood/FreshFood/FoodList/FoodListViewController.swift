@@ -26,19 +26,26 @@ class FoodListViewController: UIViewController {
             initCharacter.append(splitText(text: food))
         }
     
+        if(orderOption == 1) {
+            self.tableView.sectionHeaderHeight = 70
+        }
         
         self.reload()
     }
     
+  
+    
     func reload() {
         self.tableView.reloadData()
     }
-    
+   
+     
     //Send information to Modal View
     
+    //첫 자음을 얻는 함수
     func splitText(text: String) -> UnicodeScalar{
            let text = text.first
-       
+
            let val = (UnicodeScalar(String(text!))?.value)!
            
            let s = (val - 0xac00) / 28 / 21
@@ -46,7 +53,6 @@ class FoodListViewController: UIViewController {
            
            return sc!
     }
-    
 }
 
 extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -55,6 +61,8 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
         //Return Section Count
         if orderOption == 2 {
             return Array(Set(self.initCharacter)).count
+        } else if (orderOption == 1) {
+            
         }
         
         return dateOfSection.count
@@ -91,9 +99,25 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return String(Array(Set(initCharacter)).sorted()[section])
+        return String(Array(Set(foodList.map { $0.first! })).sorted()[section])
     }
     
+    /*
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        let button = UIButton()
+        headerView.addSubview(button)
+
+        button.tag = section // 버튼 클릭시 섹션 구분을 위한 값
+        button.addTarget(for: self, action: #handler(handleEvent), for: .touchUpInside)
+        return headerView
+    }
+
+    @objc func handleEvent(sender: UIButton) {
+        let section = sender.tag
+        print("You touched \(section) section")
+    }
+    */
     
     //Swipe Delete function
     func tableView(_ tableView: UITableView, commit editingSytle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

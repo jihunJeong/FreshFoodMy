@@ -41,7 +41,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="I6F-YV-PjI">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="I6F-YV-PjI">
                                         <rect key="frame" x="0.0" y="56" width="414" height="650"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -92,7 +92,7 @@
                                                 <connections>
                                                     <outlet property="foodName" destination="uTn-rf-cn6" id="cfb-Bl-4xJ"/>
                                                     <outlet property="limitDate" destination="P6e-rm-xR4" id="nWl-qF-hWP"/>
-                                                    <segue destination="lqB-oR-b4i" kind="presentation" id="r4l-Q1-ezy"/>
+                                                    <segue destination="lqB-oR-b4i" kind="presentation" id="pfK-uz-uwI"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -110,6 +110,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="74" height="29"/>
                                         <fontDescription key="fontDescription" name=".AppleSDGothicNeoI-Regular" family=".AppleKoreanFont" pointSize="15"/>
                                         <state key="normal" title="정렬"/>
+                                        <connections>
+                                            <action selector="orderOption:" destination="eE8-gm-Nl3" eventType="touchUpInside" id="Dh2-15-rdP"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pyf-1m-wnh">
                                         <rect key="frame" x="356" y="0.0" width="18" height="29"/>
@@ -236,6 +239,9 @@
                                 <state key="normal" title="삭제">
                                     <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="deleteAlert:" destination="lqB-oR-b4i" eventType="touchUpInside" id="STR-jX-Oqa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -244,7 +250,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EAq-9c-3BX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1777" y="-940"/>
+            <point key="canvasLocation" x="1770" y="-944"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="shB-1p-Wf1">
@@ -276,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXE-IX-S6R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1777" y="-289"/>
+            <point key="canvasLocation" x="1003" y="-1200"/>
         </scene>
         <!--ShoppingList-->
         <scene sceneID="vbD-Xy-06R">
@@ -290,7 +296,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uwx-OF-dpk"/>
+        <segue reference="pfK-uz-uwI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="exclamationmark.circle" catalog="system" width="128" height="121"/>
