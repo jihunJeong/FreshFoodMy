@@ -18,6 +18,8 @@
 		CAB6EAA5247699C2000CAD56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB6EAA3247699C2000CAD56 /* Main.storyboard */; };
 		CAB6EAA7247699C5000CAD56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAB6EAA6247699C5000CAD56 /* Assets.xcassets */; };
 		CAB6EAAA247699C5000CAD56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB6EAA8247699C5000CAD56 /* LaunchScreen.storyboard */; };
+		CAE765FA24890C3F00661F69 /* ShoppingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE765F824890C3F00661F69 /* ShoppingListTableViewCell.swift */; };
+		CAE765FB24890C3F00661F69 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE765F924890C3F00661F69 /* ShoppingListViewController.swift */; };
 		CD9E45F2247FBAD300126E03 /* ShoppingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD9E45F1247FBAD300126E03 /* ShoppingList.storyboard */; };
 		CDE413C124820A19004DEB4F /* ShoppingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE413C024820A19004DEB4F /* ShoppingListTableViewCell.swift */; };
 		CDE413C324820A4A004DEB4F /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE413C224820A4A004DEB4F /* ShoppingListViewController.swift */; };
@@ -37,6 +39,8 @@
 		CAB6EAA6247699C5000CAD56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAB6EAA9247699C5000CAD56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CAB6EAAB247699C5000CAD56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAE765F824890C3F00661F69 /* ShoppingListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewCell.swift; sourceTree = "<group>"; };
+		CAE765F924890C3F00661F69 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		CD9E45F1247FBAD300126E03 /* ShoppingList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShoppingList.storyboard; sourceTree = "<group>"; };
 		CDE413C024820A19004DEB4F /* ShoppingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShoppingListTableViewCell.swift; path = ShoppingList/ShoppingListTableViewCell.swift; sourceTree = "<group>"; };
 		CDE413C224820A4A004DEB4F /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShoppingListViewController.swift; path = ShoppingList/ShoppingListViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				CAB6EA9D247699C2000CAD56 /* AppDelegate.swift */,
+				CAE765FC24890D2300661F69 /* Barcoder */,
+				CAE765F724890C3F00661F69 /* ShoppingList */,
 				CA957F172476DEF900E800C6 /* FoodList */,
 				CAB6EA9F247699C2000CAD56 /* SceneDelegate.swift */,
 				CAB6EAA1247699C2000CAD56 /* ViewController.swift */,
@@ -98,6 +104,23 @@
 			);
 			path = FreshFood;
 			sourceTree = "<group>";
+		};
+		CAE765F724890C3F00661F69 /* ShoppingList */ = {
+			isa = PBXGroup;
+			children = (
+				CAE765F824890C3F00661F69 /* ShoppingListTableViewCell.swift */,
+				CAE765F924890C3F00661F69 /* ShoppingListViewController.swift */,
+			);
+			path = ShoppingList;
+			sourceTree = "<group>";
+		};
+		CAE765FC24890D2300661F69 /* Barcoder */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Barcoder;
+			path = FreshFood/Barcoder;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -172,12 +195,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA05E82824824941003FFE88 /* SearchViewController.swift in Sources */,
+				CAE765FA24890C3F00661F69 /* ShoppingListTableViewCell.swift in Sources */,
 				CAB6EAA2247699C2000CAD56 /* ViewController.swift in Sources */,
 				CA05E82424824307003FFE88 /* detailViewController.swift in Sources */,
 				CA1EC69D2476B39C004A16F3 /* FoodListViewController.swift in Sources */,
 				CA05E82624824338003FFE88 /* ListModalViewController.swift in Sources */,
 				CAB6EA9E247699C2000CAD56 /* AppDelegate.swift in Sources */,
 				CDE413C324820A4A004DEB4F /* ShoppingListViewController.swift in Sources */,
+				CAE765FB24890C3F00661F69 /* ShoppingListViewController.swift in Sources */,
 				CDE413C124820A19004DEB4F /* ShoppingListTableViewCell.swift in Sources */,
 				CAB6EAA0247699C2000CAD56 /* SceneDelegate.swift in Sources */,
 				CA9DB691247FA7D80088667D /* FoodListCell.swift in Sources */,
