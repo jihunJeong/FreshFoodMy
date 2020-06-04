@@ -1,19 +1,15 @@
 //
-//  FoodListTableViewCell.swift
+//  ShoppingListTableViewCell.swift
 //  FreshFood
 //
-//  Created by 정지훈 on 2020/05/22.
+//  Created by 이수정 on 2020/05/30.
 //  Copyright © 2020 정지훈. All rights reserved.
 //
 
 import UIKit
 
-class FoodListCell: UITableViewCell {
-    @IBOutlet weak var foodName: UILabel!
-    @IBOutlet weak var limitDate: UILabel!
+class ShoppingListTableViewCell: UITableViewCell {
 
-  
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
