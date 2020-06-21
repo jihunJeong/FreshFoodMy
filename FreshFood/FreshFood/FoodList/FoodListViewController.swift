@@ -8,8 +8,11 @@
 
 import UIKit
 
+protocol FoodListCellDelegate {
+    func didSelectButton(food: String?)
+}
+
 class FoodListViewController: UIViewController, UISearchResultsUpdating {
-    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -59,10 +62,11 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating {
            return sc!
     }
     
-    @objc func detailTapped(_ sender: UIButton) {
-        let food = foodList[sender.tag]
-        print(food)
+    @IBAction func addButton(_ sender: Any) {
+        let rvc = self.storyboard?.instantiateViewController(identifier: "AddView")
+        self.present(rvc!, animated: true, completion: nil)
     }
+    
 }
 
 extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -103,7 +107,7 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodListCell", for: indexPath) as! FoodListCell
         
-        cell.food = foodList[indexPath.row]
+        cell.foodName.text = foodList[indexPath.row]
         cell.delegate = self
         
         // 검색창이 비어있을 경우 charactor와 같은 첫글자를 가진 이름들만 골라서 리턴
@@ -147,6 +151,7 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
             let senderCell = sender as! FoodListCell
             let indexPath = tableView.indexPath(for: senderCell)!
             let senderCellName = foodList[indexPath.row]
+            print(senderCellName)
             detailView.detailName?.text = senderCellName
         }
     }
@@ -160,8 +165,11 @@ extension FoodListViewController: UISearchBarDelegate {
 }
 
 extension FoodListViewController: FoodListCellDelegate {
-    func FoodListCell(_ FoodListCell: FoodListCell, subscribeButtonTappedFor food: String) {
-        let rvc = self.storyboard?.instantiateViewController(identifier: "ListModal")
-        self.present(rvc!, animated: true, completion: nil)
+    func didSelectButton(food: String?) {
+        let storyboard = self.storyboard
+        let rvc = storyboard?.instantiateViewController(withIdentifier: "ListModal") as! ListModalViewController
+        print(food)
+        rvc.detailName?.text = food
+        self.navigationController?.pushViewController(rvc, animated: true)
     }
 }

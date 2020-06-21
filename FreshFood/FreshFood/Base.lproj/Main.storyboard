@@ -216,6 +216,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="geA-JX-qRg"/>
         <segue reference="WLQ-y9-iEM"/>
     </inferredMetricsTieBreakers>
     <resources>
