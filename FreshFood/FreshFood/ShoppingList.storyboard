@@ -24,7 +24,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fs4-dv-vsW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-33612" y="38"/>
+            <point key="canvasLocation" x="-33613" y="31"/>
         </scene>
         <!--장보기리스트-->
         <scene sceneID="ZQq-x9-fOb">

@@ -8,39 +8,44 @@
 
 import UIKit
 
-class FoodListViewController: UIViewController {
+class FoodListViewController: UIViewController, UISearchResultsUpdating {
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    
     @IBOutlet weak var tableView: UITableView!
     
     var foodList: [String] = ["가지", "딸기", "포도", "사과", "대파", "쪽파", "가위", "고추", "귤", "쌀", "계란", "만두", "새우"].sorted()
     let dateOfSection: [String] = ["유통기한 임박", "유통기한 1주", "유통기한 2주", "유통기한 3주", "유통기한 4주 이상"]
     var initCharacter: [UnicodeScalar] = []
     
+    //OrderOption Section
     var orderOption = 2
+    
+    //Searchbar Section
+    var filteredList: [String]!
+    var searchController: UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        tableView.dataSource = self
+        filteredList = foodList
+        
         for food in foodList {
             initCharacter.append(splitText(text: food))
         }
-    
-        if(orderOption == 1) {
-            self.tableView.sectionHeaderHeight = 70
-        }
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.sizeToFit()
+        tableView.tableHeaderView = searchController.searchBar
+        
+        definesPresentationContext = true
         
         self.reload()
     }
     
-  
-    
     func reload() {
         self.tableView.reloadData()
     }
-   
-     
-    //Send information to Modal View
     
     //첫 자음을 얻는 함수
     func splitText(text: String) -> UnicodeScalar{
@@ -53,12 +58,21 @@ class FoodListViewController: UIViewController {
            
            return sc!
     }
+    
+    @objc func detailTapped(_ sender: UIButton) {
+        let food = foodList[sender.tag]
+        print(food)
+    }
 }
 
 extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         //Return Section Count
+        if searchController.searchBar.text?.isEmpty == false {
+            return 0
+        }
+        
         if orderOption == 2 {
             return Array(Set(self.initCharacter)).count
         } else if (orderOption == 1) {
@@ -72,13 +86,14 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
         //Return number of rows in section
         let charactor = Array(Set(self.initCharacter)).sorted()[section]
         
-        //검색창이 비어있을 경우 section의 charactor과 이름의 첫글자가 일치하는 것만 리턴
-        if self.searchBar.text?.isEmpty == true {
-            return self.foodList.filter { splitText(text: $0) == charactor }.count
+        
+        if self.searchController.searchBar.text?.isEmpty  == true {
+            return self.foodList.filter {
+                splitText(text: $0) == charactor}.count
         }
         
-        //검색창에 내용이 있는 경우 그 내용을 포함하는 이름들의 개수를 리턴
-        return self.foodList.filter { splitText(text: $0) == charactor }.filter { $0.contains(self.searchBar.text!)}.count
+        // 검색창에 내용이 있는 경우 그 내용을 포함하는 이름들의 개수를 리턴
+        return filteredList.count
     }
     
     //Get Custom Cell Information
@@ -87,37 +102,24 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
         let charactor = Array(Set(self.initCharacter)).sorted()[indexPath.section]
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodListCell", for: indexPath) as! FoodListCell
-
+        
+        cell.food = foodList[indexPath.row]
+        cell.delegate = self
+        
         // 검색창이 비어있을 경우 charactor와 같은 첫글자를 가진 이름들만 골라서 리턴
-        if self.searchBar.text?.isEmpty == true {
+        if self.searchController.searchBar.text?.isEmpty == true {
             cell.foodName.text = self.foodList.filter { splitText(text: $0) == charactor}[indexPath.row]
+            
         } else { // 검색창에 내용이 있는 경우 그 내용을 포함하는 이름들만 골라서 리턴
-            cell.foodName.text = self.foodList.filter { splitText(text: $0) == charactor}.filter {$0.contains(self.searchBar.text!) }[indexPath.row]
+            cell.textLabel?.text = filteredList[indexPath.row]
         }
-     
+        
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return String(Array(Set(foodList.map { $0.first! })).sorted()[section])
+        return String(Array(Set(foodList.map { splitText(text: $0)})).sorted()[section])
     }
-    
-    /*
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        let button = UIButton()
-        headerView.addSubview(button)
-
-        button.tag = section // 버튼 클릭시 섹션 구분을 위한 값
-        button.addTarget(for: self, action: #handler(handleEvent), for: .touchUpInside)
-        return headerView
-    }
-
-    @objc func handleEvent(sender: UIButton) {
-        let section = sender.tag
-        print("You touched \(section) section")
-    }
-    */
     
     //Swipe Delete function
     func tableView(_ tableView: UITableView, commit editingSytle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -125,23 +127,41 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-    */
-
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filteredList = searchText.isEmpty ? foodList : foodList.filter { $0.contains(self.searchController.searchBar.text!)
+                return true
+            }
+        }
+        
+        tableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ListModal" {
+            let detailView = segue.destination as! ListModalViewController
+            let senderCell = sender as! FoodListCell
+            let indexPath = tableView.indexPath(for: senderCell)!
+            let senderCellName = foodList[indexPath.row]
+            detailView.detailName?.text = senderCellName
+        }
+    }
 }
 
-
 extension FoodListViewController: UISearchBarDelegate {
-    // 검색창 내용 바뀔 때마다 tableView를 reload
+    // 검색창의 내용이 바뀔 때마다 tableView를 reload해줘서 반영
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.reload()
+    }
+}
+
+extension FoodListViewController: FoodListCellDelegate {
+    func FoodListCell(_ FoodListCell: FoodListCell, subscribeButtonTappedFor food: String) {
+        let rvc = self.storyboard?.instantiateViewController(identifier: "ListModal")
+        self.present(rvc!, animated: true, completion: nil)
     }
 }

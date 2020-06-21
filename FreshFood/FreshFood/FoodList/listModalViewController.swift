@@ -10,10 +10,18 @@ import UIKit
 
 class ListModalViewController: UIViewController {
     
+    @IBOutlet weak var detailName: UILabel!
+    @IBOutlet weak var detailType: UILabel!
+    @IBOutlet weak var detailLimitDate: UILabel!
+    @IBOutlet weak var detailBuyDate: UILabel!
+    @IBOutlet weak var detailMemo: UILabel!
+    
     @IBAction func dismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: { () -> Void in})
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        self.detailName.text = "딸기"
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +29,7 @@ class ListModalViewController: UIViewController {
     }
     
     @IBAction func deleteAlert(_ sender: Any) {
-        Output_Alert(title: "경고", message: "진짜", text: "취소")
+        Output_Alert(title: "정말 삭제 하시겠습니까?", message: "되돌릴 수 업습니다", text: "취소")
     }
     
     func Output_Alert(title : String, message : String, text : String) {
@@ -31,7 +39,7 @@ class ListModalViewController: UIViewController {
         
         alertController.addAction(okButton)
         alertController.addAction(deleteButton)
-            return self.present(alertController, animated: true, completion: nil)
+        return self.present(alertController, animated: true, completion: nil)
     }
     
     /*

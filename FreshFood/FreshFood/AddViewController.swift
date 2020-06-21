@@ -30,7 +30,7 @@ class Data:Object{
 
 
 @objcMembers
-class ViewController: UIViewController, BarcodeDelegate{
+class AddViewController: UIViewController, BarcodeDelegate{
     // Camera view
     
     var ingredientName : String = ""

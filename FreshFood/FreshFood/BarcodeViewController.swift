@@ -14,7 +14,7 @@ var pogDayCountParser : [String] = ["3일", "4일", "5일","6일","7일","8일",
 
 
 @objcMembers
-class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class BarcodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     // Camera view
     var cameraView: CameraView!
 
@@ -22,6 +22,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     let session = AVCaptureSession()
     let sessionQueue = DispatchQueue(label: "Session Queue")
 
+    var delegate:BarcodeDelegate?
     var isShowingAlert = false
 
     public var ref:DatabaseReference!

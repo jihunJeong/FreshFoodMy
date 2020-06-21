@@ -171,7 +171,7 @@ class AddListViewController: UITableViewController {
         if segue.identifier == "toAddSegue"{
             let row = tableView.indexPathForSelectedRow?.row ?? 0
             let dataObject = basicFoodList[row]
-            if let nextViewcontroller = segue.destination as? ViewController{
+            if let nextViewcontroller = segue.destination as? AddViewController{
                 nextViewcontroller.ingredientName = dataObject.name
                 nextViewcontroller.limitDate = dataObject.limitdate
                 //nextViewcontroller.typesOfFridgeValue = dataObject.typesOfFridge
