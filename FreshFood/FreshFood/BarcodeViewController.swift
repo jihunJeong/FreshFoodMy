@@ -6,7 +6,7 @@ import FirebaseAuth
 import FirebaseInstallations
 
 var databaseAccessKeys : [String] = ["-M8KuWSvftXzRy9Ivipc", "-M8KuUE3PpbanLl-Q6yj",
-"-M8KuS9a3jVke6_6Etyb", "-M8KuPcmMqg3FGo2OfP0", "-M8Ks5S8sBftQUM_B4eW","-M8KqgkVRp3y1L1UHd4o", "-M8K3gYx3O1uvXmvq2uZ"]
+"-M8KuS9a3jVke6_6Etyb", "-M8KuPcmMqg3FGo2OfP0", "-M8Ks5S8sBftQUM_B4eW","-M8KqgkVRp3y1L1UHd4o", "-M8K3gYx3O1uvXmvq2uZ", "-MAG9evsmMqxEbw_xWuH","-MAGA-TVHcOBcBgZ8voh","-MAGAJn6GK-NZbt9LHmv"]
 
 var pogDayCountParser : [String] = ["3일", "4일", "5일","6일","7일","8일","9일","10일","11일","12일","13일","14일","15일","16일"
 ,"17일","18일","19일","20일","21일","22일","23일","24일","25일","26일","27일","28일","29일","30일","45일","60일","1개월",
@@ -76,7 +76,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         cameraView.layer.session = session
         cameraView.layer.videoGravity = .resizeAspectFill
 
-        let rectangle: UIBezierPath = UIBezierPath(rect: CGRect(x: UIScreen.main.bounds.size.width/4, y: UIScreen.main.bounds.size.height/2 - 30, width: UIScreen.main.bounds.size.width/2, height: 90))
+        /*let rectangle: UIBezierPath = UIBezierPath(rect: CGRect(x: UIScreen.main.bounds.size.width/4, y: UIScreen.main.bounds.size.height/2 - 30, width: UIScreen.main.bounds.size.width/2, height: 90))
         UIColor.clear.setFill()
         rectangle.fill()
         UIColor.red.setStroke()
@@ -91,7 +91,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         cameraView.layer.addSublayer(boundingLayer)
         
         // Set initial camera orientation
-        cameraView.updateOrientation()
+        cameraView.updateOrientation()*/
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -128,9 +128,9 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             metadataObjects.count > 0,
             metadataObjects.first is AVMetadataMachineReadableCodeObject,
             let scan = metadataObjects.first as? AVMetadataMachineReadableCodeObject {
-            getIngredientData(code: scan.stringValue!)
-            sleep(5)
-            let alertController = UIAlertController(title: "Barcode Scanned", message: "바코드 : \(scan.stringValue) \n 제품명 : \(self.ingredientName) \n 유통기한 : \(self.ingredientDate)", preferredStyle: .alert)
+            getIngredientData(code: scan.stringValue!, completionBlock:{self.presentAlert(scan: scan)})
+            presentAlert(scan: scan)
+            /*let alertController = UIAlertController(title: "Barcode Scanned", message: "바코드 : \(scan.stringValue) \n 제품명 : \(self.ingredientName) \n 유통기한 : \(self.ingredientDate)", preferredStyle: .alert)
 
             print("isit\(self.ingredientDate)")
             isShowingAlert = true
@@ -139,11 +139,11 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 self.isShowingAlert = false
             })
 
-            present(alertController, animated: true)
+            present(alertController, animated: true)*/
         }
     }
     
-    func getIngredientData(code:String){
+    func getIngredientData(code:String, completionBlock : @escaping (() -> Void)){
         var parsedPogDayCount : String = ""
         Auth.auth().signInAnonymously(completion: nil)
         recognizedBarcode = code
@@ -155,7 +155,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                         print(aValue["PRDLST_NM"])
                         self.ingredientName = "\(aValue["PRDLST_NM"])"
                         print(aValue["POG_DAYCNT"])
-                        parsedPogDayCount = (aValue["POG_DAYCNT"] as? String)!
+                       /* parsedPogDayCount = (aValue["POG_DAYCNT"] as? String)!
                         for i in pogDayCountParser{
                             if (parsedPogDayCount.contains(i)){
                                     print(i)
@@ -163,16 +163,45 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                             }else{
                                 print("cannot parse")
                             }
-                        }
+                        }*/
+                        break
                     }
                 }
             }
            // if currentData.value(forKey: "0") as?String == self.recognizedBarcode{
             //}
             return TransactionResult.success(withValue: currentData)
-            })
+            }, andCompletionBlock: {(error, completion, snap) in
+              //  print(completion)
+               // print(snap)
+            if !completion {
+
+                print("The value wasn't able to Update")
+                }else{
+
+                completionBlock()
+            }})
         }
 
+    }
+    
+    func presentAlert(scan: AVMetadataMachineReadableCodeObject)->Void{
+        
+        
+        let alertController = UIAlertController(title: "Barcode Scanned", message: "바코드 : \(scan.stringValue) \n 제품명 : \(self.ingredientName) \n 유통기한 : \(self.ingredientDate)", preferredStyle: .alert)
+
+        print("isit\(self.ingredientDate)")
+        isShowingAlert = true
+
+        alertController.addAction(UIAlertAction(title: "OK", style: .default) { action in
+            self.isShowingAlert = false
+            self.delegate?.getBarcodeData(ingredientName: "\(self.ingredientName)", ingredientDate: "\(self.ingredientDate)")
+            self.dismiss(animated: true, completion: nil)
+            //self.transitioningDelegate.
+            
+        })
+
+        present(alertController, animated: true)
     }
 }
 
