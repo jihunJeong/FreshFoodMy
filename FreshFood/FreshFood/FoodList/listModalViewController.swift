@@ -16,11 +16,13 @@ class ListModalViewController: UIViewController {
     @IBOutlet weak var detailBuyDate: UILabel!
     @IBOutlet weak var detailMemo: UILabel!
     
+    var delegate : FoodListCellDelegate?
+    
     @IBAction func dismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: { () -> Void in})
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.detailName.text = "딸기"
+        //self.detailName.text = food
     }
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -16,13 +16,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qGF-JC-795">
-                                <rect key="frame" x="0.0" y="107" width="414" height="708"/>
+                                <rect key="frame" x="0.0" y="107" width="414" height="661"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0sA-fX-2Qz">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="708"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="661"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="708" id="cMj-1g-naN"/>
+                                            <constraint firstAttribute="height" constant="661" id="cgb-SN-soO"/>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FoodListCell" id="pDo-60-UEc" customClass="FoodListCell" customModule="FreshFood" customModuleProvider="target">
@@ -41,6 +41,9 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezV-RH-liB">
                                                             <rect key="frame" x="374" y="11" width="20" height="22.5"/>
                                                             <state key="normal" image="exclamationmark.circle" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="subscribeButtonTapped:" destination="pDo-60-UEc" eventType="touchUpInside" id="YWB-44-wX8"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="foodName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nli-ra-Qzm">
                                                             <rect key="frame" x="39" y="12" width="80" height="20.5"/>
@@ -66,8 +69,7 @@
                                                 <connections>
                                                     <outlet property="foodName" destination="nli-ra-Qzm" id="cs2-bI-STx"/>
                                                     <outlet property="limitDate" destination="Hsz-Wa-Mvq" id="qXV-MX-iUM"/>
-                                                    <outlet property="subscribeButton" destination="ezV-RH-liB" id="cRb-pw-zFV"/>
-                                                    <segue destination="msB-VU-Sqa" kind="presentation" id="ZwG-LO-RWj"/>
+                                                    <segue destination="msB-VU-Sqa" kind="presentation" identifier="ListModal" id="ZwG-LO-RWj"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -92,6 +94,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBn-qK-AGz">
                                         <rect key="frame" x="356" y="0.0" width="18" height="29"/>
                                         <state key="normal" image="plus" catalog="system"/>
+                                        <connections>
+                                            <action selector="addButton:" destination="vZC-LJ-8Jb" eventType="touchUpInside" id="wQr-MY-Phf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -114,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="66p-eR-SwP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="913" y="-544"/>
+            <point key="canvasLocation" x="911.59420289855075" y="-544.41964285714278"/>
         </scene>
         <!--List Modal View Controller-->
         <scene sceneID="kvB-wO-dur">
@@ -231,7 +236,92 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AqP-Ff-Fuk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1710" y="-773"/>
+            <point key="canvasLocation" x="1688" y="-769"/>
+        </scene>
+        <!--Add View Controller-->
+        <scene sceneID="kVJ-T4-O95">
+            <objects>
+                <viewController storyboardIdentifier="AddView" id="VwC-uQ-H5v" customClass="AddViewController" customModule="FreshFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i8W-Wg-Uox" customClass="V">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="식품명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brJ-nQ-geT">
+                                <rect key="frame" x="87" y="250" width="45" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="유통기한" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmp-IW-An6">
+                                <rect key="frame" x="87" y="328" width="59" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="냉장고" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBO-F1-4qY">
+                                <rect key="frame" x="87" y="409" width="45" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lpq-ib-4rZ">
+                                <rect key="frame" x="181" y="243" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZDL-zi-d6Z">
+                                <rect key="frame" x="181" y="321" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QcG-Ac-2bD">
+                                <rect key="frame" x="181" y="404" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q95-te-CAN">
+                                <rect key="frame" x="322" y="243" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="바코드"/>
+                                <connections>
+                                    <action selector="presentBarcodeScanner:" destination="VwC-uQ-H5v" eventType="touchUpInside" id="8Wz-1a-gRu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRn-Mr-9xE">
+                                <rect key="frame" x="326" y="194" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="국룰"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ee7-QJ-5lE">
+                                <rect key="frame" x="192" y="593" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="추가"/>
+                                <connections>
+                                    <action selector="addData:" destination="VwC-uQ-H5v" eventType="touchUpInside" id="Pc3-5F-31Q"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="qOM-pT-nb0"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="vYY-TD-3IB"/>
+                    <connections>
+                        <outlet property="addButton" destination="Ee7-QJ-5lE" id="pbN-Hl-ktR"/>
+                        <outlet property="fridgeTypeText" destination="QcG-Ac-2bD" id="g5y-Qf-C1d"/>
+                        <outlet property="ingredientNameText" destination="lpq-ib-4rZ" id="a9O-rD-oXr"/>
+                        <outlet property="limitDateText" destination="ZDL-zi-d6Z" id="uRS-KM-Ici"/>
+                        <outlet property="toBarcodeButton" destination="q95-te-CAN" id="xYe-xz-xKA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FoA-nG-my1" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1687" y="-99"/>
         </scene>
     </scenes>
     <resources>
