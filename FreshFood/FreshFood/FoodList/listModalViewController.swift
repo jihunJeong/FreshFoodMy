@@ -13,8 +13,12 @@ class ListModalViewController: UIViewController {
     @IBOutlet weak var detailName: UILabel!
     @IBOutlet weak var detailType: UILabel!
     @IBOutlet weak var detailLimitDate: UILabel!
-    @IBOutlet weak var detailBuyDate: UILabel!
     @IBOutlet weak var detailMemo: UILabel!
+    @IBOutlet weak var detailQuantity: UILabel!
+    @IBOutlet weak var detailLocation: UILabel!
+    
+    var formatter = DateFormatter()
+    var food: Food?
     
     var delegate : FoodListCellDelegate?
     
@@ -25,8 +29,12 @@ class ListModalViewController: UIViewController {
         //self.detailName.text = food
     }
     override func viewDidLoad() {
+        formatter.dateFormat = "yyyy.MM.dd"
+        
         super.viewDidLoad()
-
+        detailName.text = food!.name
+        detailLimitDate.text = formatter.string(from: food!.limitDate)
+        
         // Do any additional setup after loading the view.
     }
     

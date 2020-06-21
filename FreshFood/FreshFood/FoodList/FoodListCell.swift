@@ -13,7 +13,7 @@ class FoodListCell: UITableViewCell {
     @IBOutlet weak var foodName: UILabel!
     @IBOutlet weak var limitDate: UILabel!
       
-    var food : String?
+    var food : Food?
         
       // the delegate, remember to set to weak to prevent cycles
     var delegate : FoodListCellDelegate?
