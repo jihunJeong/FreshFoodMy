@@ -19,13 +19,13 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var shoppingListTableview: UITableView!
     @IBOutlet weak var foodNameLabel: UILabel!
     @IBOutlet weak var detailButton: UIButton!
-    
+        
     func makeSomeExamples()->[ShoppingListFood]{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
         
         let shoppingDate:Date = dateFormatter.date(from: "2020.06.10")!
-        var temp1 = ShoppingListFood(name: "당근", count: 3, memo: "흙당근 사기", purchaseDate: shoppingDate, buttonPressed: false)
+        var temp1 = ShoppingListFood(name: "당근", count: 3, memo: "흙당근 사기", purchaseDate: shoppingDate, buttonPressed: true)
         var temp2 = ShoppingListFood(name: "오이", count: 2, memo: "-", purchaseDate: shoppingDate, buttonPressed: false)
         let shoppingDate2 = dateFormatter.date(from: "2020.06.09")!
         var temp3 = ShoppingListFood(name: "수박", count: 1, memo: "큰 수박으로 사기", purchaseDate: shoppingDate2, buttonPressed: false)
@@ -112,6 +112,16 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             myCell.qauntityofFood.text = String(shoppingLists[indexPath.row].count)
         }
         myCell.name = shoppingLists[indexPath.row].name
+        myCell.date = shoppingLists[indexPath.row].purchaseDate
+        myCell.quantity = shoppingLists[indexPath.row].count
+        myCell.index = indexPath.row
+        if shoppingLists[indexPath.row].buttonPressed == false{
+            myCell.checkButton.setTitleColor(UIColor.gray, for: UIControl.State.normal)
+        }
+        else{
+            myCell.checkButton.setTitleColor(UIColor.orange, for: UIControl.State.normal)
+        }
+        
         myCell.delegate = self
         return myCell
     }
@@ -138,15 +148,13 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
 //    {
 //        return indexPath;
 //    }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let vc = segue.destination as! ShoppingListModalViewController
-//        let cell = sender as! UITableViewCell
-//        let indexPath = shoppingListTableview.indexPath(for: cell)
-//        vc.shoppingListFoodName?.text = shoppingLists[(indexPath?.row)!].name
-////        vc.shoppingListDate.text = shoppingLists[(indexPath?.row)!].purchaseDate
-////        vc.shoppingListQuantity.text = shoppingLists[(indexPath?.row)!].count
-//    }
+    var vc:ShoppingListModalViewController? = nil
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        vc = segue.destination as! ShoppingListModalViewController
+//        vc!.shoppingListFoodName?.text = tempName
+//        vc.shoppingListDate.text = shoppingLists[(indexPath?.row)!].purchaseDate
+//        vc.shoppingListQuantity.text = shoppingLists[(indexPath?.row)!].count
+    }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "ShoppingListFoodDetail"{
@@ -175,15 +183,32 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
 }
 
 extension ShoppingListViewController:ShoppingListTableViewCellDelegator{
-    func shoppingListTableViewCell(_ shoppingListTableViewCell: ShoppingListTableViewCell, shoppingListButtonPressedFor name: String) {
-        let vc = (self.storyboard?.instantiateViewController(identifier: "ShoppingListModal"))! as ShoppingListModalViewController
-        self.present(vc, animated: true, completion: nil)
+    func checkBox(check: Bool, checkindex index:Int) {
+        shoppingLists[index].buttonPressed = check
+    }
+    
+    func shoppingListTableViewCell(_ shoppingListTableViewCell: ShoppingListTableViewCell, shoppingListButtonPressedFor name: String, date: Date, quantity: Double) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd"
         
-        let temp:String! = name
-        vc.tempString = temp
-        
+        vc!.shoppingListFoodName.text = name
+        vc!.shoppingListDate.text = formatter.string(from: date)
+        vc!.shoppingListQuantity.text = String(quantity)
         
     }
+    
+//    func shoppingListTableViewCell(_ shoppingListTableViewCell: ShoppingListTableViewCell, shoppingListButtonPressedFor name: String) {
+////        let vc = (self.storyboard?.instantiateViewController(identifier: "ShoppingListModal"))! as ShoppingListModalViewController
+////        self.present(vc, animated: true, completion: nil)
+////
+////        let temp:String! = name
+////        vc.tempString = temp
+////        let segue = UIStoryboard.(withIdentifier: "ShoppingListFoddDetail", sender: shoppingListTableViewCell.detailView)
+////        let vc = segue.destination as? ShoppingListModalViewController
+////        vc.
+//        vc!.shoppingListFoodName.text = name
+//
+//    }
     
 }
 
