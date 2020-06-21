@@ -50,6 +50,8 @@ class ViewController: UIViewController, BarcodeDelegate{
     
     @IBOutlet weak var addButton: UIButton!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -77,10 +79,21 @@ class ViewController: UIViewController, BarcodeDelegate{
     @IBAction func presentBarcodeScanner(_ sender: Any) {
         let viewController = makeBarcodeScannerViewController()
         viewController.title = "바코드 인식기"
-        present(viewController, animated: true, completion: {self.makeRectangle(view: viewController)})
+        present(viewController, animated: true)
+      // present(viewController, animated: true, completion: {self.makeRectangle(view: viewController)})
     }
     
-    func makeRectangle(view:BarcodeViewController)->Void{
+/*    func makeRectangle(view:BarcodeViewController){
+        qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
+        qrCodeFrameView.layer.borderWidth = 2
+        view.cameraView.addSubview(qrCodeFrameView)
+        view.cameraView.bringSubviewToFront(qrCodeFrameView)
+        view.cameraView.updateOrientation()
+        
+    }*/
+    
+    
+   /* func makeRectangle(view:BarcodeViewController)->Void{
         let rectangle: UIBezierPath = UIBezierPath(rect: CGRect(x: UIScreen.main.bounds.size.width/4, y: UIScreen.main.bounds.size.height/2 - 30, width: UIScreen.main.bounds.size.width/2, height: 90))
         UIColor.clear.setFill()
         rectangle.fill()
@@ -97,19 +110,27 @@ class ViewController: UIViewController, BarcodeDelegate{
         
         // Set initial camera orientation
         view.cameraView.updateOrientation()
-    }
+    }*/
     
     private func makeBarcodeScannerViewController() -> BarcodeViewController {
       let viewController = BarcodeViewController()
         viewController.delegate=self
+
       return viewController
     }
     
     func getBarcodeData(ingredientName: String, ingredientDate: String) {
         self.ingredientName = ingredientName
         self.limitDate = ingredientDate
+        var parseLimitDateIndex =  self.limitDate.index(of: "일") ?? self.limitDate.index(of: "월")
+        let start = self.limitDate.index(parseLimitDateIndex! , offsetBy: -3)
+        let end = self.limitDate.index(parseLimitDateIndex!, offsetBy: 1)
+        let range = start..<end
+        let tempLimitDate = self.limitDate[range]
+        
         self.ingredientNameText.text = ingredientName
-        self.limitDateText.text = limitDate
+        //self.limitDateText.text = limitDate
+        self.limitDateText.text = String(tempLimitDate)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
