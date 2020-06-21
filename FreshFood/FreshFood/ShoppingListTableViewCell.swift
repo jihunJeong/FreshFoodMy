@@ -20,6 +20,10 @@ class ShoppingListTableViewCell: UITableViewCell {
     weak var delegate : ShoppingListTableViewCellDelegator?
     
     var name : String?
+    var date : Date?
+    var quantity : Double?
+    
+    var index :Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,15 +49,17 @@ class ShoppingListTableViewCell: UITableViewCell {
             sender.setTitleColor(UIColor.orange, for: UIControl.State.normal)
             isButtonChecked = true
         }
+        self.delegate?.checkBox(check: isButtonChecked, checkindex: index! )
         
     }
     @IBAction func detailButtonPressed(_ sender: UIButton) {
 //        sender.addTarget(self, action: Selector("segue"), for: .touchUpInside)
-        if let name = name, let delegate = delegate{
-            self.delegate?.shoppingListTableViewCell(self, shoppingListButtonPressedFor: name)
+        if let name = name,let delegate = delegate{
+            self.delegate?.shoppingListTableViewCell(self, shoppingListButtonPressedFor: name, date: date!, quantity: quantity!)
         }
     }
 }
 protocol ShoppingListTableViewCellDelegator: AnyObject{
-    func shoppingListTableViewCell(_ shoppingListTableViewCell: ShoppingListTableViewCell, shoppingListButtonPressedFor name:String)
+    func shoppingListTableViewCell(_ shoppingListTableViewCell: ShoppingListTableViewCell, shoppingListButtonPressedFor name:String, date:Date, quantity:Double)
+    func checkBox(check:Bool, checkindex:Int)
 }
