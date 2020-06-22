@@ -238,7 +238,7 @@
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="A9a-rD-kqC">
                             <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="1OM-9h-UzG" kind="show" id="JPd-6K-xol"/>
+                                <segue destination="1OM-9h-UzG" kind="show" identifier="ShoppingListAddSegue" id="JPd-6K-xol"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

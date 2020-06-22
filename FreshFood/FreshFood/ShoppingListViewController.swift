@@ -130,6 +130,10 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             let cvc = segue.destination as! ShoppingListCalendarViewController
             cvc.delegate = self
         }
+        if segue.identifier == "ShoppingListAddSegue"{
+            let avc = segue.destination as! ShoppingListAddViewController
+            avc.delegate = self
+        }
 
     }
     
@@ -178,3 +182,10 @@ extension ShoppingListViewController:ShoppingListModalViewControllerDelegator{
     
 }
 
+extension ShoppingListViewController:ShoppingListAddViewControllerDelegator{
+    func create() {
+        shoppingListTableview.reloadData()
+    }
+    
+
+}
