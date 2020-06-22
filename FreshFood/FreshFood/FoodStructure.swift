@@ -1,5 +1,5 @@
 //
-//  FoodStructure.swift
+//  FoodStructure.swift사과
 //  FreshFood
 //
 //  Created by 정지훈 on 2020/06/22.
@@ -13,9 +13,8 @@ class Food : Object {
     @objc dynamic var name : String = ""
     @objc dynamic var limitDate : Date = Date()
     @objc dynamic var purchaseDate : Date = Date()
-    @objc dynamic var quantity : Double = Double()
+    @objc dynamic var quantity : Double = 0.0
     @objc dynamic var location : String = ""
     @objc dynamic var memo : String = ""
     @objc dynamic var type : String = ""
 }
-

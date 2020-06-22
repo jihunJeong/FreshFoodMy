@@ -41,6 +41,9 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezV-RH-liB">
                                                             <rect key="frame" x="374" y="11" width="20" height="22.5"/>
                                                             <state key="normal" image="exclamationmark.circle" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="subscribeButtonTapped:" destination="pDo-60-UEc" eventType="touchUpInside" id="EQa-UA-AdO"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="foodName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nli-ra-Qzm">
                                                             <rect key="frame" x="39" y="12" width="80" height="20.5"/>

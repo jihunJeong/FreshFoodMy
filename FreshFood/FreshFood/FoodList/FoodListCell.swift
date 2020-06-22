@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol FoodListCellDelegate {
+    func subscribeButtonTapped(_ foodListCell: FoodListCell, subsribeButtonTappedFor food: Food)
+}
 class FoodListCell: UITableViewCell {
     
     @IBOutlet weak var foodName: UILabel!
@@ -32,7 +35,9 @@ class FoodListCell: UITableViewCell {
     @IBAction func subscribeButtonTapped(_ sender: UIButton){
         // ask the delegate (in most case, its the view controller) to
         // call the function 'subscribeButtonTappedFor' on itself.
-        delegate?.didSelectButton(food: self.food)
+        if let food = food, let delegate = delegate {
+            self.delegate?.subscribeButtonTapped(self, subsribeButtonTappedFor: food)
+        }
     }
         
 }
