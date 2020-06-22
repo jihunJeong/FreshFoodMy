@@ -65,8 +65,8 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
     
         dateOfSection = [date0, date1, date2, date3, date4, date5]
         foodLocation = ["냉장고", "냉동고"]
-        
-        for i in 0...foodList.count-1 {
+    
+        for i in 0..<foodList.count {
             for j in 0...dateOfSection.count-1 {
                 let interval:Double = dateOfSection[j].leftDate
                 var leftinterval:Double = -10000
@@ -145,7 +145,6 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
     }
     
     func delegateReload() {
-        print("-----------------=sdfsdjfl=========")
         initCharacter.removeAll()
         sortedDateSection.removeAll()
         sortByDate = [[],[],[],[],[],[]]
