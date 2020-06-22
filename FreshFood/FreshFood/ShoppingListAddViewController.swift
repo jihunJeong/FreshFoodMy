@@ -19,12 +19,19 @@ class ShoppingListAddViewController: UIViewController {
     @IBOutlet weak var memoDataTextField: UITextField!
         
     var isShowingAlert = false
+    weak var delegate :ShoppingListAddViewControllerDelegator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
 
         // Do any additional setup after loading the view.
+    }
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     func showAlert(emptyType: String){
@@ -42,7 +49,11 @@ class ShoppingListAddViewController: UIViewController {
                    present(alertController, animated: true)
     }
     
-    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.nameTextField.resignFirstResponder()
+//        self.quantityTextField.resignFirstResponder()
+//        self.memoDataTextField.resignFirstResponder()
+//    }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         let formatter = DateFormatter()
@@ -72,9 +83,10 @@ class ShoppingListAddViewController: UIViewController {
         let realm = try! Realm()
 
         try! realm.write() {
-            realm.add(data)
+            realm.add(data,update: .all)
         }
-                
+        
+        self.delegate?.create()
         navigationController?.popViewController(animated: true)
     }
     /*
@@ -87,4 +99,8 @@ class ShoppingListAddViewController: UIViewController {
     }
     */
 
+}
+
+protocol ShoppingListAddViewControllerDelegator: AnyObject{
+    func create()
 }

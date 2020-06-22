@@ -26,4 +26,8 @@ class Shopping : Object{
     @objc dynamic var memo : String = ""
     @objc dynamic var type : String = ""
     @objc dynamic var buttonPressed : Bool = false
+    
+    @objc override static func primaryKey() -> String? {
+        return "name"
+    }
 }
