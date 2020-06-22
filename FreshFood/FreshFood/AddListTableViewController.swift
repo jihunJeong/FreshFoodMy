@@ -83,6 +83,7 @@ class AddListViewController: UITableViewController {
     var basicFoodList = [BasicFood]()
     var selectedRow:Int = -1
     
+    var formatter = DateFormatter()
     
     override func viewDidLoad() {
 
@@ -167,15 +168,24 @@ class AddListViewController: UITableViewController {
         self.performSegue(withIdentifier: "toAddSegue", sender: self)
     }
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        for element in basicFoodList{
+            
+        }
+        
+        
+        
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toAddSegue"{
             let row = tableView.indexPathForSelectedRow?.row ?? 0
-            let dataObject = basicFoodList[row]
-            if let nextViewcontroller = segue.destination as? AddViewController{
-                nextViewcontroller.ingredientName = dataObject.name
-                nextViewcontroller.limitDate = dataObject.limitdate
-                //nextViewcontroller.typesOfFridgeValue = dataObject.typesOfFridge
-                //nextViewcontroller.storeNameValue = dataObject.storeData
+                 let dataObject = basicFoodList[row]
+                 if let nextViewcontroller = segue.destination as? ViewController{
+                    // nextViewcontroller.ingredientName = dataObject.name
+                    // nextViewcontroller.limitDate = dataObject.limitdate
+                     nextViewcontroller.getBarcodeData(ingredientName: dataObject.name, ingredientDate: dataObject.limitdate)
             }
         }
     }
