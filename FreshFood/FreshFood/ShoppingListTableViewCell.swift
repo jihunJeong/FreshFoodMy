@@ -8,6 +8,7 @@
 
 
 import UIKit
+import RealmSwift
 
 class ShoppingListTableViewCell: UITableViewCell {
     @IBOutlet weak var foodName: UILabel!
@@ -18,6 +19,7 @@ class ShoppingListTableViewCell: UITableViewCell {
     var isButtonChecked:Bool!
     var date : Date?
     var index : Int?
+    let realm = try! Realm()
     weak var delegate : ShoppingListTableViewCellDelegator?
         
     override func awakeFromNib() {
@@ -38,6 +40,7 @@ class ShoppingListTableViewCell: UITableViewCell {
         {
             sender.setTitleColor(UIColor.gray, for: UIControl.State.normal)
             isButtonChecked = false
+//            let tempObject = realm.object(ofType: Shopping.self, forPrimaryKey: foodName.te)
         }else{
             sender.setTitleColor(UIColor.orange, for: UIControl.State.normal)
             isButtonChecked = true

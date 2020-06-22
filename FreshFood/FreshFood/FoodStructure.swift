@@ -28,7 +28,7 @@ class Shopping : Object{
     @objc dynamic var type : String = ""
     @objc dynamic var buttonPressed : Bool = false
     
-  /*  override static func primaryKey() -> String? {
+    @objc override static func primaryKey() -> String? {
         return "name"
-    }*/
+    }
 }
