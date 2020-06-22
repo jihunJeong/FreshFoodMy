@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
+
+protocol ModalActionDelegate {
+    func delegateReload()
+}
 
 class ListModalViewController: UIViewController {
     
@@ -19,12 +24,17 @@ class ListModalViewController: UIViewController {
     
     var formatter = DateFormatter()
     var food: Food?
+    let realm = try! Realm()
     
-    var delegate : FoodListCellDelegate?
+    var delegate : ModalActionDelegate?
+    func didSelectButton(food: Food?) {
+        self.food = food
+    }
     
     @IBAction func dismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: { () -> Void in})
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         //self.detailName.text = food
     }
@@ -47,11 +57,20 @@ class ListModalViewController: UIViewController {
         let cancelButton = UIAlertAction(title: text, style: UIAlertAction.Style.cancel, handler: nil)
         let deleteButton = UIAlertAction(title: "확인", style: UIAlertAction.Style.destructive) {
             (action) in
-            if let delegate = self.delegate {
-                print("check")
-                delegate.deleteFood(food: self.food)
+            do {
+                try self.realm.write {
+                    //let predicate = NSPredicate(format: "counterid = \(c.id)")
+                    //let children = self.realm.objects(Food.self).filter(predicate)
+                    //self.realm.delete(children)
+                    let predicate = NSPredicate(format: "name = %@", self.food?.name as! CVarArg)
+                    self.realm.delete(self.realm.objects(Food.self).filter(predicate)) //this should be deleted after
+                }
+            } catch {
+                print("Error Delete \(error)")
             }
-            self.dismiss(animated:true, completion: { () -> Void in})
+            
+            self.delegate?.delegateReload()
+            self.dismiss(animated:true, completion: nil)
         }
         
         alertController.addAction(cancelButton)

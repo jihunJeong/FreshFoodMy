@@ -7,31 +7,25 @@
 //
 
 import UIKit
+import RealmSwift
 
-protocol FoodListCellDelegate {
-    func didSelectButton(food: Food?)
-    func deleteFood(food: Food?)
-}
-
-class FoodListViewController: UIViewController, UISearchResultsUpdating {
+class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalActionDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var delegate : FoodListCellDelegate?
+    
     struct DateStruct {
         var string: String = ""
-        var leftDate: Double = Double()
+        var leftDate: Double = 0.0
     }
     
+    var realm = try! Realm()
+    lazy var temp = realm.objects(Food.self).sorted(byKeyPath: "name", ascending: true)
+    lazy var temp1 = realm.objects(Food.self).sorted(byKeyPath: "name", ascending: true)
+    
     var formatter = DateFormatter()
-    
-    var carrot:Food = Food()
-    var grape:Food = Food()
-    var strawberry:Food = Food()
-    var orange:Food = Food()
-    var rice:Food = Food()
-    
-    var foodList: [Food] = []
-    
+
     var date0: DateStruct = DateStruct(string: "유통기한 지남", leftDate: 0)
     var date1: DateStruct = DateStruct(string: "유통기한 임박", leftDate: 3)
     var date2: DateStruct = DateStruct(string: "유통기한 1주", leftDate: 7)
@@ -49,38 +43,28 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating {
     var orderOption = 1
     
     //Searchbar Section
-    var filteredList: [Food] = []
     var sortByDate: [[Food]] = [[],[],[],[],[],[]]
     
     var searchController: UISearchController!
 
     override func viewDidLoad() {
-        formatter.dateFormat = "yyyy.MM.dd"
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.sizeToFit()
+        tableView.tableHeaderView = searchController.searchBar
+        
+        definesPresentationContext = true
+        
+        super.viewDidLoad()
+        self.updateInformation()
+        self.reload()
+    }
     
-        carrot.name = "당근"
-        carrot.limitDate = formatter.date(from: "2020.06.23")!
-        carrot.location = "냉장고"
-        
-        grape.name = "포도"
-        grape.limitDate = formatter.date(from: "2020.06.30")!
-        grape.location = "냉장고"
-        
-        strawberry.name = "딸기"
-        strawberry.limitDate = formatter.date(from: "2020.07.20")!
-        strawberry.location = "냉장고"
-        
-        orange.name = "오렌지"
-        orange.limitDate = formatter.date(from: "2020.07.28")!
-        orange.location = "냉장고"
-        
-        rice.name = "쌀"
-        rice.limitDate = formatter.date(from: "2021.02.19")!
-        rice.location = "냉동고"
-        
-        foodList = [carrot, grape, strawberry, orange, rice]
+    func updateInformation() {
+        let foodList = Array(temp).sorted{ $0.name < $1.name }
+    
         dateOfSection = [date0, date1, date2, date3, date4, date5]
         foodLocation = ["냉장고", "냉동고"]
-        foodList.sort( by: {$0.name < $1.name} )
         
         for i in 0...foodList.count-1 {
             for j in 0...dateOfSection.count-1 {
@@ -91,6 +75,7 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating {
                 }
                 if (foodList[i].limitDate.timeIntervalSinceNow / 86400) < interval && leftinterval < (foodList[i].limitDate.timeIntervalSinceNow / 86400) {
                     sortByDate[j].append(foodList[i])
+                    sortByDate[j].sort{ $0.limitDate < $1.limitDate}
                     if sortedDateSection.contains(where: { $0.string == dateOfSection[j].string }) {
                         continue
                     }
@@ -102,22 +87,12 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating {
             }
         }
         sortedDateSection.sort( by: {$0.leftDate < $1.leftDate})
-        super.viewDidLoad()
         
         tableView.dataSource = self
-        filteredList = foodList
         
         for food in foodList {
             initCharacter.append(splitText(text: food.name))
         }
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.sizeToFit()
-        tableView.tableHeaderView = searchController.searchBar
-        
-        definesPresentationContext = true
-        
-        self.reload()
     }
     
     func reload() {
@@ -168,6 +143,15 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating {
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(actionSheet, animated: true,  completion: nil)
     }
+    
+    func delegateReload() {
+        print("-----------------=sdfsdjfl=========")
+        initCharacter.removeAll()
+        sortedDateSection.removeAll()
+        sortByDate = [[],[],[],[],[],[]]
+        self.updateInformation()
+        self.reload()
+    }
 }
 
 extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -192,6 +176,8 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         formatter.dateFormat = "yyyy.MM.dd"
         
+        let foodList = Array(temp)
+        
         //Return number of rows in section
         if orderOption == 1 {
             let interval = sortedDateSection[section].leftDate
@@ -201,22 +187,22 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
                 leftinterval = sortedDateSection[section-1].leftDate
             }
             
-            return self.foodList.filter{ ($0.limitDate.timeIntervalSinceNow / 86400) < interval && leftinterval < ($0.limitDate.timeIntervalSinceNow / 86400)}.count
+            return foodList.filter{ ($0.limitDate.timeIntervalSinceNow / 86400) < interval && leftinterval < ($0.limitDate.timeIntervalSinceNow / 86400)}.count
             
         } else if orderOption == 2 {
             let charactor = Array(Set(self.initCharacter)).sorted()[section]
             
             
             if self.searchController.searchBar.text?.isEmpty  == true {
-                return self.foodList.filter {
-                    splitText(text: $0.name) == charactor}.count
+                return foodList.filter {
+                    self.splitText(text: $0.name) == charactor}.count
             }
             
             // 검색창에 내용이 있는 경우 그 내용을 포함하는 이름들의 개수를 리턴
-            return filteredList.count
+            return 0
         } else if orderOption == 3 {
             if self.searchController.searchBar.text?.isEmpty == true {
-                return self.foodList.filter { $0.location == foodLocation[section]}.count
+                return foodList.filter { $0.location == foodLocation[section]}.count
             }
         }
         
@@ -225,8 +211,9 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
     
     //Get Custom Cell Information
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let foodList = Array(temp).sorted{ $0.name < $1.name }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodListCell", for: indexPath) as! FoodListCell
-        cell.delegate = self
         
         if orderOption == 1 {
             let interval = sortedDateSection[indexPath.section].leftDate
@@ -237,8 +224,8 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
             }
             
             if self.searchController.searchBar.text?.isEmpty == true {
-                cell.foodName.text = self.foodList.filter { ($0.limitDate.timeIntervalSinceNow / 86400) < interval && leftinterval < ($0.limitDate.timeIntervalSinceNow / 86400) }[indexPath.row].name
-                cell.limitDate.text = formatter.string(from: self.foodList.filter { ($0.limitDate.timeIntervalSinceNow / 86400) < interval && leftinterval < ($0.limitDate.timeIntervalSinceNow / 86400) }[indexPath.row].limitDate) + " 까지"
+                cell.foodName.text = foodList.filter { ($0.limitDate.timeIntervalSinceNow / 86400) < interval && leftinterval < ($0.limitDate.timeIntervalSinceNow / 86400) }.sorted{ $0.limitDate < $1.limitDate }[indexPath.row].name
+                cell.limitDate.text = formatter.string(from: foodList.filter { ($0.limitDate.timeIntervalSinceNow / 86400) < interval && leftinterval < ($0.limitDate.timeIntervalSinceNow / 86400) }.sorted{ $0.limitDate < $1.limitDate}[indexPath.row].limitDate) + " 까지"
             }
         } else if orderOption == 2 {
             //각 섹션의 첫 문자를 charactor로 선언
@@ -246,16 +233,16 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
 
             // 검색창이 비어있을 경우 charactor와 같은 첫글자를 가진 이름들만 골라서 리턴
             if self.searchController.searchBar.text?.isEmpty == true {
-                cell.foodName.text = self.foodList.filter { splitText(text: $0.name) == charactor}[indexPath.row].name
-                cell.limitDate.text = formatter.string(from: self.foodList.filter { splitText(text: $0.name) == charactor}[indexPath.row].limitDate) + " 까지"
+                cell.foodName.text = foodList.filter { self.splitText(text: $0.name) == charactor}[indexPath.row].name
+                cell.limitDate.text = formatter.string(from: foodList.filter { self.splitText(text: $0.name) == charactor}[indexPath.row].limitDate) + " 까지"
                 
             } else { // 검색창에 내용이 있는 경우 그 내용을 포함하는 이름들만 골라서 리턴
-                cell.foodName.text = filteredList[indexPath.row].name
+                cell.foodName.text = ""
             }
         } else if orderOption == 3 {
-            if self.searchController.searchBar.text?.isEmpty == true {
-                cell.foodName.text = self.foodList.filter { $0.location == foodLocation[indexPath.section]}[indexPath.row].name
-                cell.limitDate.text = formatter.string(from: self.foodList.filter { $0.location == foodLocation[indexPath.section]}[indexPath.row].limitDate) + " 까지"
+                if self.searchController.searchBar.text?.isEmpty == true {
+                cell.foodName.text = foodList.filter { $0.location == self.foodLocation[indexPath.section]}[indexPath.row].name
+                cell.limitDate.text = formatter.string(from: foodList.filter { $0.location == self.foodLocation[indexPath.section]}[indexPath.row].limitDate) + " 까지"
             }
         }
         cell.delegate = self
@@ -263,16 +250,12 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let foodList = Array(temp)
+        
         if orderOption == 1 {
-            /*
-            let interval = dateOfSection[section].leftDate
-            
-            if self.foodList.filter { ($0.limitDate.timeIntervalSinceNow / 86400) < interval}.count == 0 {
-                return ""
-            }*/
             return sortedDateSection[section].string
         } else if orderOption == 2 {
-            return String(Array(Set(foodList.map { splitText(text: $0.name)})).sorted()[section])
+            return String(Array(Set(foodList.map { self.splitText(text: $0.name)})).sorted()[section])
         } else if orderOption == 3 {
             return foodLocation[section]
         }
@@ -290,18 +273,23 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
+        /*
         if let searchText = searchController.searchBar.text {
             filteredList = searchText.isEmpty ? foodList : foodList.filter { $0.name.contains(self.searchController.searchBar.text!)
                 return true
             }
         }
+        */
         
         self.reload()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let foodList = Array(temp).sorted{ $0.name < $1.name }
+        
         if segue.identifier == "ListModal" {
-            let detailView = segue.destination as! ListModalViewController
+            let storyBoard: UIStoryboard = UIStoryboard(name: "FoodList", bundle: nil)
+            let detailView = storyBoard.instantiateViewController(withIdentifier: "ListModal") as! ListModalViewController
             let senderCell = sender as! FoodListCell
             let indexPath = tableView.indexPath(for: senderCell)!
             if orderOption == 1 {
@@ -313,7 +301,7 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
                 }
             } else if orderOption == 2 {
                 let charactor = Array(Set(self.initCharacter)).sorted()[indexPath.section]
-                detailView.food = foodList.filter { splitText(text: $0.name) == charactor}[indexPath.row]
+                detailView.food = foodList.filter { self.splitText(text: $0.name) == charactor}[indexPath.row]
             } else if orderOption == 3 {
                 var cnt = 0
                 let locate = foodLocation[indexPath.section]
@@ -326,7 +314,10 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
                         }
                     }
                 }
-    }}}
+            }
+            detailView.delegate = self
+            self.present(detailView, animated: true, completion: nil)
+        }}
 }
 
 extension FoodListViewController: UISearchBarDelegate {
@@ -337,18 +328,11 @@ extension FoodListViewController: UISearchBarDelegate {
 }
 
 extension FoodListViewController: FoodListCellDelegate {
-    func didSelectButton(food: Food?) {
-        let storyboard = self.storyboard
-        let rvc = storyboard?.instantiateViewController(withIdentifier: "ListModal") as! ListModalViewController
+    func subscribeButtonTapped(_ foodListCell: FoodListCell, subsribeButtonTappedFor food: Food) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "FoodList", bundle: nil)
+        let rvc = storyBoard.instantiateViewController(withIdentifier: "ListModal") as! ListModalViewController
         rvc.food = food
-        self.navigationController?.pushViewController(rvc, animated: true)
-        //self.present(rvc, animated: true, completion: nil)
-    }
-    
-    func deleteFood(food: Food?) {
-        print(food!.name)
-        let index = self.foodList.firstIndex(where: {$0.name == food?.name && $0.limitDate == food?.limitDate})
-        self.foodList.remove(at: index!)
-        self.reload()
+        rvc.delegate = self
+        self.present(rvc, animated: true, completion: nil)
     }
 }
