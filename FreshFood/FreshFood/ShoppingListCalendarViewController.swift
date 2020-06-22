@@ -28,7 +28,6 @@ class ShoppingListCalendarViewController: UIViewController,FSCalendarDataSource,
     public func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
-        print(dateFormatter.string(from: date))
         self.delegate?.dateSelected(selectDate: date)
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }

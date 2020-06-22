@@ -19,3 +19,11 @@ class Food : Object {
     @objc dynamic var type : String = ""
 }
 
+class Shopping : Object{
+    @objc dynamic var name : String = ""
+    @objc dynamic var purchaseDate : Date = Date()
+    @objc dynamic var quantity : Double = Double()
+    @objc dynamic var memo : String = ""
+    @objc dynamic var type : String = ""
+    @objc dynamic var buttonPressed : Bool = false
+}

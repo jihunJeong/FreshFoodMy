@@ -115,7 +115,7 @@
                                                 <color key="tintColor" red="0.089909248054027557" green="0.66258817911148071" blue="0.41819280385971069" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" image="calendar" catalog="system"/>
                                                 <connections>
-                                                    <segue destination="wo8-eM-Dg4" kind="modal" identifier="ShoppingListCalendarSegue" id="9QF-uF-2br"/>
+                                                    <segue destination="wo8-eM-Dg4" kind="modal" identifier="ShoppingListCalendarSegue" id="Ypm-Sk-RJh"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -207,10 +207,10 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="checkButton" destination="B6v-Uc-mH3" id="eXV-tM-O0v"/>
+                                                    <outlet property="checkButton" destination="B6v-Uc-mH3" id="YUG-iN-a7f"/>
                                                     <outlet property="detailView" destination="fP5-Nr-k7S" id="ayc-ge-UE9"/>
                                                     <outlet property="foodName" destination="YDd-Bm-1hu" id="Exh-NR-Xdy"/>
-                                                    <outlet property="qauntityofFood" destination="6jc-SA-cCS" id="Wvc-7y-ioM"/>
+                                                    <outlet property="quauntityofFood" destination="6jc-SA-cCS" id="anI-9A-wtL"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -306,6 +306,9 @@
                                                 <state key="normal" title="삭제">
                                                     <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="deleteButtonPressed:" destination="kfo-mk-VdP" eventType="touchUpInside" id="PCI-xN-v4s"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnd-Gk-va5">
                                                 <rect key="frame" x="0.0" y="34" width="300" height="34"/>
@@ -413,7 +416,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="식자재명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQY-z5-nYS">
-                                                    <rect key="frame" x="25" y="11" width="60" height="40"/>
+                                                    <rect key="frame" x="25" y="55" width="60" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="EqO-hC-pWj"/>
                                                         <constraint firstAttribute="width" constant="60" id="mJ3-G3-Eed"/>
@@ -423,7 +426,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="식자재명을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1WE-Xp-VYo">
-                                                    <rect key="frame" x="95" y="11" width="294" height="40"/>
+                                                    <rect key="frame" x="95" y="55" width="294" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="fEC-lX-Pbg"/>
                                                     </constraints>
@@ -449,7 +452,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="수량" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8S-Qr-GfY">
-                                                    <rect key="frame" x="25" y="11" width="60" height="40"/>
+                                                    <rect key="frame" x="25" y="55" width="60" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="QY8-2L-HcO"/>
                                                         <constraint firstAttribute="height" constant="40" id="s4I-w2-HnJ"/>
@@ -459,7 +462,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="수량을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rzD-e9-RSZ">
-                                                    <rect key="frame" x="95" y="11" width="294" height="40"/>
+                                                    <rect key="frame" x="95" y="55" width="294" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="z47-pu-itM"/>
                                                     </constraints>
@@ -485,7 +488,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="구매일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyY-6o-wzs">
-                                                    <rect key="frame" x="25" y="11" width="60" height="40"/>
+                                                    <rect key="frame" x="25" y="55" width="60" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="5ws-yH-63B"/>
                                                         <constraint firstAttribute="height" constant="40" id="MpB-Do-w6M"/>
@@ -495,7 +498,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="구매할 날짜를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XnC-kk-5tf">
-                                                    <rect key="frame" x="95" y="11" width="294" height="40"/>
+                                                    <rect key="frame" x="95" y="55" width="294" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="rQB-7o-IcE"/>
                                                     </constraints>
@@ -521,7 +524,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdL-QW-qqC">
-                                                    <rect key="frame" x="25" y="11" width="60" height="40"/>
+                                                    <rect key="frame" x="25" y="55" width="60" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="ANg-L2-GF2"/>
                                                         <constraint firstAttribute="width" constant="60" id="AWG-Kq-scL"/>
@@ -531,7 +534,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="메모를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UNC-3u-3AQ">
-                                                    <rect key="frame" x="95" y="11" width="294" height="40"/>
+                                                    <rect key="frame" x="95" y="55" width="294" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="5Hs-oQ-cbs"/>
                                                     </constraints>
@@ -562,7 +565,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wWI-Bh-tQu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-31741" y="809"/>
+            <point key="canvasLocation" x="-31742" y="767"/>
         </scene>
         <!--Shopping List Add View Controller-->
         <scene sceneID="CcH-b3-Zt2">

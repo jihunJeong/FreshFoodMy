@@ -10,21 +10,16 @@
 import UIKit
 
 class ShoppingListTableViewCell: UITableViewCell {
-    @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var foodName: UILabel!
-    @IBOutlet weak var qauntityofFood: UILabel!
+    @IBOutlet weak var quauntityofFood: UILabel!
     @IBOutlet weak var detailView: UIButton!
+    @IBOutlet weak var checkButton: UIButton!
     
-    var isButtonChecked:Bool = false
-    
-    weak var delegate : ShoppingListTableViewCellDelegator?
-    
-    var name : String?
+    var isButtonChecked:Bool!
     var date : Date?
-    var quantity : Double?
-    
-    var index :Int?
-    
+    var index : Int?
+    weak var delegate : ShoppingListTableViewCellDelegator?
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -41,25 +36,20 @@ class ShoppingListTableViewCell: UITableViewCell {
     @IBAction func buttonPressed(_ sender: UIButton) {
         if(isButtonChecked)
         {
-            //checkButton.titleLabel?.textColor = UIColor.gray
             sender.setTitleColor(UIColor.gray, for: UIControl.State.normal)
             isButtonChecked = false
         }else{
-            //checkButton.titleLabel?.textColor = UIColor.blue
             sender.setTitleColor(UIColor.orange, for: UIControl.State.normal)
             isButtonChecked = true
         }
-        self.delegate?.checkBox(check: isButtonChecked, checkindex: index! )
+//        self.delegate?.checkBox(check: isButtonChecked, checkindex: index!)
         
     }
     @IBAction func detailButtonPressed(_ sender: UIButton) {
-//        sender.addTarget(self, action: Selector("segue"), for: .touchUpInside)
-        if let name = name,let delegate = delegate{
-            self.delegate?.shoppingListTableViewCell(self, shoppingListButtonPressedFor: name, date: date!, quantity: quantity!)
-        }
+        self.delegate?.shoppingListTableViewCell(self, shoppingListButtonPressedFor: foodName.text!, date: date!, quantity: quauntityofFood.text!)
     }
 }
 protocol ShoppingListTableViewCellDelegator: AnyObject{
-    func shoppingListTableViewCell(_ shoppingListTableViewCell: ShoppingListTableViewCell, shoppingListButtonPressedFor name:String, date:Date, quantity:Double)
-    func checkBox(check:Bool, checkindex:Int)
+    func shoppingListTableViewCell(_ shoppingListTableViewCell: ShoppingListTableViewCell, shoppingListButtonPressedFor name:String, date:Date, quantity:String)
+//    func checkBox(check:Bool, checkindex:Int)
 }
