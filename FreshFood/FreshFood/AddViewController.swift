@@ -35,6 +35,8 @@ class Data:Object{
 
 @objcMembers
 class AddViewController: UIViewController, BarcodeDelegate{
+
+    
     // Camera view
     
     var ingredientName : String = ""
@@ -50,6 +52,10 @@ class AddViewController: UIViewController, BarcodeDelegate{
     var pickerView: UIView = UIView()
     
     var datePicker: UIDatePicker = UIDatePicker()
+    
+    var fridgePicker: UIPickerView!
+    
+    var foodLocation: [String] = ["냉장고", "냉동고", "김치냉장고", "기타"]
     
     @IBOutlet weak var toBarcodeButton: UIButton!
     
@@ -77,8 +83,13 @@ class AddViewController: UIViewController, BarcodeDelegate{
         
              limitDateText.text = limitDate
              
+            fridgePicker = UIPickerView()
+            fridgePicker.delegate = self
+            fridgePicker.dataSource = self
+        
              
              limitDateText.inputView = .none
+            fridgeTypeText.inputView = fridgePicker
              
              
          
@@ -358,3 +369,23 @@ class AddViewController: UIViewController, BarcodeDelegate{
         }
         
     }
+
+extension AddViewController : UIPickerViewDelegate{
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+
+}
+
+extension AddViewController : UIPickerViewDataSource{
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return foodLocation.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return foodLocation[row]
+    }
+}
