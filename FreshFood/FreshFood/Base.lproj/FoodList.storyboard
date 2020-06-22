@@ -85,7 +85,7 @@
                                         <fontDescription key="fontDescription" name=".AppleSDGothicNeoI-Regular" family=".AppleKoreanFont" pointSize="15"/>
                                         <state key="normal" title="정렬"/>
                                         <connections>
-                                            <action selector="orderOption:" destination="vZC-LJ-8Jb" eventType="touchUpInside" id="CUJ-UX-2Ya"/>
+                                            <action selector="orderOption:" destination="vZC-LJ-8Jb" eventType="touchUpInside" id="6Bo-3N-6Yh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBn-qK-AGz">
