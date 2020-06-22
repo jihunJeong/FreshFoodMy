@@ -20,6 +20,7 @@
                     <connections>
                         <segue destination="oaR-dG-xyL" kind="relationship" relationship="viewControllers" id="HQl-cA-4wn"/>
                         <segue destination="vHt-uq-6IB" kind="relationship" relationship="viewControllers" id="5ia-k5-0dQ"/>
+                        <segue destination="XMF-Zi-L5S" kind="relationship" relationship="viewControllers" id="Fgx-ip-NsR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xkC-15-M1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -71,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="914" y="-325"/>
         </scene>
-        <!--View Controller-->
+        <!--Add View Controller-->
         <scene sceneID="vvX-7y-s0J">
             <objects>
-                <viewController id="ErV-KN-gfT" customClass="ViewController" customModule="AddFoodList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ErV-KN-gfT" customClass="AddViewController" customModule="FreshFood" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eYh-P0-jWg" customClass="V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -200,8 +201,8 @@
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="as6-2c-l4F"/>
-                                <exclude reference="mDW-Ll-yWb"/>
                                 <exclude reference="3jg-xv-qb5"/>
+                                <exclude reference="mDW-Ll-yWb"/>
                                 <exclude reference="Qug-jm-Ddt"/>
                                 <exclude reference="Rb8-Sv-dRz"/>
                                 <exclude reference="twb-pj-98e"/>
@@ -214,18 +215,18 @@
                                 <exclude reference="dqx-Pv-KlF"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="ZJu-QJ-zVE"/>
                                 <exclude reference="Bce-Pn-tFf"/>
-                                <include reference="as6-2c-l4F"/>
+                                <exclude reference="ZJu-QJ-zVE"/>
                                 <exclude reference="UpF-Ma-nrj"/>
-                                <include reference="mDW-Ll-yWb"/>
+                                <include reference="as6-2c-l4F"/>
                                 <exclude reference="3jg-xv-qb5"/>
+                                <include reference="mDW-Ll-yWb"/>
                                 <exclude reference="6ob-jH-kGS"/>
                                 <include reference="Qug-jm-Ddt"/>
                                 <include reference="Rb8-Sv-dRz"/>
                                 <include reference="twb-pj-98e"/>
-                                <exclude reference="Q1F-wr-GBx"/>
                                 <include reference="IOi-WS-oQR"/>
+                                <exclude reference="Q1F-wr-GBx"/>
                                 <exclude reference="4OI-GF-Rae"/>
                                 <include reference="BgL-bj-fz4"/>
                             </mask>
@@ -247,7 +248,7 @@
         <!--Title-->
         <scene sceneID="c0S-ez-TB6">
             <objects>
-                <tableViewController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="xLh-wn-DDx" customClass="AddListViewController" customModule="AddFoodList" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="xLh-wn-DDx" customClass="AddListViewController" customModule="FreshFood" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NHd-n9-sbd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -258,7 +259,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="a7M-rU-1Yl" customClass="AddListViewCell" customModule="AddFoodList" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="a7M-rU-1Yl" customClass="AddListViewCell" customModule="FreshFood" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a7M-rU-1Yl" id="47j-Zn-GVy">
@@ -280,17 +281,17 @@
                     <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="AddListView" destination="NHd-n9-sbd" id="P8q-Cl-b11"/>
-                        <outlet property="searchBar" destination="8Rx-Ku-Rbc" id="8ZQ-Bc-Hh9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vS3-sF-4nW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3900.0000000000005" y="119.86607142857142"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="3yE-u4-6Cb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XMF-Zi-L5S" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="2gk-1e-WIS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vsy-8q-uXD">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -307,7 +308,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rDx-aG-ZQp"/>
+        <segue reference="3g3-9h-6PW"/>
+        <segue reference="bEk-dx-VDC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="list.bullet" catalog="system" width="128" height="88"/>

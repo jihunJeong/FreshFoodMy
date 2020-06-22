@@ -25,6 +25,10 @@ class Data:Object{
         super.init()
     }
     
+   /* override static func primaryKey() -> String? {
+       return "name"
+    }*/
+    
 }
 
 
@@ -137,10 +141,6 @@ class AddViewController: UIViewController, BarcodeDelegate{
      }
      
      
-     @objc func dismissKeyboard() {
-         //Causes the view (or one of its embedded text fields) to resign the first responder status.
-         view.endEditing(true)
-     }
      
      
      override func viewWillAppear(_ animated: Bool) {
@@ -336,7 +336,7 @@ class AddViewController: UIViewController, BarcodeDelegate{
             let data = Data(name: dataName , limitdate: dataLimitDate, fridgetype: dataFridgeType)
             let realm = try! Realm()
             try! realm.write() {
-                var addedData = realm.add(data)
+                var addedData = realm.add(data, update: .all)
                 // Reading from or modifying a `RealmOptional` is done via the `value` property
                 //person.age.value = 28
             }

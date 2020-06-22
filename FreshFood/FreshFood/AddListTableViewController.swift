@@ -119,8 +119,9 @@ class AddListViewController: UITableViewController {
                 let name = doc.documentID
                 let limitdate = doc.get("유통기한") as! String
                 print(limitdate)
-                let unit = doc.get("단위") as! String
-                print(unit)
+                //let unit = doc.get("단위") as? String
+                   let unit = ""
+                   print(unit)
                 self.basicFoodList.append(BasicFood(unit: unit, limitdate: limitdate, name: name))
                 self.dataCount += 1
               }
@@ -182,7 +183,7 @@ class AddListViewController: UITableViewController {
         if segue.identifier == "toAddSegue"{
             let row = tableView.indexPathForSelectedRow?.row ?? 0
                  let dataObject = basicFoodList[row]
-                 if let nextViewcontroller = segue.destination as? ViewController{
+                 if let nextViewcontroller = segue.destination as? AddViewController{
                     // nextViewcontroller.ingredientName = dataObject.name
                     // nextViewcontroller.limitDate = dataObject.limitdate
                      nextViewcontroller.getBarcodeData(ingredientName: dataObject.name, ingredientDate: dataObject.limitdate)
