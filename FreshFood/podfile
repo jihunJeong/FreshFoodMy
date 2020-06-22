@@ -11,7 +11,7 @@ target 'FreshFood' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'RealmSwift'
-
+  pod 'FSCalendar'
 
   inherit! :search_paths
 

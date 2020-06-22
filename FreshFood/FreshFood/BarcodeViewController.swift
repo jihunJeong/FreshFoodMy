@@ -24,7 +24,7 @@ class BarcodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     let session = AVCaptureSession()
     let sessionQueue = DispatchQueue(label: "Session Queue")
 
-    var delegate:BarcodeDelegate?
+//    var delegate:BarcodeDelegate?
     var isShowingAlert = false
 
     public var ref:DatabaseReference!

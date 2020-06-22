@@ -14,7 +14,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="YUN-Ja-SXV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="gSJ-TD-U6j">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.09311426431" green="0.61232477429999999" blue="0.38354668019999999" alpha="0.99988555909999999" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -107,16 +107,17 @@
                                                 <color key="textColor" red="0.09311426431" green="0.61232477429999999" blue="0.38354668019999999" alpha="0.99988555909999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EET-7n-qXn">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ITG-CC-h0H">
                                                 <rect key="frame" x="349" y="0.0" width="25" height="30"/>
-                                                <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="25" id="8D4-3S-YxP"/>
+                                                    <constraint firstAttribute="width" constant="25" id="f2w-aZ-H7O"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <color key="tintColor" red="0.089909248054027557" green="0.66258817911148071" blue="0.41819280385971069" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" image="calendar" catalog="system"/>
+                                                <connections>
+                                                    <segue destination="wo8-eM-Dg4" kind="modal" identifier="ShoppingListCalendarSegue" id="9QF-uF-2br"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -124,7 +125,6 @@
                                             <constraint firstAttribute="height" constant="30" id="4eh-0X-0pM"/>
                                             <constraint firstItem="jeJ-Jb-3BM" firstAttribute="leading" secondItem="s9S-kB-gYB" secondAttribute="trailing" constant="5" id="Ukb-V0-HET"/>
                                             <constraint firstItem="Q54-IW-MDd" firstAttribute="leading" secondItem="jeJ-Jb-3BM" secondAttribute="trailing" constant="5" id="bdF-fA-BgY"/>
-                                            <constraint firstItem="EET-7n-qXn" firstAttribute="leading" secondItem="Q54-IW-MDd" secondAttribute="trailing" constant="5" id="yhd-LD-sLC"/>
                                         </constraints>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u6M-nC-Qaw">
@@ -150,7 +150,7 @@
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <state key="normal" title="✦"/>
+                                                                    <state key="normal" title="✓"/>
                                                                     <connections>
                                                                         <action selector="buttonPressed:" destination="tSs-YG-tyk" eventType="touchUpInside" id="6Jr-h1-wCJ"/>
                                                                     </connections>
@@ -238,7 +238,7 @@
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="A9a-rD-kqC">
                             <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="kPo-rh-9Ha" kind="show" id="Mhi-xt-Az0"/>
+                                <segue destination="kPo-rh-9Ha" kind="show" identifier="AddShoppingList" id="Mhi-xt-Az0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -252,6 +252,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCs-yP-102" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-32765.217391304352" y="37.5"/>
+        </scene>
+        <!--Shopping List Calendar View Controller-->
+        <scene sceneID="TDd-tz-E6p">
+            <objects>
+                <viewController id="wo8-eM-Dg4" customClass="ShoppingListCalendarViewController" customModule="FreshFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jQd-g5-RFc" customClass="FSCalendar">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="e18-8o-51x"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
+                                <color key="value" red="0.089909248054027557" green="0.66258817911148071" blue="0.41819280385971069" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
+                                <color key="value" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
+                                <color key="value" red="0.089909248054027557" green="0.66258817911148071" blue="0.41819280385971069" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <connections>
+                        <outlet property="calendar" destination="jQd-g5-RFc" id="MaC-gB-k8U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rMh-cJ-Bew" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-31742" y="-600"/>
         </scene>
         <!--Shopping List Modal View Controller-->
         <scene sceneID="huk-PX-8Cq">
@@ -360,7 +392,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EBd-ep-oey" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-31771" y="-185"/>
+            <point key="canvasLocation" x="-31742" y="38"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="q2g-g4-NWT">
@@ -530,7 +562,10 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wWI-Bh-tQu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-31771" y="510"/>
+            <point key="canvasLocation" x="-31741" y="809"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="calendar" catalog="system" width="128" height="106"/>
+    </resources>
 </document>

@@ -118,9 +118,6 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         if shoppingLists[indexPath.row].buttonPressed == false{
             myCell.checkButton.setTitleColor(UIColor.gray, for: UIControl.State.normal)
         }
-        else{
-            myCell.checkButton.setTitleColor(UIColor.orange, for: UIControl.State.normal)
-        }
         
         myCell.delegate = self
         return myCell
@@ -150,7 +147,13 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
 //    }
     var vc:ShoppingListModalViewController? = nil
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        vc = segue.destination as! ShoppingListModalViewController
+        if segue.identifier == "ShoppingListFoodDetail"{
+            vc = segue.destination as! ShoppingListModalViewController
+        }
+        if segue.identifier == "ShoppingListCalendarSegue"{
+            let cvc = segue.destination as! ShoppingListCalendarViewController
+            cvc.delegate = self
+        }
 //        vc!.shoppingListFoodName?.text = tempName
 //        vc.shoppingListDate.text = shoppingLists[(indexPath?.row)!].purchaseDate
 //        vc.shoppingListQuantity.text = shoppingLists[(indexPath?.row)!].count
@@ -210,5 +213,17 @@ extension ShoppingListViewController:ShoppingListTableViewCellDelegator{
 //
 //    }
     
+}
+
+extension ShoppingListViewController:ShoppingListCalendarDelegator{
+    func dateSelected(selectDate: Date) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd"
+        dateLabel.text = formatter.string(from: selectDate)
+        setDate = selectDate
+//        print(formatter.string(from: selectDate))
+        
+        shoppingListTableview.reloadData()
+    }
 }
 

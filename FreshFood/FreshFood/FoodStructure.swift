@@ -12,8 +12,10 @@ import RealmSwift
 class Food : Object {
     @objc dynamic var name : String = ""
     @objc dynamic var limitDate : Date = Date()
+    @objc dynamic var purchaseDate : Date = Date()
     @objc dynamic var quantity : Double = Double()
     @objc dynamic var location : String = ""
     @objc dynamic var memo : String = ""
     @objc dynamic var type : String = ""
 }
+
