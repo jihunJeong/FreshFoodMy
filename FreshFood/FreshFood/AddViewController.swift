@@ -7,10 +7,10 @@ protocol BarcodeDelegate
 {
     
     
-    func getBarcodeData(ingredientName: String, ingredientDate: String)
+    func getBarcodeData(ingredientName: String, ingredientDate: String, ingredientType: String)
 }
 
-class Data:Object{
+/*class Data:Object{
     dynamic var name: String? = nil
     dynamic var limitdate: String? = nil
     dynamic var fridgetype: String? = nil
@@ -29,7 +29,7 @@ class Data:Object{
        return "name"
     }*/
     
-}
+}*/
 
 
 
@@ -42,6 +42,10 @@ class AddViewController: UIViewController, BarcodeDelegate{
     var ingredientName : String = ""
 
     var limitDate : String = ""
+    
+    var foodType : String = ""
+    
+    var quantity : Double = 0.0
     
     var isShowingAlert = false
     
@@ -57,6 +61,10 @@ class AddViewController: UIViewController, BarcodeDelegate{
     
     var foodLocation: [String] = ["냉장고", "냉동고", "김치냉장고", "기타"]
     
+    var fridgeString: String = ""
+    
+    var toolBar = UIToolbar()
+    
     @IBOutlet weak var toBarcodeButton: UIButton!
     
     @IBOutlet weak var ingredientNameText: UITextField!
@@ -65,6 +73,12 @@ class AddViewController: UIViewController, BarcodeDelegate{
     
     @IBOutlet weak var fridgeTypeText: UITextField!
     
+    @IBOutlet weak var quantityText: UITextField!
+    
+    @IBOutlet weak var foodTypeText: UITextField!
+    
+    
+    @IBOutlet weak var memoText: UITextField!
     
     @IBOutlet weak var addButton: UIButton!
     
@@ -82,14 +96,31 @@ class AddViewController: UIViewController, BarcodeDelegate{
              ingredientNameText.text = ingredientName
         
              limitDateText.text = limitDate
+        
+            foodTypeText.text = foodType
              
             fridgePicker = UIPickerView()
             fridgePicker.delegate = self
             fridgePicker.dataSource = self
         
+        
+            toolBar = UIToolbar()
+            toolBar.barStyle = UIBarStyle.default
+            toolBar.isTranslucent = true
+            toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+            toolBar.sizeToFit()
+
+            let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.donePicker))
+
+            toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+            toolBar.isUserInteractionEnabled = true
+        
              
              limitDateText.inputView = .none
             fridgeTypeText.inputView = fridgePicker
+        fridgeTypeText.inputAccessoryView = toolBar
              
              
          
@@ -102,6 +133,16 @@ class AddViewController: UIViewController, BarcodeDelegate{
     
         
     }
+    
+    @objc func donePicker(){
+        fridgeTypeText?.text = fridgeString
+        fridgePicker.removeFromSuperview()
+        toolBar.removeFromSuperview()
+        
+    }
+    
+    
+    
     
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
@@ -116,7 +157,8 @@ class AddViewController: UIViewController, BarcodeDelegate{
          limitDateText.isEnabled = false
      }
      
-
+ 
+    
      func linkDatePicker(){
          addButton.isHidden = true
            pickerView = UIView(frame: CGRect(x: 0,y: self.view.frame.size.height-240, width: self.view.frame.width, height: 240))
@@ -211,9 +253,13 @@ class AddViewController: UIViewController, BarcodeDelegate{
       return viewController
     }
     
-    func getBarcodeData(ingredientName: String, ingredientDate: String) {
+    func getBarcodeData(ingredientName: String, ingredientDate: String, ingredientType: String) {
             self.ingredientName = ingredientName
             self.limitDate = ingredientDate
+            self.foodType = ingredientType
+
+        
+            print("test:\(self.foodType)")
             print(self.ingredientName)
             var parseLimitDateIndex =  self.limitDate.index(of: "일") ?? self.limitDate.index(of: "월")
             if(limitDate.count == 2){
@@ -239,6 +285,9 @@ class AddViewController: UIViewController, BarcodeDelegate{
             
             
             self.ingredientNameText?.text = self.ingredientName
+            print("test2:\(self.foodType)")
+            self.foodTypeText?.text = (self.foodType)
+        
             var toAddDate = String(limitDate.trimmingCharacters(in: .whitespacesAndNewlines))
             print(toAddDate)
             if(toAddDate.hasSuffix("일")){
@@ -278,6 +327,7 @@ class AddViewController: UIViewController, BarcodeDelegate{
                 }
                 
             }
+        
         }
         
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -316,10 +366,16 @@ class AddViewController: UIViewController, BarcodeDelegate{
         
         @objc func handleDoneButton(sender: UIButton) {
             //pickerView.isHidden = true
+            var timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "yyyy.MM.dd"
+            
+            var strDate = timeFormatter.string(from : datePicker.date)
+            limitDateText?.text = strDate
             datePicker.removeFromSuperview()
             pickerView.removeFromSuperview()
             addButton.isHidden = false
             limitDateText.isEnabled = true
+            
         }
         
         @objc func handleCancelButton(sender: UIButton) {
@@ -344,7 +400,15 @@ class AddViewController: UIViewController, BarcodeDelegate{
                 !fridgeTypeText.text!.isEmpty else {
                     showAlert(emptyType: "냉장고")
                     return}
-            let data = Data(name: dataName , limitdate: dataLimitDate, fridgetype: dataFridgeType)
+            guard let dataQuantity = self.quantityText.text,
+                !fridgeTypeText.text!.isEmpty else {
+                    showAlert(emptyType: "갯수")
+                    return}
+            let changedQuantity = NumberFormatter().number(from: dataQuantity)?.doubleValue
+            
+            
+            let data = Food(name: dataName, limitdate: formedLimitDate, fridgetype: fridgeString, quantity: changedQuantity!, type: foodType, memo: memoText.text!)
+            
             let realm = try! Realm()
             try! realm.write() {
                 var addedData = realm.add(data, update: .all)
@@ -388,4 +452,8 @@ extension AddViewController : UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return foodLocation[row]
     }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+         fridgeString = foodLocation[row] as String
+        }
 }

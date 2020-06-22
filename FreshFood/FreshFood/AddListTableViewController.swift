@@ -18,11 +18,11 @@ import FirebaseFirestore
 
 struct BasicFood{
     var limitdate:String
-    var unit:String
+    var type:String
     var name:String
     
-    init(unit:String, limitdate:String, name:String) {
-        self.unit = unit
+    init(type:String, limitdate:String, name:String) {
+        self.type = type
         self.limitdate = limitdate
         self.name = name
     }
@@ -119,10 +119,9 @@ class AddListViewController: UITableViewController {
                 let name = doc.documentID
                 let limitdate = doc.get("유통기한") as! String
                 print(limitdate)
-                //let unit = doc.get("단위") as? String
-                   let unit = ""
-                   print(unit)
-                self.basicFoodList.append(BasicFood(unit: unit, limitdate: limitdate, name: name))
+                let type = doc.get("범주") as! String
+                print(type)
+                self.basicFoodList.append(BasicFood(type: type, limitdate: limitdate, name: name))
                 self.dataCount += 1
               }
             self.AddListView.reloadData()
@@ -186,7 +185,7 @@ class AddListViewController: UITableViewController {
                  if let nextViewcontroller = segue.destination as? AddViewController{
                     // nextViewcontroller.ingredientName = dataObject.name
                     // nextViewcontroller.limitDate = dataObject.limitdate
-                     nextViewcontroller.getBarcodeData(ingredientName: dataObject.name, ingredientDate: dataObject.limitdate)
+                    nextViewcontroller.getBarcodeData(ingredientName: dataObject.name, ingredientDate: dataObject.limitdate, ingredientType:  dataObject.type)
             }
         }
     }

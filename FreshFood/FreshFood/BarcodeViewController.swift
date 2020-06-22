@@ -322,7 +322,7 @@ class BarcodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 
         alertController.addAction(UIAlertAction(title: "OK", style: .default) { action in
             self.isShowingAlert = false
-            self.delegate?.getBarcodeData(ingredientName: "\(self.ingredientName)", ingredientDate: "\(self.ingredientDate)")
+            self.delegate?.getBarcodeData(ingredientName: "\(self.ingredientName)", ingredientDate: "\(self.ingredientDate)", ingredientType: "")
             self.dismiss(animated: true, completion: nil)
             //self.transitioningDelegate.
             
