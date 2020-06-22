@@ -14,7 +14,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="YUN-Ja-SXV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="gSJ-TD-U6j">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.09311426431" green="0.61232477429999999" blue="0.38354668019999999" alpha="0.99988555909999999" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -238,7 +238,7 @@
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="A9a-rD-kqC">
                             <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="kPo-rh-9Ha" kind="show" identifier="AddShoppingList" id="Mhi-xt-Az0"/>
+                                <segue destination="1OM-9h-UzG" kind="show" id="JPd-6K-xol"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -563,6 +563,134 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wWI-Bh-tQu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-31741" y="809"/>
+        </scene>
+        <!--Shopping List Add View Controller-->
+        <scene sceneID="CcH-b3-Zt2">
+            <objects>
+                <viewController id="1OM-9h-UzG" customClass="ShoppingListAddViewController" customModule="FreshFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yey-z6-6K7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="BCS-eb-an8">
+                                <rect key="frame" x="95.5" y="300.5" width="223" height="295"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8bI-B4-2aR">
+                                        <rect key="frame" x="0.0" y="0.0" width="207.5" height="40"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="식자재명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XH-78-gML">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="9El-1w-vxa"/>
+                                                    <constraint firstAttribute="width" constant="60" id="XVG-7F-Xjl"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="식자재명을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ys5-OC-WAs">
+                                                <rect key="frame" x="70" y="0.0" width="137.5" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bkh-Hc-FSi">
+                                        <rect key="frame" x="0.0" y="85" width="183" height="40"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="수량" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gxh-fd-Wjo">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="XY8-ZQ-wCR"/>
+                                                    <constraint firstAttribute="width" constant="60" id="cho-lk-39I"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="수량을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AK4-NV-iqD">
+                                                <rect key="frame" x="70" y="0.0" width="113" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="siQ-19-Ixv"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tOv-Kq-Zda">
+                                        <rect key="frame" x="0.0" y="170" width="223" height="40"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="구매일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9t4-j3-b3b">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="1fQ-4d-e3E"/>
+                                                    <constraint firstAttribute="width" constant="60" id="Ehs-eB-DbM"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="구매할 날짜를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9TW-7m-jAH">
+                                                <rect key="frame" x="70" y="0.0" width="153" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="H1k-Rj-APz"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yrK-YG-7U3">
+                                        <rect key="frame" x="0.0" y="255" width="183" height="40"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ctu-ba-J47">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="UVR-Ub-XLq"/>
+                                                    <constraint firstAttribute="width" constant="60" id="uDu-GD-PVG"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="메모를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U9u-VK-SFQ">
+                                                <rect key="frame" x="70" y="0.0" width="113" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="Ehk-gS-23B"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="BCS-eb-an8" firstAttribute="centerX" secondItem="yey-z6-6K7" secondAttribute="centerX" id="e8E-c3-dnx"/>
+                            <constraint firstItem="BCS-eb-an8" firstAttribute="centerY" secondItem="yey-z6-6K7" secondAttribute="centerY" id="mWK-Um-JWX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Twi-oY-Di3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="s3a-dC-jGN">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="Xhs-9z-32W">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="1OM-9h-UzG" id="dcy-xJ-ZOP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="memoDataTextField" destination="U9u-VK-SFQ" id="rFE-og-CtF"/>
+                        <outlet property="nameTextField" destination="Ys5-OC-WAs" id="Qan-Lc-PuV"/>
+                        <outlet property="purchasDateTextField" destination="9TW-7m-jAH" id="I00-ie-sqQ"/>
+                        <outlet property="quantityTextField" destination="AK4-NV-iqD" id="not-mZ-hz2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OND-JP-gtE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-32826" y="767"/>
         </scene>
     </scenes>
     <resources>

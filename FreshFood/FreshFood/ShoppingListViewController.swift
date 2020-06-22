@@ -60,12 +60,12 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
    
     @IBAction func previousButtonPressed(_ sender: Any) {
-        dateTerm -= 1
+        dateTerm = -1
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"
         let calendar = Calendar.current
         let day = DateComponents(day:dateTerm)
-        if let date = calendar.date(byAdding: day, to: Date())
+        if let date = calendar.date(byAdding: day, to: setDate)
         {
             dateLabel.text = formatter.string(from: date)
             setDate = date
@@ -74,12 +74,12 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         
     }
     @IBAction func nextButtonPressed(_ sender: Any) {
-        dateTerm += 1
+        dateTerm = 1
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"
         let calendar = Calendar.current
         let day = DateComponents(day:dateTerm)
-        if let date = calendar.date(byAdding: day, to: Date())
+        if let date = calendar.date(byAdding: day, to: setDate)
         {
             dateLabel.text = formatter.string(from: date)
             setDate = date
