@@ -18,11 +18,11 @@ import FirebaseFirestore
 
 struct BasicFood{
     var limitdate:String
-    var unit:String
+    var type:String
     var name:String
     
-    init(unit:String, limitdate:String, name:String) {
-        self.unit = unit
+    init(type:String, limitdate:String, name:String) {
+        self.type = type
         self.limitdate = limitdate
         self.name = name
     }
@@ -75,6 +75,8 @@ class AddListViewCell: UITableViewCell{
 
 
 class AddListViewController: UITableViewController {
+
+    
   
     @IBOutlet var AddListView: UITableView!
     
@@ -83,7 +85,14 @@ class AddListViewController: UITableViewController {
     var basicFoodList = [BasicFood]()
     var selectedRow:Int = -1
     
+    var searchActive : Bool = false
+    var filtered:[BasicFood] = []
+
+    
     var formatter = DateFormatter()
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    var searchController:UISearchController!
     
     override func viewDidLoad() {
 
@@ -94,6 +103,11 @@ class AddListViewController: UITableViewController {
         
         AddListView.reloadData()
         tableView.tableFooterView = UIView()
+        
+       // searchController = UISearchController(searchResultsController: nil)
+        //searchController.searchResultsUpdater = self
+        //searchController.searchBar.sizeToFit()
+        searchBar.delegate = self
        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -119,10 +133,9 @@ class AddListViewController: UITableViewController {
                 let name = doc.documentID
                 let limitdate = doc.get("유통기한") as! String
                 print(limitdate)
-                //let unit = doc.get("단위") as? String
-                   let unit = ""
-                   print(unit)
-                self.basicFoodList.append(BasicFood(unit: unit, limitdate: limitdate, name: name))
+                let type = doc.get("범주") as! String
+                print(type)
+                self.basicFoodList.append(BasicFood(type: type, limitdate: limitdate, name: name))
                 self.dataCount += 1
               }
             self.AddListView.reloadData()
@@ -141,8 +154,11 @@ class AddListViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        
-        return dataCount
+        if(searchActive) {
+            return filtered.count
+        } else {
+            return dataCount
+        }
     }
 
     
@@ -152,6 +168,14 @@ class AddListViewController: UITableViewController {
         
         
         let cell = AddListViewCell()
+        
+        if(searchActive) {
+
+            cell.foodNameText.text = filtered[indexPath.row].name
+            cell.limitDateText.text = filtered[indexPath.row].limitdate
+ 
+        }else{
+        
             
         let foodName = basicFoodList[indexPath.row].name
             cell.foodNameText.text = foodName
@@ -160,8 +184,9 @@ class AddListViewController: UITableViewController {
             cell.limitDateText.text = limitDate
             //cell.typesOfFridgeLabel.text = fridgeType
         // Configure the cell...
-
+        }
         return cell
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -169,14 +194,7 @@ class AddListViewController: UITableViewController {
         self.performSegue(withIdentifier: "toAddSegue", sender: self)
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        for element in basicFoodList{
-            
-        }
-        
-        
-        
-    }
+
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -186,7 +204,7 @@ class AddListViewController: UITableViewController {
                  if let nextViewcontroller = segue.destination as? AddViewController{
                     // nextViewcontroller.ingredientName = dataObject.name
                     // nextViewcontroller.limitDate = dataObject.limitdate
-                     nextViewcontroller.getBarcodeData(ingredientName: dataObject.name, ingredientDate: dataObject.limitdate)
+                    nextViewcontroller.getBarcodeData(ingredientName: dataObject.name, ingredientDate: dataObject.limitdate, ingredientType:  dataObject.type)
             }
         }
     }
@@ -236,6 +254,46 @@ class AddListViewController: UITableViewController {
     */
 
 }
+
+extension AddListViewController {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+}
+
+extension AddListViewController: UISearchBarDelegate{
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
+        self.searchBar.endEditing(true)
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+        self.searchBar.endEditing(true)
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+        self.searchBar.endEditing(true)
+    }
+
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            filtered = basicFoodList.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+                if(filtered.count == 0){
+                    searchActive = false;
+                } else {
+                    searchActive = true;
+                }
+                self.tableView.reloadData()
+            }
+        }
+
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

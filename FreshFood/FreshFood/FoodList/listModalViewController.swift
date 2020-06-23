@@ -45,6 +45,10 @@ class ListModalViewController: UIViewController {
         detailName.text = food!.name
         detailLimitDate.text = formatter.string(from: food!.limitDate)
         detailLocation.text = food!.location
+        detailType.text = food!.type
+        detailMemo.text = food!.memo
+        //detailQuantity.text = String(food?.quantity)
+        
         // Do any additional setup after loading the view.
     }
     
