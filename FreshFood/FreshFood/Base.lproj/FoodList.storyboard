@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2hZ-em-HEd">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,14 +12,14 @@
             <objects>
                 <viewController storyboardIdentifier="FoodList" id="vZC-LJ-8Jb" customClass="FoodListViewController" customModule="FreshFood" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xeA-21-nCX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="562.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2sW-ff-SUZ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="2sW-ff-SUZ">
+                                <rect key="frame" x="19.5" y="153.5" width="375" height="644.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="2" id="08p-t9-Odc">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="522"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="642.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5f-Ux-Apn">
@@ -47,7 +47,7 @@
                                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="2mL-Qd-mG3">
                                                         <rect key="frame" x="0.0" y="0.0" width="271" height="60"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="271" id="b8o-aG-hj8"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="b8o-aG-hj8"/>
                                                         </constraints>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </searchBar>
@@ -85,7 +85,7 @@
                                         </constraints>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0sA-fX-2Qz">
-                                        <rect key="frame" x="0.0" y="68" width="375" height="462"/>
+                                        <rect key="frame" x="0.0" y="62" width="375" height="582.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FoodListCell" id="pDo-60-UEc" customClass="FoodListCell" customModule="FreshFood" customModuleProvider="target">
@@ -95,28 +95,30 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="limitDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hsz-Wa-Mvq">
-                                                            <rect key="frame" x="254" y="12" width="68" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezV-RH-liB">
-                                                            <rect key="frame" x="342" y="11" width="20" height="23"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <state key="normal" image="exclamationmark.circle" catalog="system"/>
-                                                            <connections>
-                                                                <action selector="subscribeButtonTapped:" destination="pDo-60-UEc" eventType="touchUpInside" id="EQa-UA-AdO"/>
-                                                            </connections>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="foodName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nli-ra-Qzm">
-                                                            <rect key="frame" x="34" y="12" width="80" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillProportionally" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="iTm-Nb-LuZ">
+                                                            <rect key="frame" x="34" y="12" width="328" height="22"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="foodName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nli-ra-Qzm">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="22"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="limitDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hsz-Wa-Mvq">
+                                                                    <rect key="frame" x="160" y="0.0" width="68" height="22"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezV-RH-liB">
+                                                                    <rect key="frame" x="308" y="0.0" width="20" height="22"/>
+                                                                    <state key="normal" image="exclamationmark.circle" catalog="system"/>
+                                                                    <connections>
+                                                                        <action selector="subscribeButtonTapped:" destination="pDo-60-UEc" eventType="touchUpInside" id="EQa-UA-AdO"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -132,15 +134,13 @@
                                         </connections>
                                     </tableView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="530" id="QSL-kG-QbI"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="QEN-gI-8ut" firstAttribute="bottom" secondItem="2sW-ff-SUZ" secondAttribute="bottom" constant="15" id="HXU-87-f6n"/>
+                            <constraint firstItem="2sW-ff-SUZ" firstAttribute="top" secondItem="QEN-gI-8ut" secondAttribute="top" constant="5" id="Oyf-kU-TDA"/>
                             <constraint firstItem="2sW-ff-SUZ" firstAttribute="centerX" secondItem="xeA-21-nCX" secondAttribute="centerX" id="Sl2-DG-Hbc"/>
-                            <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="2sW-ff-SUZ" secondAttribute="bottom" constant="20" id="h7f-Oy-kof"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QEN-gI-8ut"/>
                     </view>
@@ -153,14 +153,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="66p-eR-SwP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1777" y="-545"/>
+            <point key="canvasLocation" x="1776.8115942028987" y="-545.08928571428567"/>
         </scene>
         <!--List Modal View Controller-->
         <scene sceneID="kvB-wO-dur">
             <objects>
                 <viewController storyboardIdentifier="ListModal" useStoryboardIdentifierAsRestorationIdentifier="YES" id="msB-VU-Sqa" customClass="ListModalViewController" customModule="FreshFood" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Nx-rk-1aH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ingredient" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgy-sN-A10">
@@ -292,7 +292,7 @@
             <objects>
                 <viewController storyboardIdentifier="AddView" id="VwC-uQ-H5v" customClass="AddViewController" customModule="FreshFood" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i8W-Wg-Uox" customClass="V">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="식품명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brJ-nQ-geT">
@@ -378,10 +378,11 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2hZ-em-HEd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="모든 식재료" image="list.bullet" catalog="system" selectedImage="list.bullet" id="RdG-My-zpE"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="meW-1m-DFG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="104.5"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="meW-1m-DFG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.089909248054027557" green="0.66258817911148071" blue="0.41819280385971069" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
