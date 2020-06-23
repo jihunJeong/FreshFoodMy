@@ -411,7 +411,7 @@ class AddViewController: UIViewController, BarcodeDelegate{
             
             let realm = try! Realm()
             try! realm.write() {
-                var addedData = realm.add(data, update: .all)
+                var addedData = realm.add(data)
                 // Reading from or modifying a `RealmOptional` is done via the `value` property
                 //person.age.value = 28
             }

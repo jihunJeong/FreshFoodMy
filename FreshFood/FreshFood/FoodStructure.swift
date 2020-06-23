@@ -33,9 +33,9 @@ class Food : Object {
         super.init()
     }
     
-    @objc override static func primaryKey() -> String? {
+   /* @objc override static func primaryKey() -> String? {
         return "id"
-    }
+    }*/
    //@objc dynamic var buttonPressed : Bool = false
 }
 

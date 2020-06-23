@@ -60,6 +60,10 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
         self.reload()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.reload()
+    }
+    
     func updateInformation() {
         let foodList = Array(temp).sorted{ $0.name < $1.name }
     
