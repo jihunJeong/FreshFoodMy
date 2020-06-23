@@ -36,6 +36,7 @@ class Food : Object {
     @objc override static func primaryKey() -> String? {
         return "id"
     }
+ 
    //@objc dynamic var buttonPressed : Bool = false
 }
 

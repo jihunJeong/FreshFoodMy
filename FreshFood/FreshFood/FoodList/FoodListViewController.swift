@@ -68,7 +68,7 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
         let foodList = Array(temp).sorted{ $0.name < $1.name }
     
         dateOfSection = [date0, date1, date2, date3, date4, date5]
-        foodLocation = ["냉장고", "냉동고"]
+        foodLocation = ["냉장고", "냉동고", "김치냉장고", "기타"]
     
         for i in 0..<foodList.count {
             for j in 0...dateOfSection.count-1 {

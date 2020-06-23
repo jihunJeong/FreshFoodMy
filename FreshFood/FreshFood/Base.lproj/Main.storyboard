@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zDA-Bl-NRH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zDA-Bl-NRH">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -20,8 +20,8 @@
                     <connections>
                         <segue destination="oaR-dG-xyL" kind="relationship" relationship="viewControllers" id="HQl-cA-4wn"/>
                         <segue destination="XMF-Zi-L5S" kind="relationship" relationship="viewControllers" id="Fgx-ip-NsR"/>
-                        <segue destination="bk1-AU-bCc" kind="relationship" relationship="viewControllers" id="1wI-fi-pBw"/>
                         <segue destination="t0Y-cA-cjZ" kind="relationship" relationship="viewControllers" id="R6N-yg-ULb"/>
+                        <segue destination="vHt-uq-6IB" kind="relationship" relationship="viewControllers" id="U3D-UQ-cBg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xkC-15-M1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -43,6 +43,7 @@
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="FoodList" storyboardName="FoodList" referencedIdentifier="FoodList" id="bk1-AU-bCc" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="UDT-f3-hGL"/>
+                    <navigationItem key="navigationItem" id="Cdx-LY-5p6"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EED-tI-5cy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -59,6 +60,9 @@
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YEU-DB-Nvf">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="bk1-AU-bCc" kind="embed" id="drH-mt-Qa6"/>
+                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
