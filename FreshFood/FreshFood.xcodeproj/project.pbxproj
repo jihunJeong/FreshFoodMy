@@ -28,6 +28,9 @@
 		CD0146AF249FD500002AB8CB /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0146AE249FD500002AB8CB /* ShoppingListViewController.swift */; };
 		CD0146B1249FD54D002AB8CB /* ShoppingListModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0146B0249FD54D002AB8CB /* ShoppingListModalViewController.swift */; };
 		CD30A16724A07F550022A5E6 /* ShoppingListCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD30A16624A07F550022A5E6 /* ShoppingListCalendarViewController.swift */; };
+		CD8407E624A1F625008E1776 /* MainLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8407E324A1F625008E1776 /* MainLocationTableViewCell.swift */; };
+		CD8407E724A1F625008E1776 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8407E424A1F625008E1776 /* MainViewController.swift */; };
+		CD8407E824A1F625008E1776 /* MainLimitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8407E524A1F625008E1776 /* MainLimitTableViewCell.swift */; };
 		CD89C4C524A0D7FC00A2523B /* ShoppingListAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD89C4C424A0D7FC00A2523B /* ShoppingListAddViewController.swift */; };
 		CD9E45F2247FBAD300126E03 /* ShoppingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD9E45F1247FBAD300126E03 /* ShoppingList.storyboard */; };
 /* End PBXBuildFile section */
@@ -57,6 +60,9 @@
 		CD0146AE249FD500002AB8CB /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		CD0146B0249FD54D002AB8CB /* ShoppingListModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListModalViewController.swift; sourceTree = "<group>"; };
 		CD30A16624A07F550022A5E6 /* ShoppingListCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCalendarViewController.swift; sourceTree = "<group>"; };
+		CD8407E324A1F625008E1776 /* MainLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainLocationTableViewCell.swift; sourceTree = "<group>"; };
+		CD8407E424A1F625008E1776 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CD8407E524A1F625008E1776 /* MainLimitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainLimitTableViewCell.swift; sourceTree = "<group>"; };
 		CD89C4C424A0D7FC00A2523B /* ShoppingListAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListAddViewController.swift; sourceTree = "<group>"; };
 		CD9E45F1247FBAD300126E03 /* ShoppingList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShoppingList.storyboard; sourceTree = "<group>"; };
 		F49928BFF58E23B8C12261D3 /* Pods-FreshFood.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreshFood.release.xcconfig"; path = "Target Support Files/Pods-FreshFood/Pods-FreshFood.release.xcconfig"; sourceTree = "<group>"; };
@@ -111,6 +117,9 @@
 				CAB6EA9F247699C2000CAD56 /* SceneDelegate.swift */,
 				CAB6EAA3247699C2000CAD56 /* Main.storyboard */,
 				CA2F5001249FB34F00BD3EF5 /* FoodList.storyboard */,
+				CD8407E524A1F625008E1776 /* MainLimitTableViewCell.swift */,
+				CD8407E324A1F625008E1776 /* MainLocationTableViewCell.swift */,
+				CD8407E424A1F625008E1776 /* MainViewController.swift */,
 				CD0146AC249FD482002AB8CB /* ShoppingListTableViewCell.swift */,
 				CD0146AE249FD500002AB8CB /* ShoppingListViewController.swift */,
 				CD0146B0249FD54D002AB8CB /* ShoppingListModalViewController.swift */,
@@ -272,11 +281,14 @@
 				CA1EC69D2476B39C004A16F3 /* FoodListViewController.swift in Sources */,
 				CAAAA9B9249FDAB70034843A /* FoodStructure.swift in Sources */,
 				CD89C4C524A0D7FC00A2523B /* ShoppingListAddViewController.swift in Sources */,
+				CD8407E724A1F625008E1776 /* MainViewController.swift in Sources */,
 				CD30A16724A07F550022A5E6 /* ShoppingListCalendarViewController.swift in Sources */,
 				6EB7159C24A1BDD3009F4F00 /* FoodListModifyViewController.swift in Sources */,
 				6EB71598249F4DE0009F4F00 /* AddViewController.swift in Sources */,
+				CD8407E824A1F625008E1776 /* MainLimitTableViewCell.swift in Sources */,
 				CAB6EA9E247699C2000CAD56 /* AppDelegate.swift in Sources */,
 				CD0146AD249FD482002AB8CB /* ShoppingListTableViewCell.swift in Sources */,
+				CD8407E624A1F625008E1776 /* MainLocationTableViewCell.swift in Sources */,
 				CAB6EAA0247699C2000CAD56 /* SceneDelegate.swift in Sources */,
 				CA9DB691247FA7D80088667D /* FoodListCell.swift in Sources */,
 				6EB7159A249F4E12009F4F00 /* AddListTableViewController.swift in Sources */,

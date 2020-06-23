@@ -50,7 +50,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+               
         shoppingListTableview.delegate = self
         shoppingListTableview.dataSource = self
         dateTerm = 0

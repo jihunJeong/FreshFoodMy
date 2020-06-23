@@ -48,10 +48,10 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
     var searchController: UISearchController!
 
     override func viewDidLoad() {
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.sizeToFit()
-        tableView.tableHeaderView = searchController.searchBar
+        //searchController = UISearchController(searchResultsController: nil)
+        //searchController.searchResultsUpdater = self
+        //searchController.searchBar.sizeToFit()
+        //tableView.tableHeaderView = searchController.searchBar
         
         definesPresentationContext = true
         
@@ -161,9 +161,9 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         //Return Section Count
-        if searchController.searchBar.text?.isEmpty == false {
-            return 0
-        }
+        //if searchController.searchBar.text?.isEmpty == false {
+            //return 0
+        //}
         
         if orderOption == 1 {
             return sortedDateSection.count
@@ -235,7 +235,9 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
             let charactor = Array(Set(self.initCharacter)).sorted()[indexPath.section]
 
             // 검색창이 비어있을 경우 charactor와 같은 첫글자를 가진 이름들만 골라서 리턴
-            if self.searchController.searchBar.text?.isEmpty == true {
+            //if self.searchController.searchBar.text?.isEmpty == true {
+                
+            if true {
                 cell.foodName.text = foodList.filter { self.splitText(text: $0.name) == charactor}[indexPath.row].name
                 cell.limitDate.text = formatter.string(from: foodList.filter { self.splitText(text: $0.name) == charactor}[indexPath.row].limitDate) + " 까지"
                 
