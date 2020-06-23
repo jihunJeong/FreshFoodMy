@@ -12,8 +12,11 @@ class MainLocationTableViewCell: UITableViewCell {
 
 //    @IBOutlet weak var nameLabel: UILabel!
 //    @IBOutlet weak var quantityLabel: UILabel!
-    @IBOutlet weak var mainLocationNameLabel: UILabel!
-    @IBOutlet weak var mainLocationQuantityLabel: UILabel!
+//    @IBOutlet weak var mainLocationNameLabel: UILabel!
+//    @IBOutlet weak var mainLocationQuantityLabel: UILabel!
+    
+    
+    var check = false
     
     
     override func awakeFromNib() {
@@ -26,5 +29,6 @@ class MainLocationTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
 
 }
