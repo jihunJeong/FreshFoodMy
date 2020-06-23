@@ -70,8 +70,8 @@ class MainViewController: UIViewController,UITableViewDataSource,UITableViewDele
             let dataLocation = locations[selectControl.selectedSegmentIndex]
             let tempData = Array(savedDatas)
             let temp = tempData.filter{$0.location == dataLocation}
-            myCell.mainLocationNameLabel.text = temp[indexPath.row].name
-            myCell.mainLocationQuantityLabel.text = String(temp[indexPath.row].quantity)
+            myCell.mainLocationNameLabel?.text = temp[indexPath.row].name
+            myCell.mainLocationQuantityLabel?.text = String(temp[indexPath.row].quantity)
             print("check==========")
             print(tempData)
             return myCell
