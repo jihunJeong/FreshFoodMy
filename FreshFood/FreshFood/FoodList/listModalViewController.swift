@@ -65,7 +65,7 @@ class ListModalViewController: UIViewController {
                     //let predicate = NSPredicate(format: "counterid = \(c.id)")
                     //let children = self.realm.objects(Food.self).filter(predicate)
                     //self.realm.delete(children)
-                    let predicate = NSPredicate(format: "name = %@", self.food?.name as! CVarArg)
+                    let predicate = NSPredicate(format: "id = %@", self.food?.id as! CVarArg)
                     self.realm.delete(self.realm.objects(Food.self).filter(predicate)) //this should be deleted after
                 }
             } catch {

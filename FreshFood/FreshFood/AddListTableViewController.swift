@@ -200,11 +200,21 @@ class AddListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toAddSegue"{
             let row = tableView.indexPathForSelectedRow?.row ?? 0
+            if(searchActive){
+                let filteredObject = filtered[row]
+                if let nextViewcontroller = segue.destination as? AddViewController{
+                   // nextViewcontroller.ingredientName = dataObject.name
+                   // nextViewcontroller.limitDate = dataObject.limitdate
+                   nextViewcontroller.getBarcodeData(ingredientName: filteredObject.name, ingredientDate: filteredObject.limitdate, ingredientType:  filteredObject.type)
+                }
+                
+            }else{
                  let dataObject = basicFoodList[row]
                  if let nextViewcontroller = segue.destination as? AddViewController{
                     // nextViewcontroller.ingredientName = dataObject.name
                     // nextViewcontroller.limitDate = dataObject.limitdate
                     nextViewcontroller.getBarcodeData(ingredientName: dataObject.name, ingredientDate: dataObject.limitdate, ingredientType:  dataObject.type)
+                 }
             }
         }
     }
