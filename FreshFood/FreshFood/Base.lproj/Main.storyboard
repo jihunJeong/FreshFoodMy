@@ -556,7 +556,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rDx-aG-ZQp"/>
+        <segue reference="3g3-9h-6PW"/>
+        <segue reference="bEk-dx-VDC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="house" catalog="system" width="128" height="110"/>
