@@ -143,7 +143,10 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
         actionSheet.addAction(limitOrder)
         actionSheet.addAction(nameOrder)
         actionSheet.addAction(locationOrder)
-
+        initCharacter.removeAll()
+        sortedDateSection.removeAll()
+        sortByDate = [[],[],[],[],[],[]]
+        updateInformation()
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(actionSheet, animated: true,  completion: nil)
     }
@@ -290,6 +293,10 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let foodList = Array(temp).sorted{ $0.name < $1.name }
+        initCharacter.removeAll()
+        sortedDateSection.removeAll()
+        sortByDate = [[],[],[],[],[],[]]
+        self.updateInformation()
         
         if segue.identifier == "ListModal" {
             let storyBoard: UIStoryboard = UIStoryboard(name: "FoodList", bundle: nil)

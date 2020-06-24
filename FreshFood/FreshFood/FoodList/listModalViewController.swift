@@ -93,6 +93,9 @@ class ListModalViewController: UIViewController {
 }
 
 extension ListModalViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "자세한 정보"
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
