@@ -83,6 +83,8 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             dateLabel.text = formatter.string(from: date)
             setDate = date
         }
+        shoppingListTableview.reloadData()
+
     }
     
 
