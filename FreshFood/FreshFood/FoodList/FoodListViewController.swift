@@ -45,7 +45,7 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
     //Searchbar Section
     var sortByDate: [[Food]] = [[],[],[],[],[],[]]
     
-    var searchController: UISearchController!
+    @IBOutlet weak var searchBar: UISearchBar!
 
     override func viewDidLoad() {
         //searchController = UISearchController(searchResultsController: nil)
@@ -195,8 +195,7 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
         } else if orderOption == 2 {
             let charactor = Array(Set(self.initCharacter)).sorted()[section]
             
-            
-            if self.searchController.searchBar.text?.isEmpty  == true {
+            if self.searchBar.text?.isEmpty  == true {
                 return foodList.filter {
                     self.splitText(text: $0.name) == charactor}.count
             }
@@ -204,7 +203,7 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
             // 검색창에 내용이 있는 경우 그 내용을 포함하는 이름들의 개수를 리턴
             return 0
         } else if orderOption == 3 {
-            if self.searchController.searchBar.text?.isEmpty == true {
+            if self.searchBar.text?.isEmpty == true {
                 return foodList.filter { $0.location == foodLocation[section]}.count
             }
         }
@@ -226,7 +225,7 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
                 leftinterval = sortedDateSection[indexPath.section-1].leftDate
             }
             
-            if self.searchController.searchBar.text?.isEmpty == true {
+            if self.searchBar.text?.isEmpty == true {
                 cell.foodName.text = foodList.filter { ($0.limitDate.timeIntervalSinceNow / 86400) < interval && leftinterval < ($0.limitDate.timeIntervalSinceNow / 86400) }.sorted{ $0.limitDate < $1.limitDate }[indexPath.row].name
                 cell.limitDate.text = formatter.string(from: foodList.filter { ($0.limitDate.timeIntervalSinceNow / 86400) < interval && leftinterval < ($0.limitDate.timeIntervalSinceNow / 86400) }.sorted{ $0.limitDate < $1.limitDate}[indexPath.row].limitDate) + " 까지"
             }
@@ -245,7 +244,7 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.foodName.text = ""
             }
         } else if orderOption == 3 {
-                if self.searchController.searchBar.text?.isEmpty == true {
+            if self.searchBar.text?.isEmpty == true {
                 cell.foodName.text = foodList.filter { $0.location == self.foodLocation[indexPath.section]}[indexPath.row].name
                 cell.limitDate.text = formatter.string(from: foodList.filter { $0.location == self.foodLocation[indexPath.section]}[indexPath.row].limitDate) + " 까지"
             }
