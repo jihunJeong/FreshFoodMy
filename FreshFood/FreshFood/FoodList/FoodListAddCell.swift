@@ -30,7 +30,9 @@ struct FoodListBasicFood{
     
 }
 
-
+protocol FoodListAddDelegator: AnyObject {
+    func getData(ingredientName: String!, ingredientDate: String!, ingredientType: String!)
+}
 
 class FoodListAddViewCell: UITableViewCell{
     
@@ -88,7 +90,7 @@ class FoodListAddViewListController: UITableViewController, UISearchBarDelegate 
     
     var searchActive : Bool = false
     var filtered:[BasicFood] = []
-
+    weak var delegate: FoodListAddDelegator?
     
     var formatter = DateFormatter()
     @IBOutlet weak var searchBar: UISearchBar!
@@ -190,25 +192,17 @@ class FoodListAddViewListController: UITableViewController, UISearchBarDelegate 
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedRow = indexPath.row
-        self.navigationController?.popViewController(animated: true)
-       //self.performSegue(withIdentifier: "FoodListSegue", sender: self)
+        
+         selectedRow = indexPath.row
+         let row = tableView.indexPathForSelectedRow?.row ?? 0
+         let dataObject = basicFoodList[row]
+         let name = dataObject.name
+         self.delegate?.getData(ingredientName: name, ingredientDate: dataObject.limitdate, ingredientType:  dataObject.type)
+        self.dismiss(animated: true, completion: nil)
+
+         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FoodListSegue"{
-            let row = tableView.indexPathForSelectedRow?.row ?? 0
-                 let dataObject = basicFoodList[row]
-                 if let nextViewcontroller = segue.destination as? FoodListAddViewController{
-                    // nextViewcontroller.ingredientName = dataObject.name
-                    // nextViewcontroller.limitDate = dataObject.limitdate
-                    nextViewcontroller.getBarcodeData(ingredientName: dataObject.name, ingredientDate: dataObject.limitdate, ingredientType:  dataObject.type)
-            }
-            self.navigationController?.popViewController(animated: true)
-            //self.performSegue(withIdentifier: "FoodListSegue", sender: self)
-            //.presentingViewController?.dismiss(animated: true, completion: nil)
-        }
-    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -292,9 +286,8 @@ extension FoodListAddViewListController{
                     searchActive = true;
                 }
                 self.tableView.reloadData()
-            }
-        }
-
+    }
+}
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

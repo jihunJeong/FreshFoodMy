@@ -473,3 +473,14 @@ extension FoodListAddViewController : UIPickerViewDataSource{
          fridgeString = foodLocation[row] as String
         }
 }
+
+extension FoodListAddViewController: FoodListAddDelegator{
+
+    func getData(ingredientName: String!, ingredientDate: String!, ingredientType: String!) {
+        print("++++++++")
+        print(ingredientDate)
+        getBarcodeData(ingredientName: ingredientName, ingredientDate: ingredientDate, ingredientType: ingredientType)
+    
+    }
+
+}

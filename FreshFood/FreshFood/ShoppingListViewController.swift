@@ -83,7 +83,6 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             dateLabel.text = formatter.string(from: date)
             setDate = date
         }
-        shoppingListTableview.reloadData()
     }
     
 
@@ -120,6 +119,20 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         myCell.delegate = self
         
         return myCell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let FoodLists = Array(savedDates)
+        let tempList = FoodLists.filter{formatter.string(from: $0.purchaseDate) == formatter.string(from: setDate)}
+        do{
+            try self.realm.write{
+                let predicate = NSPredicate(format: "name = %@ ", tempList[indexPath.row].name)
+                self.realm.delete(self.realm.objects(Shopping.self).filter(predicate))
+            }
+        } catch{ print("\(error)")}
+        
+        self.shoppingListTableview.deleteRows(at: [indexPath], with: .automatic)
+        self.shoppingListTableview.reloadData()
     }
     
     var vc:ShoppingListModalViewController? = nil

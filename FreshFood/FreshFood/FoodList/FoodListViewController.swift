@@ -48,6 +48,8 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
     @IBOutlet weak var searchBar: UISearchBar!
 
     override func viewDidLoad() {
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
         self.navigationController?.navigationBar.tintColor = UIColor.white
         //searchController = UISearchController(searchResultsController: nil)
         //searchController.searchResultsUpdater = self
