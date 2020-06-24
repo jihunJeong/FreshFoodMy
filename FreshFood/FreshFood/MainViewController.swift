@@ -53,6 +53,12 @@ class MainViewController: UIViewController,UITableViewDataSource,UITableViewDele
 //    func numberOfSections(in tableView: UITableView) -> Int {
 //        return 1
 //    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        limitTableView.reloadData()
+        locationTableView.reloadData()
+    }
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
