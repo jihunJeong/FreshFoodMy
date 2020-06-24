@@ -90,8 +90,8 @@ class FoodListModifyViewController: UIViewController {
                    toolBar.isUserInteractionEnabled = true
                
                     
-                    limitDateModificationText.inputView = .none
-                   fridgeTypeModificationText.inputView = fridgePicker
+                limitDateModificationText.inputView = .none
+                fridgeTypeModificationText.inputView = fridgePicker
                fridgeTypeModificationText.inputAccessoryView = toolBar
         
         
