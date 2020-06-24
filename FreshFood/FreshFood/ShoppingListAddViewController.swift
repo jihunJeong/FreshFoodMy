@@ -132,7 +132,7 @@ class ShoppingListAddViewController: UIViewController {
     
     
     func linkDatePicker(){
-        pickerView = UIView(frame: CGRect(x: 0,y: self.view.frame.size.height-240, width: self.view.frame.width, height: 240))
+        pickerView = UIView(frame: CGRect(x: 0,y: self.view.frame.size.height-300, width: self.view.frame.width, height: 240))
         datePicker = UIDatePicker(frame: CGRect(x: 0, y: 50, width: self.view.frame.width, height: 200))
         datePicker.backgroundColor = UIColor.white
         datePicker.datePickerMode = .date
