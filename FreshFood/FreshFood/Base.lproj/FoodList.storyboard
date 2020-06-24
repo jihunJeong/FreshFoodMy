@@ -16,10 +16,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="2sW-ff-SUZ">
-                                <rect key="frame" x="0.0" y="109.5" width="375" height="493.5"/>
+                                <rect key="frame" x="0.0" y="109.5" width="375" height="508.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="2" id="08p-t9-Odc">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="491.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="507.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5f-Ux-Apn">
@@ -85,7 +85,7 @@
                                         </constraints>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0sA-fX-2Qz">
-                                        <rect key="frame" x="0.0" y="62" width="375" height="431.5"/>
+                                        <rect key="frame" x="0.0" y="62" width="375" height="446.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FoodListCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FoodListCell" id="pDo-60-UEc" customClass="FoodListCell" customModule="FreshFood" customModuleProvider="target">
@@ -138,7 +138,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="QEN-gI-8ut" firstAttribute="bottom" secondItem="2sW-ff-SUZ" secondAttribute="bottom" constant="15" id="HXU-87-f6n"/>
+                            <constraint firstItem="QEN-gI-8ut" firstAttribute="bottom" secondItem="2sW-ff-SUZ" secondAttribute="bottom" id="HXU-87-f6n"/>
                             <constraint firstItem="2sW-ff-SUZ" firstAttribute="top" secondItem="QEN-gI-8ut" secondAttribute="top" constant="5" id="Oyf-kU-TDA"/>
                             <constraint firstItem="2sW-ff-SUZ" firstAttribute="centerX" secondItem="xeA-21-nCX" secondAttribute="centerX" id="Sl2-DG-Hbc"/>
                         </constraints>
@@ -189,16 +189,23 @@
                                     <action selector="deleteAlert:" destination="msB-VU-Sqa" eventType="touchUpInside" id="jGn-Hl-9u2"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="detailName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rT9-eB-RAT">
+                                <rect key="frame" x="136" y="79" width="87" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hf6-Ou-dLZ">
-                                <rect key="frame" x="67" y="108" width="240" height="468"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="519"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ModalCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="he0-k6-m5Q" customClass="ModalTableViewCell" customModule="FreshFood" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="240" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="he0-k6-m5Q" id="t6N-JF-k1W">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6x-BD-k69">
@@ -209,7 +216,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3oj-Zb-DNE">
-                                                    <rect key="frame" x="182" y="11" width="34" height="21"/>
+                                                    <rect key="frame" x="326" y="10" width="34" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -228,13 +235,6 @@
                                     <outlet property="delegate" destination="msB-VU-Sqa" id="GL4-2E-QxZ"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="detailName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rT9-eB-RAT">
-                                <rect key="frame" x="136" y="79" width="87" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Y48-cC-duh"/>
@@ -245,7 +245,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AqP-Ff-Fuk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2685.507246376812" y="-646.20535714285711"/>
+            <point key="canvasLocation" x="2684" y="-646.32683658170924"/>
         </scene>
         <!--Add View Controller-->
         <scene sceneID="kVJ-T4-O95">
@@ -339,7 +339,7 @@
                     <tabBarItem key="tabBarItem" title="모든 식재료" image="list.bullet" catalog="system" selectedImage="list.bullet" id="RdG-My-zpE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="meW-1m-DFG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="104.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.089909248054027557" green="0.66258817911148071" blue="0.41819280385971069" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>

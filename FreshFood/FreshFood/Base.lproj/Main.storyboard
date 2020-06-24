@@ -23,7 +23,7 @@
                         <segue destination="oaR-dG-xyL" kind="relationship" relationship="viewControllers" id="HQl-cA-4wn"/>
                         <segue destination="XMF-Zi-L5S" kind="relationship" relationship="viewControllers" id="Fgx-ip-NsR"/>
                         <segue destination="t0Y-cA-cjZ" kind="relationship" relationship="viewControllers" id="R6N-yg-ULb"/>
-                        <segue destination="vHt-uq-6IB" kind="relationship" relationship="viewControllers" id="U3D-UQ-cBg"/>
+                        <segue destination="o3Z-QA-z5b" kind="relationship" relationship="viewControllers" id="i2G-RU-lae"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xkC-15-M1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -49,32 +49,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EED-tI-5cy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1444" y="-663"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="qmD-ny-1dh">
-            <objects>
-                <viewController id="vHt-uq-6IB" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WNE-b7-kGv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YEU-DB-Nvf">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="bk1-AU-bCc" kind="embed" id="drH-mt-Qa6"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="IuN-vz-gG5"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="list.bullet" catalog="system" selectedImage="list.bullet" id="mgA-Ae-Qxf"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hgf-uV-d1M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="913.04347826086962" y="-325.27173913043481"/>
+            <point key="canvasLocation" x="711" y="-585"/>
         </scene>
         <!--Add View Controller-->
         <scene sceneID="vvX-7y-s0J">
@@ -558,9 +533,35 @@
             </objects>
             <point key="canvasLocation" x="1202.8985507246377" y="839.67391304347836"/>
         </scene>
+        <!--모든 식재료-->
+        <scene sceneID="t4y-i7-OKU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o3Z-QA-z5b" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="모든 식재료" image="list.bullet" catalog="system" selectedImage="list.bullet" id="Ak8-uo-Vae"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="TPa-9t-eoS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="104.33333333333334"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.089909248050000001" green="0.66258817910000001" blue="0.41819280390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bk1-AU-bCc" kind="relationship" relationship="rootViewController" id="jF2-sV-xzy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JMJ-R1-8fZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="-375"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3g3-9h-6PW"/>
         <segue reference="bEk-dx-VDC"/>
     </inferredMetricsTieBreakers>
     <resources>
