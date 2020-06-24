@@ -52,7 +52,7 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
         //searchController.searchResultsUpdater = self
         //searchController.searchBar.sizeToFit()
         //tableView.tableHeaderView = searchController.searchBar
-        
+
         definesPresentationContext = true
         
         super.viewDidLoad()

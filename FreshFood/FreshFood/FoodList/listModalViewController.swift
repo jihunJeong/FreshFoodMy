@@ -44,12 +44,11 @@ class ListModalViewController: UIViewController {
         super.viewDidLoad()
         
         detailName.text = food!.name
-        
         data.append(ListData(type: "유통기한", data: formatter.string(from: food!.limitDate)))
         data.append(ListData(type: "수량", data: String(food!.quantity)))
         data.append(ListData(type: "위치", data: food!.location))
         data.append(ListData(type: "범주", data: food!.type))
-        data.append(ListData(type: "유통기한", data: food!.memo))
+        data.append(ListData(type: "메모", data: food!.memo))
     }
     
     @IBAction func deleteAlert(_ sender: Any) {
@@ -100,9 +99,11 @@ extension ListModalViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ModalCell", for: indexPath) as! ModalTableViewCell
-        cell.label.text = data[indexPath.row].type
-        cell.data.text = data[indexPath.row].data
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ModalTableViewCell", for: indexPath)
+        
+        cell.textLabel!.text = data[indexPath.row].type
+        cell.detailTextLabel!.text = data[indexPath.row].data
         
         return cell
     }
