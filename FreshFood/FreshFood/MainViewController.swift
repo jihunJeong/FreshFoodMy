@@ -141,9 +141,9 @@ class MainViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 //        cell.backgroundColor = UIColor(red: 226, green: 237, blue: 190, alpha: 1)
-        cell.accessoryType = UITableViewCell.AccessoryType.detailDisclosureButton
+//        cell.accessoryType = UITableViewCell.AccessoryType.detailDisclosureButton
         cell.contentView.backgroundColor = UIColor.clear
-        cell.tintColor = UIColor.orange
+//        cell.tintColor = UIColor.orange
     }
 
     @IBAction func segmentSelected(_ sender: Any) {

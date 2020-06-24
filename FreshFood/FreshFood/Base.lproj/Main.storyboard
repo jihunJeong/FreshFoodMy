@@ -427,11 +427,11 @@
                                                 </constraints>
                                                 <color key="separatorColor" red="0.874156653881073" green="0.93451845645904541" blue="0.72368377447128296" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MainLimitCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="LimitReuseCell" textLabel="CXS-Yg-6aA" detailTextLabel="f49-hf-YG9" style="IBUITableViewCellStyleValue1" id="tWb-TQ-yDG" customClass="MainLimitTableViewCell">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MainLimitCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LimitReuseCell" textLabel="CXS-Yg-6aA" detailTextLabel="f49-hf-YG9" style="IBUITableViewCellStyleValue1" id="tWb-TQ-yDG" customClass="MainLimitTableViewCell">
                                                         <rect key="frame" x="0.0" y="28" width="374" height="43.666667938232422"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="LimitCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tWb-TQ-yDG" id="n68-Gy-xbo" customClass="MainLimitTableViewCell" customModule="FreshFood">
-                                                            <rect key="frame" x="0.0" y="0.0" width="311" height="43.666667938232422"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.666667938232422"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CXS-Yg-6aA">
@@ -442,7 +442,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f49-hf-YG9">
-                                                                    <rect key="frame" x="259" y="11.999999999999998" width="44" height="20.333333333333332"/>
+                                                                    <rect key="frame" x="310" y="11.999999999999998" width="44" height="20.333333333333332"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -489,11 +489,11 @@
                                                 <color key="separatorColor" red="0.874156653881073" green="0.93451845645904541" blue="0.72368377447128296" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" semanticContentAttribute="playback" restorationIdentifier="LocationCell" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="LocationReuseCell" textLabel="3xt-JW-rQf" detailTextLabel="RC2-vi-Gum" imageView="B2Y-JV-pDE" style="IBUITableViewCellStyleValue1" id="N0U-4S-JAd">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" semanticContentAttribute="playback" restorationIdentifier="LocationCell" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="LocationReuseCell" textLabel="3xt-JW-rQf" detailTextLabel="RC2-vi-Gum" imageView="B2Y-JV-pDE" style="IBUITableViewCellStyleValue1" id="N0U-4S-JAd">
                                                         <rect key="frame" x="0.0" y="28" width="374" height="43.666667938232422"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N0U-4S-JAd" id="WE9-ZL-U04" customClass="MainLocationTableViewCell" customModule="FreshFood" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="311" height="43.666667938232422"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.666667938232422"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" id="3xt-JW-rQf">
@@ -504,7 +504,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RC2-vi-Gum">
-                                                                    <rect key="frame" x="259" y="11.999999999999998" width="44" height="20.333333333333332"/>
+                                                                    <rect key="frame" x="310" y="11.999999999999998" width="44" height="20.333333333333332"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="detailLabel">
                                                                         <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
@@ -565,7 +565,7 @@
                     <tabBarItem key="tabBarItem" title="모든 식재료" image="list.bullet" catalog="system" selectedImage="list.bullet" id="Ak8-uo-Vae"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="TPa-9t-eoS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="104.33333333333334"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.093114264309406281" green="0.61232477426528931" blue="0.38354668021202087" alpha="0.99988555909999999" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -592,7 +592,7 @@
                     <tabBarItem key="tabBarItem" title="장보기 리스트" image="cart" catalog="system" selectedImage="cart.fill" id="wvd-gU-p3o"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="so6-P1-W7q">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="104.33333333333334"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.09311426431" green="0.61232477429999999" blue="0.38354668019999999" alpha="0.99988555909999999" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
