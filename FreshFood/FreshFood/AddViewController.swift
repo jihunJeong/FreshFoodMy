@@ -138,6 +138,10 @@ class AddViewController: UIViewController, BarcodeDelegate{
         
     }
     
+
+    
+    
+    
     @objc func donePicker(){
         fridgeTypeText?.text = fridgeString
         fridgePicker.removeFromSuperview()
@@ -416,12 +420,12 @@ class AddViewController: UIViewController, BarcodeDelegate{
             
             let data = Food(name: dataName, limitdate: formedLimitDate, fridgetype: fridgeString, quantity: changedQuantity!, type: foodType, memo: memoText.text!)
             
-            generateId += 1
+            
             
             let realm = try! Realm()
             try! realm.write() {
-                data.id = generateId
-                var addedData = realm.add(data)
+                realm.create(Food.self, value: data)
+
                 // Reading from or modifying a `RealmOptional` is done via the `value` property
                 //person.age.value = 28
             }
