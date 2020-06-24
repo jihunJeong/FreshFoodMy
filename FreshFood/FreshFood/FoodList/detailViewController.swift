@@ -6,6 +6,10 @@
 //  Copyright © 2020 정지훈. All rights reserved.
 //
 
+
+//for git upload
+
+
 import UIKit
 
 class detailViewController: UIAlertController {
