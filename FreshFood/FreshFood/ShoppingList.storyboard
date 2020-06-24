@@ -14,7 +14,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="YUN-Ja-SXV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="gSJ-TD-U6j">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.09311426431" green="0.61232477429999999" blue="0.38354668019999999" alpha="0.99988555909999999" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -419,176 +419,6 @@
             </objects>
             <point key="canvasLocation" x="-31742" y="38"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="q2g-g4-NWT">
-            <objects>
-                <tableViewController id="kPo-rh-9Ha" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1sG-cG-hL1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <sections>
-                            <tableViewSection id="fXh-KF-hWJ">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" rowHeight="60" id="kZO-Pw-izt">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kZO-Pw-izt" id="v8b-rn-5Wf">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="식자재명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQY-z5-nYS">
-                                                    <rect key="frame" x="25" y="55" width="60" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="EqO-hC-pWj"/>
-                                                        <constraint firstAttribute="width" constant="60" id="mJ3-G3-Eed"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="식자재명을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1WE-Xp-VYo">
-                                                    <rect key="frame" x="95" y="55" width="294" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="fEC-lX-Pbg"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="1WE-Xp-VYo" firstAttribute="top" secondItem="v8b-rn-5Wf" secondAttribute="topMargin" id="RLa-42-y4Q"/>
-                                                <constraint firstItem="AQY-z5-nYS" firstAttribute="top" secondItem="v8b-rn-5Wf" secondAttribute="topMargin" id="YSO-wx-3ii"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="1WE-Xp-VYo" secondAttribute="trailing" constant="5" id="cGQ-ZY-0wo"/>
-                                                <constraint firstItem="AQY-z5-nYS" firstAttribute="leading" secondItem="v8b-rn-5Wf" secondAttribute="leadingMargin" constant="5" id="mxU-67-Gl0"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="AQY-z5-nYS" secondAttribute="bottom" id="r76-gU-mj8"/>
-                                                <constraint firstItem="1WE-Xp-VYo" firstAttribute="leading" secondItem="AQY-z5-nYS" secondAttribute="trailing" constant="10" id="zwJ-P8-Dfm"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" rowHeight="60" id="Wqk-Bq-vgs">
-                                        <rect key="frame" x="0.0" y="88" width="414" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wqk-Bq-vgs" id="DkY-Xq-Pdt">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="수량" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8S-Qr-GfY">
-                                                    <rect key="frame" x="25" y="55" width="60" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="QY8-2L-HcO"/>
-                                                        <constraint firstAttribute="height" constant="40" id="s4I-w2-HnJ"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="수량을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rzD-e9-RSZ">
-                                                    <rect key="frame" x="95" y="55" width="294" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="z47-pu-itM"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="rzD-e9-RSZ" secondAttribute="trailing" constant="5" id="3aU-Fo-dK4"/>
-                                                <constraint firstItem="rzD-e9-RSZ" firstAttribute="leading" secondItem="x8S-Qr-GfY" secondAttribute="trailing" constant="10" id="QG2-t0-2FA"/>
-                                                <constraint firstItem="x8S-Qr-GfY" firstAttribute="top" secondItem="DkY-Xq-Pdt" secondAttribute="topMargin" id="Ujb-0L-IlX"/>
-                                                <constraint firstItem="x8S-Qr-GfY" firstAttribute="leading" secondItem="DkY-Xq-Pdt" secondAttribute="leadingMargin" constant="5" id="Xk7-hS-1oC"/>
-                                                <constraint firstItem="rzD-e9-RSZ" firstAttribute="top" secondItem="DkY-Xq-Pdt" secondAttribute="topMargin" id="ge5-9B-1hF"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="x8S-Qr-GfY" secondAttribute="bottom" id="oD0-0B-ZLQ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" rowHeight="60" id="s5Y-X2-1np">
-                                        <rect key="frame" x="0.0" y="148" width="414" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s5Y-X2-1np" id="1z6-1M-nY2">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="구매일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyY-6o-wzs">
-                                                    <rect key="frame" x="25" y="55" width="60" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="5ws-yH-63B"/>
-                                                        <constraint firstAttribute="height" constant="40" id="MpB-Do-w6M"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="구매할 날짜를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XnC-kk-5tf">
-                                                    <rect key="frame" x="95" y="55" width="294" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="rQB-7o-IcE"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="eyY-6o-wzs" secondAttribute="bottom" id="1gh-G0-uNv"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="XnC-kk-5tf" secondAttribute="trailing" constant="5" id="Tgg-FP-M4O"/>
-                                                <constraint firstItem="eyY-6o-wzs" firstAttribute="top" secondItem="1z6-1M-nY2" secondAttribute="topMargin" id="V3E-Lx-yrv"/>
-                                                <constraint firstItem="eyY-6o-wzs" firstAttribute="leading" secondItem="1z6-1M-nY2" secondAttribute="leadingMargin" constant="5" id="caR-4m-h6C"/>
-                                                <constraint firstItem="XnC-kk-5tf" firstAttribute="leading" secondItem="eyY-6o-wzs" secondAttribute="trailing" constant="10" id="e2q-qi-DSE"/>
-                                                <constraint firstItem="XnC-kk-5tf" firstAttribute="top" secondItem="1z6-1M-nY2" secondAttribute="topMargin" id="tWq-th-FQj"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" rowHeight="60" id="3Eh-rA-s2P">
-                                        <rect key="frame" x="0.0" y="208" width="414" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Eh-rA-s2P" id="R8s-JV-Y6O">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdL-QW-qqC">
-                                                    <rect key="frame" x="25" y="55" width="60" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="ANg-L2-GF2"/>
-                                                        <constraint firstAttribute="width" constant="60" id="AWG-Kq-scL"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="메모를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UNC-3u-3AQ">
-                                                    <rect key="frame" x="95" y="55" width="294" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="5Hs-oQ-cbs"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="UNC-3u-3AQ" firstAttribute="top" secondItem="R8s-JV-Y6O" secondAttribute="topMargin" id="3am-df-lCO"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="UNC-3u-3AQ" secondAttribute="trailing" constant="5" id="5mc-os-psI"/>
-                                                <constraint firstItem="HdL-QW-qqC" firstAttribute="leading" secondItem="R8s-JV-Y6O" secondAttribute="leadingMargin" constant="5" id="Nym-Ax-LhS"/>
-                                                <constraint firstItem="UNC-3u-3AQ" firstAttribute="leading" secondItem="HdL-QW-qqC" secondAttribute="trailing" constant="10" id="i0V-tL-oWx"/>
-                                                <constraint firstItem="HdL-QW-qqC" firstAttribute="top" secondItem="R8s-JV-Y6O" secondAttribute="topMargin" id="xyx-ZH-h4b"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="kPo-rh-9Ha" id="9Cn-Zt-Fc2"/>
-                            <outlet property="delegate" destination="kPo-rh-9Ha" id="3TO-dz-ZkW"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="c9Z-DH-Gvl">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="kSj-R7-3Ot"/>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wWI-Bh-tQu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-31742" y="767"/>
-        </scene>
         <!--Shopping List Add View Controller-->
         <scene sceneID="CcH-b3-Zt2">
             <objects>
@@ -620,11 +450,20 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="식자재명을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ys5-OC-WAs">
-                                                <rect key="frame" x="70" y="0.0" width="280" height="40"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="식자재명을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ys5-OC-WAs">
+                                                <rect key="frame" x="70" y="0.0" width="218" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGa-wW-UAr">
+                                                <rect key="frame" x="298" y="0.0" width="52" height="40"/>
+                                                <state key="normal" title="간편추가">
+                                                    <color key="titleColor" red="0.08693329244852066" green="0.40045604109764099" blue="0.16323912143707275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="6ta-gy-f21" kind="modal" identifier="ShoppingListTempSegue" id="QXR-ST-7Ut"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bkh-Hc-FSi">
@@ -765,6 +604,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OND-JP-gtE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-32826.086956521744" y="766.74107142857144"/>
+        </scene>
+        <!--Shopping List Add Temp Table View Controller-->
+        <scene sceneID="rE6-cZ-iCr">
+            <objects>
+                <tableViewController id="6ta-gy-f21" customClass="ShoppingListAddTempTableViewController" customModule="FreshFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="I9q-sr-b2J">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="hw2-D6-9gp">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="cmw-rt-Nsu" customClass="ShoppingListTempCell" customModule="FreshFood" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cmw-rt-Nsu" id="ECI-OG-1vk">
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="6ta-gy-f21" id="LLD-Em-X3U"/>
+                            <outlet property="delegate" destination="6ta-gy-f21" id="ddE-MZ-lsj"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="sZL-uD-8Zv"/>
+                    <connections>
+                        <outlet property="AddListView" destination="I9q-sr-b2J" id="ceu-0t-5R1"/>
+                        <outlet property="searchBar" destination="hw2-D6-9gp" id="aJA-s6-0XK"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jMK-3j-Rmx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-31909" y="767"/>
         </scene>
     </scenes>
     <resources>
