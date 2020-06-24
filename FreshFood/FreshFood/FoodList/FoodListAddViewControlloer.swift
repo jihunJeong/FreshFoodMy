@@ -447,6 +447,13 @@ class FoodListAddViewController: UIViewController, BarcodeDelegate{
 
                        present(alertController, animated: true)
         }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FoodListTempListSegue"{
+        guard let vc = segue.destination as? FoodListAddViewListController else {return}
+            vc.delegate = self
+        }
+    }
         
     }
 
