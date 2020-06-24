@@ -19,6 +19,7 @@ class ShoppingListModalViewController: UIViewController {
     
     var tempString:String?
     var isShowingAlert = false
+    var reload = false
     weak var delegate : ShoppingListModalViewControllerDelegator?
 
     let realm = try! Realm()
@@ -41,7 +42,7 @@ class ShoppingListModalViewController: UIViewController {
                     self.realm.delete(self.realm.objects(Shopping.self).filter(predicate))
                 }
             } catch{ print("\(error)") }
-            self.delegate?.deleteData()
+            self.delegate?.updateData()
             self.isShowingAlert = false
             self.dismiss(animated: true, completion: nil)
         })
@@ -56,12 +57,28 @@ class ShoppingListModalViewController: UIViewController {
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {
+        if reload{
+            self.delegate?.updateData()
+        }
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {
         showAlert(emptyType: shoppingListFoodName.text!)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "ShoppingListModifySegue"{
+                guard let vc = segue.destination as? ShoppingListModifyViewController else {return}
+                vc.delegate = self
+                vc.name = self.shoppingListFoodName.text
+                vc.purchaseDate = self.shoppingListDate.text
+                vc.quantity = self.shoppingListQuantity.text
+                vc.type = self.shoppingListType.text
+                vc.memo = self.shoppingListMemo.text
+
+        }
     }
     
 
@@ -77,6 +94,20 @@ class ShoppingListModalViewController: UIViewController {
 
 }
 protocol ShoppingListModalViewControllerDelegator: AnyObject{
-    func deleteData()
+    func updateData()
+}
+
+extension ShoppingListModalViewController : ShoppingListModifyViewControllerDelegator{
+    func reloadData(name: String, quantity: String, purchaseDate: String, type: String, memo: String) {
+        shoppingListFoodName.text = name
+        shoppingListQuantity.text = quantity
+        shoppingListDate.text = purchaseDate
+        shoppingListType.text = type
+        shoppingListMemo.text = memo
+        self.reload = true
+        print("--------------------------------------!!!!!@@@@@@")
+    }
+
+    
 }
 
