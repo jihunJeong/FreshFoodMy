@@ -606,7 +606,7 @@
                                                     <color key="titleColor" red="0.086933292450000005" green="0.40045604109999999" blue="0.16323912139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="jf2-pZ-e83" kind="presentation" id="pRx-a3-bF9"/>
+                                                    <segue destination="KmT-sU-19C" kind="presentation" id="e4e-IG-WKN"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -797,44 +797,42 @@
             <point key="canvasLocation" x="2684" y="105.69715142428787"/>
         </scene>
         <!--Food List Add View List Controller-->
-        <scene sceneID="9Ju-7T-rbR">
+        <scene sceneID="EEB-Dh-9wQ">
             <objects>
-                <tableViewController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="jf2-pZ-e83" customClass="FoodListAddViewListController" customModule="FreshFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Azl-vZ-GFZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <tableViewController id="KmT-sU-19C" customClass="FoodListAddViewListController" customModule="FreshFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OJe-Ti-iik">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="sCd-kW-ntk">
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="9tS-bm-QOW">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qQc-h2-HJx" customClass="FoodListAddViewCell" customModule="FreshFood" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="DHG-ak-paR" customClass="FoodListAddViewCell" customModule="FreshFood" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qQc-h2-HJx" id="cFj-qc-ee6">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DHG-ak-paR" id="wU2-CX-pzN">
+                                    <rect key="frame" x="0.0" y="0.0" width="348" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="jf2-pZ-e83" id="06s-4q-Ro1"/>
-                            <outlet property="delegate" destination="jf2-pZ-e83" id="Y1I-af-4vE"/>
+                            <outlet property="dataSource" destination="KmT-sU-19C" id="CoD-Ql-Pny"/>
+                            <outlet property="delegate" destination="KmT-sU-19C" id="wGH-Qt-GZA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="I0c-jY-Vv1"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <navigationItem key="navigationItem" id="8K9-Ez-uAb"/>
                     <connections>
-                        <outlet property="AddListView" destination="Azl-vZ-GFZ" id="0lk-lz-csc"/>
-                        <outlet property="searchBar" destination="sCd-kW-ntk" id="fys-cm-Xwy"/>
+                        <outlet property="AddListView" destination="OJe-Ti-iik" id="nW2-l4-quJ"/>
+                        <outlet property="searchBar" destination="9tS-bm-QOW" id="va0-dH-g85"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HwI-KW-hhA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9nv-tD-RKY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3687" y="106"/>
+            <point key="canvasLocation" x="3870" y="106"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
