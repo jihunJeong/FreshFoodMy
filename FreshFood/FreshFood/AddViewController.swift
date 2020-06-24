@@ -2,6 +2,9 @@ import UIKit
 import RealmSwift
 
 
+//for git upload
+
+
 
 protocol BarcodeDelegate
 {
@@ -38,6 +41,7 @@ class AddViewController: UIViewController, BarcodeDelegate{
 
     
     // Camera view
+    var generateId = 0
     
     var ingredientName : String = ""
 
@@ -61,7 +65,7 @@ class AddViewController: UIViewController, BarcodeDelegate{
     
     var foodLocation: [String] = ["냉장고", "냉동고", "김치냉장고", "기타"]
     
-    var fridgeString: String = ""
+    var fridgeString: String = "냉장고"
     
     var toolBar = UIToolbar()
     
@@ -134,6 +138,10 @@ class AddViewController: UIViewController, BarcodeDelegate{
         
     }
     
+
+    
+    
+    
     @objc func donePicker(){
         fridgeTypeText?.text = fridgeString
         fridgePicker.removeFromSuperview()
@@ -167,6 +175,8 @@ class AddViewController: UIViewController, BarcodeDelegate{
            //inputView.backgroundColor = .black
            datePicker.datePickerMode = .date
            datePicker.reloadInputViews()
+            pickerView.backgroundColor = .systemBackground
+         datePicker.backgroundColor = .systemGray
            //datePicker.backgroundColor = .black
            pickerView.addSubview(datePicker)
            
@@ -407,11 +417,15 @@ class AddViewController: UIViewController, BarcodeDelegate{
             let changedQuantity = NumberFormatter().number(from: dataQuantity)?.doubleValue
             
             
+            
             let data = Food(name: dataName, limitdate: formedLimitDate, fridgetype: fridgeString, quantity: changedQuantity!, type: foodType, memo: memoText.text!)
+            
+            
             
             let realm = try! Realm()
             try! realm.write() {
-                var addedData = realm.add(data)
+                realm.create(Food.self, value: data)
+
                 // Reading from or modifying a `RealmOptional` is done via the `value` property
                 //person.age.value = 28
             }

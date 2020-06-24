@@ -16,15 +16,15 @@ protocol ModalActionDelegate {
 class ListModalViewController: UIViewController {
     
     @IBOutlet weak var detailName: UILabel!
-    @IBOutlet weak var detailType: UILabel!
-    @IBOutlet weak var detailLimitDate: UILabel!
-    @IBOutlet weak var detailMemo: UILabel!
-    @IBOutlet weak var detailQuantity: UILabel!
-    @IBOutlet weak var detailLocation: UILabel!
-    
+
+    struct ListData {
+        var type: String = ""
+        var data: String = ""
+    }
     var formatter = DateFormatter()
     var food: Food?
     let realm = try! Realm()
+    var data: [ListData] = []
     
     var delegate : ModalActionDelegate?
     func didSelectButton(food: Food?) {
@@ -42,14 +42,13 @@ class ListModalViewController: UIViewController {
         formatter.dateFormat = "yyyy.MM.dd"
         
         super.viewDidLoad()
-        detailName.text = food!.name
-        detailLimitDate.text = formatter.string(from: food!.limitDate)
-        detailLocation.text = food!.location
-        detailType.text = food!.type
-        detailMemo.text = food!.memo
-        //detailQuantity.text = String(food?.quantity)
         
-        // Do any additional setup after loading the view.
+        detailName.text = food!.name
+        data.append(ListData(type: "유통기한", data: formatter.string(from: food!.limitDate)))
+        data.append(ListData(type: "수량", data: String(food!.quantity)))
+        data.append(ListData(type: "위치", data: food!.location))
+        data.append(ListData(type: "범주", data: food!.type))
+        data.append(ListData(type: "메모", data: food!.memo))
     }
     
     @IBAction func deleteAlert(_ sender: Any) {
@@ -81,7 +80,6 @@ class ListModalViewController: UIViewController {
         alertController.addAction(deleteButton)
         return self.present(alertController, animated: true, completion: nil)
     }
-    
     /*
     // MARK: - Navigation
 
@@ -92,4 +90,24 @@ class ListModalViewController: UIViewController {
     }
     */
 
+}
+
+extension ListModalViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "자세한 정보"
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ModalTableViewCell", for: indexPath)
+        
+        cell.textLabel!.text = data[indexPath.row].type
+        cell.detailTextLabel!.text = data[indexPath.row].data
+        
+        return cell
+    }
 }
