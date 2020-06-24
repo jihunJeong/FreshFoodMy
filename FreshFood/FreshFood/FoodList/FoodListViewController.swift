@@ -48,6 +48,7 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
     @IBOutlet weak var searchBar: UISearchBar!
 
     override func viewDidLoad() {
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         //searchController = UISearchController(searchResultsController: nil)
         //searchController.searchResultsUpdater = self
         //searchController.searchBar.sizeToFit()
@@ -117,7 +118,6 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
     
     @IBAction func addButton(_ sender: Any) {
         let rvc = self.storyboard?.instantiateViewController(identifier: "AddView")
-        self.present(rvc!, animated: true, completion: nil)
     }
     
     @IBAction func orderOption(_ sender: Any) {
