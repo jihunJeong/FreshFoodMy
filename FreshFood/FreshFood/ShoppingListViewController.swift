@@ -180,7 +180,7 @@ extension ShoppingListViewController:ShoppingListCalendarDelegator{
 }
 
 extension ShoppingListViewController:ShoppingListModalViewControllerDelegator{
-    func deleteData() {
+    func updateData() {
         shoppingListTableview.reloadData()
     }
     

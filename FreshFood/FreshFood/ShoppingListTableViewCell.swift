@@ -45,10 +45,22 @@ class ShoppingListTableViewCell: UITableViewCell {
         {
             sender.setTitleColor(UIColor.gray, for: UIControl.State.normal)
             isButtonChecked = false
-//            let tempObject = realm.object(ofType: Shopping.self, forPrimaryKey: foodName.te)
-        }else{
+            let tempObject = realm.object(ofType: Shopping.self, forPrimaryKey: foodName.text)
+            do{
+                try self.realm.write{
+                    tempObject?.buttonPressed = false
+                }
+            } catch{ print("\(error)") }
+        }
+        else{
             sender.setTitleColor(UIColor.orange, for: UIControl.State.normal)
             isButtonChecked = true
+            let tempObject = realm.object(ofType: Shopping.self, forPrimaryKey: foodName.text)
+            do{
+                try self.realm.write{
+                    tempObject?.buttonPressed = true
+                }
+            } catch{ print("\(error)") }
         }
 //        self.delegate?.checkBox(check: isButtonChecked, checkindex: index!)
         

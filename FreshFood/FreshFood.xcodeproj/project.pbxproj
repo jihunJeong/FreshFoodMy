@@ -30,6 +30,7 @@
 		CD0146AF249FD500002AB8CB /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0146AE249FD500002AB8CB /* ShoppingListViewController.swift */; };
 		CD0146B1249FD54D002AB8CB /* ShoppingListModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0146B0249FD54D002AB8CB /* ShoppingListModalViewController.swift */; };
 		CD30A16724A07F550022A5E6 /* ShoppingListCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD30A16624A07F550022A5E6 /* ShoppingListCalendarViewController.swift */; };
+		CD578AE424A3635E00E4D100 /* ShoppingListModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD578AE324A3635E00E4D100 /* ShoppingListModifyViewController.swift */; };
 		CD6C181624A30227007FDCEF /* ShoppingListAddTempTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C181524A30227007FDCEF /* ShoppingListAddTempTableViewController.swift */; };
 		CD8407E624A1F625008E1776 /* MainLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8407E324A1F625008E1776 /* MainLocationTableViewCell.swift */; };
 		CD8407E724A1F625008E1776 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8407E424A1F625008E1776 /* MainViewController.swift */; };
@@ -65,6 +66,7 @@
 		CD0146AE249FD500002AB8CB /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		CD0146B0249FD54D002AB8CB /* ShoppingListModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListModalViewController.swift; sourceTree = "<group>"; };
 		CD30A16624A07F550022A5E6 /* ShoppingListCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCalendarViewController.swift; sourceTree = "<group>"; };
+		CD578AE324A3635E00E4D100 /* ShoppingListModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListModifyViewController.swift; sourceTree = "<group>"; };
 		CD6C181524A30227007FDCEF /* ShoppingListAddTempTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListAddTempTableViewController.swift; sourceTree = "<group>"; };
 		CD8407E324A1F625008E1776 /* MainLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainLocationTableViewCell.swift; sourceTree = "<group>"; };
 		CD8407E424A1F625008E1776 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				CD8407E324A1F625008E1776 /* MainLocationTableViewCell.swift */,
 				CD0146AC249FD482002AB8CB /* ShoppingListTableViewCell.swift */,
 				CD0146AE249FD500002AB8CB /* ShoppingListViewController.swift */,
+				CD578AE324A3635E00E4D100 /* ShoppingListModifyViewController.swift */,
 				CD0146B0249FD54D002AB8CB /* ShoppingListModalViewController.swift */,
 				CD9E45F1247FBAD300126E03 /* ShoppingList.storyboard */,
 				CD6C181524A30227007FDCEF /* ShoppingListAddTempTableViewController.swift */,
@@ -290,6 +293,7 @@
 				CAD85714249F9BB1001705CC /* ListModalViewController.swift in Sources */,
 				CAD85712249F9BAC001705CC /* DetailViewController.swift in Sources */,
 				CA1EC69D2476B39C004A16F3 /* FoodListViewController.swift in Sources */,
+				CD578AE424A3635E00E4D100 /* ShoppingListModifyViewController.swift in Sources */,
 				CAAAA9B9249FDAB70034843A /* FoodStructure.swift in Sources */,
 				CD89C4C524A0D7FC00A2523B /* ShoppingListAddViewController.swift in Sources */,
 				CD8407E724A1F625008E1776 /* MainViewController.swift in Sources */,
