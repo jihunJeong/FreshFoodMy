@@ -50,6 +50,12 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
     override func viewDidLoad() {
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+          
+         // let tap2:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissPicker")
+          
+         view.addGestureRecognizer(tap)
+        
         self.navigationController?.navigationBar.tintColor = UIColor.white
         //searchController = UISearchController(searchResultsController: nil)
         //searchController.searchResultsUpdater = self
@@ -67,6 +73,12 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
         super.viewWillAppear(animated)
         self.updateInformation()
         self.reload()
+    }
+    
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     func updateInformation() {
