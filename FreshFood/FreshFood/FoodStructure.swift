@@ -48,6 +48,18 @@ class Shopping : Object{
     @objc dynamic var type : String = ""
     @objc dynamic var buttonPressed : Bool = false
     
+    init(name:String, purchaseDate:Date, fridgetype:String, quantity: Double, type:String, memo:String) {
+        self.name = name
+        self.purchaseDate = purchaseDate
+        self.quantity = quantity
+        self.type = type
+        self.memo = memo
+        self.buttonPressed = false
+    }
+    
+    override required init() {
+        super.init()
+    }
     @objc override static func primaryKey() -> String? {
         return "name"
     }

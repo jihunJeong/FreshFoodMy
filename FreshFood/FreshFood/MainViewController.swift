@@ -60,7 +60,7 @@ class MainViewController: UIViewController,UITableViewDataSource,UITableViewDele
         if tableView == locationTableView{
             let dataLocation = locations[selectControl.selectedSegmentIndex]
             let tempData = tempData.filter{$0.location == dataLocation}
-            print("tempData.count : \(tempData.count)")
+//            print("tempData.count : \(tempData.count)")
             return tempData.count
         }
         else{
