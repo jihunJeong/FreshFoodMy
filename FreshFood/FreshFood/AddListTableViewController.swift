@@ -15,6 +15,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import RealmSwift
 
 struct BasicFood{
     var limitdate:String
@@ -35,6 +36,8 @@ class AddListViewCell: UITableViewCell{
     
     var foodNameText: UILabel!
     var limitDateText: UILabel!
+    
+    let realm = try! Realm()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

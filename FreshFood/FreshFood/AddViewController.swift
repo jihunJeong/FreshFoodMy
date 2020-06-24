@@ -61,7 +61,7 @@ class AddViewController: UIViewController, BarcodeDelegate{
     
     var foodLocation: [String] = ["냉장고", "냉동고", "김치냉장고", "기타"]
     
-    var fridgeString: String = ""
+    var fridgeString: String = "냉장고" //picker는 didselectrow, 즉 최소 한번이상 움직여야 값 변화가 감지 되므로, 아무것도 하지 않고 바로 DONE을 누를 경우 기본값을 부여
     
     var toolBar = UIToolbar()
     
@@ -97,7 +97,7 @@ class AddViewController: UIViewController, BarcodeDelegate{
         
              limitDateText.text = limitDate
         
-            foodTypeText.text = foodType
+            foodTypeText?.text = foodType
              
             fridgePicker = UIPickerView()
             fridgePicker.delegate = self
@@ -112,7 +112,7 @@ class AddViewController: UIViewController, BarcodeDelegate{
 
             let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-            let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.donePicker))
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.cancelPicker))
 
             toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
             toolBar.isUserInteractionEnabled = true
@@ -136,6 +136,14 @@ class AddViewController: UIViewController, BarcodeDelegate{
     
     @objc func donePicker(){
         fridgeTypeText?.text = fridgeString
+        fridgePicker.removeFromSuperview()
+        toolBar.removeFromSuperview()
+        
+    }
+    
+    @objc func cancelPicker(){
+        fridgeTypeText?.text = ""
+        fridgeString = "냉장고"
         fridgePicker.removeFromSuperview()
         toolBar.removeFromSuperview()
         
@@ -167,7 +175,8 @@ class AddViewController: UIViewController, BarcodeDelegate{
            //inputView.backgroundColor = .black
            datePicker.datePickerMode = .date
            datePicker.reloadInputViews()
-           //datePicker.backgroundColor = .black
+           datePicker.backgroundColor = .systemGray
+            pickerView.backgroundColor = .systemBackground
            pickerView.addSubview(datePicker)
            
            datePicker.addTarget(self, action: #selector(handler), for: UIControl.Event.valueChanged)
@@ -401,13 +410,16 @@ class AddViewController: UIViewController, BarcodeDelegate{
                     showAlert(emptyType: "냉장고")
                     return}
             guard let dataQuantity = self.quantityText.text,
-                !fridgeTypeText.text!.isEmpty else {
+                !quantityText.text!.isEmpty else {
                     showAlert(emptyType: "갯수")
                     return}
             let changedQuantity = NumberFormatter().number(from: dataQuantity)?.doubleValue
             
             
             let data = Food(name: dataName, limitdate: formedLimitDate, fridgetype: fridgeString, quantity: changedQuantity!, type: foodType, memo: memoText.text!)
+            
+            data.id += 1
+            
             
             let realm = try! Realm()
             try! realm.write() {
@@ -456,4 +468,6 @@ extension AddViewController : UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
          fridgeString = foodLocation[row] as String
         }
+    
+
 }

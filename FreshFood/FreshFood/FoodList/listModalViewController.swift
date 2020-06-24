@@ -22,6 +22,10 @@ class ListModalViewController: UIViewController {
     @IBOutlet weak var detailQuantity: UILabel!
     @IBOutlet weak var detailLocation: UILabel!
     
+    
+    @IBOutlet weak var toModifyButton: UIButton!
+    
+    
     var formatter = DateFormatter()
     var food: Food?
     let realm = try! Realm()
@@ -38,6 +42,7 @@ class ListModalViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         //self.detailName.text = food
     }
+    
     override func viewDidLoad() {
         formatter.dateFormat = "yyyy.MM.dd"
         
@@ -82,14 +87,22 @@ class ListModalViewController: UIViewController {
         return self.present(alertController, animated: true, completion: nil)
     }
     
-    /*
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+          if segue.identifier == "ToModify"{
+                     if let modifyController = segue.destination as? FoodListModifyViewController{
+                        modifyController.modifyData = self.food
+                         self.present(modifyController, animated: true, completion: nil)
+                }
+        
+
+            }
+    }
+    
+}
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
-}
