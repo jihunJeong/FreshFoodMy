@@ -426,6 +426,8 @@ class AddViewController: UIViewController, BarcodeDelegate{
             try! realm.write() {
                 realm.create(Food.self, value: data)
 
+                tabBarController?.selectedIndex = 3
+        
                 // Reading from or modifying a `RealmOptional` is done via the `value` property
                 //person.age.value = 28
             }
@@ -445,6 +447,9 @@ class AddViewController: UIViewController, BarcodeDelegate{
 
                        present(alertController, animated: true)
         }
+    
+    
+
         
     }
 

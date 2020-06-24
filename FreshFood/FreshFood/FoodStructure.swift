@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class Food : Object {
-    @objc dynamic var id = 0
+    @objc dynamic var id = UUID().uuidString
     @objc dynamic var name : String = ""
     @objc dynamic var limitDate : Date = Date()
     @objc dynamic var purchaseDate : Date = Date()
@@ -35,9 +35,9 @@ class Food : Object {
         super.init()
     }
     
-    /* @objc override static func primaryKey() -> String? {
+     @objc override static func primaryKey() -> String? {
         return "id"
-    } */
+    }
  
    //@objc dynamic var buttonPressed : Bool = false
 }

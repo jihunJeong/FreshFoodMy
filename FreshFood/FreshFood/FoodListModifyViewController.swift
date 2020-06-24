@@ -6,7 +6,6 @@ import RealmSwift
 
 class FoodListModifyViewController: UIViewController {
     
-    let realm = try! Realm()
     
     var pickerView: UIView = UIView()
     
@@ -22,7 +21,9 @@ class FoodListModifyViewController: UIViewController {
     
     var toolBar = UIToolbar()
     
-
+    
+    
+    var firstName: String = ""
     
     
 
@@ -52,6 +53,7 @@ class FoodListModifyViewController: UIViewController {
     
     var formatter = DateFormatter()
     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +69,7 @@ class FoodListModifyViewController: UIViewController {
         foodTypeModificationText.text = modifyData?.type
         memoModificationText.text = modifyData?.memo
         
+        firstName = modifyData!.name
         
         fridgePicker = UIPickerView()
                    fridgePicker.delegate = self
@@ -193,7 +196,7 @@ class FoodListModifyViewController: UIViewController {
     }
     
     func modify(){
-           if foodNameModificationText.text!.isEmpty{
+      /*     if foodNameModificationText.text!.isEmpty{
                 showAlert(emptyType: "식품명")
             }else{
                 modifyData?.name = foodNameModificationText.text!
@@ -229,26 +232,70 @@ class FoodListModifyViewController: UIViewController {
             }
 
             modifyData?.type = foodTypeModificationText.text!
-            modifyData?.memo = memoModificationText.text!
+            modifyData?.memo = memoModificationText.text! */
+        
+        
             
-            let broughtData = realm.objects(Food.self).filter("id = %@", modifyData?.id)
-
+        
+ 
+        
+        
             let realm = try! Realm()
-            if let data = broughtData.first {
-                try! realm.write {
+        
+                try! realm.write{
+                    
+                    if foodNameModificationText.text!.isEmpty{
+                         showAlert(emptyType: "식품명")
+                     }else{
+                         modifyData?.name = foodNameModificationText.text!
+                     }
+                     
+                     if limitDateModificationText.text!.isEmpty{
+                         showAlert(emptyType: "유통기한")
+                     }else{
+                         let isoDate = limitDateModificationText.text!
+
+                         let dateFormatter = DateFormatter()
+                         dateFormatter.dateFormat = "yyyy.MM.dd"
+                         let date = dateFormatter.date(from:isoDate)!
+                         
+                         let calendar = Calendar.current
+                         let components = calendar.dateComponents([.year, .month, .day], from: date)
+                         
+                         let finalDate = calendar.date(from:components)
+                         
+                         modifyData?.limitDate = finalDate!
+                     }
+                     
+                     if fridgeTypeModificationText.text!.isEmpty{
+                         showAlert(emptyType: "냉장고 타입")
+                     }else{
+                         modifyData?.name = fridgeTypeModificationText.text!
+                     }
+                     
+                     if quantityModificationText.text!.isEmpty{
+                         showAlert(emptyType: "수량")
+                     }else{
+                         modifyData?.name = quantityModificationText.text!
+                     }
+
+                     modifyData?.type = foodTypeModificationText.text!
+                     modifyData?.memo = memoModificationText.text!
+                    /*var data = Food()
                     data.name = modifyData?.name as! String
                     data.limitDate = modifyData?.limitDate as! Date
                     data.location = modifyData?.location as! String
                     data.quantity = modifyData?.quantity as! Double
-                    data.type = modifyData?.type as! String
-                    data.memo = modifyData?.memo as! String
+                    data.type = foodTypeModificationText.text!
+                    data.memo = memoModificationText.text!*/
                     
-                    realm.add(data, update: .all)
+                    realm.add(modifyData!, update: .modified)
                     
+                    dismiss(animated: true, completion: nil)
                 }
             
-        }
     }
+
     
     
     func showAlert(emptyType: String){
@@ -269,6 +316,8 @@ class FoodListModifyViewController: UIViewController {
 
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        self.dismiss(animated: true, completion: nil)
           if segue.identifier == "ToDetail"{
                  if let detailListController = segue.destination as? ListModalViewController{
                     detailListController.food = modifyData
