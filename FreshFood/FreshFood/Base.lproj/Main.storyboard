@@ -51,7 +51,7 @@
             </objects>
             <point key="canvasLocation" x="711" y="-585"/>
         </scene>
-        <!--Add View Controller-->
+        <!--재료 추가-->
         <scene sceneID="vvX-7y-s0J">
             <objects>
                 <viewController id="ErV-KN-gfT" customClass="AddViewController" customModule="FreshFood" customModuleProvider="target" sceneMemberID="viewController">
@@ -304,7 +304,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="A3l-qE-zU5"/>
+                    <navigationItem key="navigationItem" title="재료 추가" id="A3l-qE-zU5"/>
                     <connections>
                         <outlet property="addButton" destination="3Po-cF-Fzn" id="lMK-z6-4YT"/>
                         <outlet property="foodTypeText" destination="BdW-mz-6aH" id="Cr0-5c-8Pd"/>
@@ -328,7 +328,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="8Rx-Ku-Rbc">
+                        <searchBar key="tableHeaderView" contentMode="redraw" text="" id="8Rx-Ku-Rbc">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -377,10 +377,18 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XMF-Zi-L5S" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="2gk-1e-WIS"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vsy-8q-uXD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="vsy-8q-uXD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.30088704528124549" green="0.57417909263451783" blue="0.31173071668985552" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

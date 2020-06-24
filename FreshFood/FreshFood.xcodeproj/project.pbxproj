@@ -22,6 +22,8 @@
 		CAB6EAA5247699C2000CAD56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB6EAA3247699C2000CAD56 /* Main.storyboard */; };
 		CAB6EAA7247699C5000CAD56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAB6EAA6247699C5000CAD56 /* Assets.xcassets */; };
 		CAB6EAAA247699C5000CAD56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB6EAA8247699C5000CAD56 /* LaunchScreen.storyboard */; };
+		CAD1A98024A35200000F6CD0 /* FoodListAddViewControlloer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD1A97F24A35200000F6CD0 /* FoodListAddViewControlloer.swift */; };
+		CAD1A98224A3550B000F6CD0 /* FoodListAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD1A98124A3550B000F6CD0 /* FoodListAddCell.swift */; };
 		CAD85712249F9BAC001705CC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD85711249F9BAC001705CC /* DetailViewController.swift */; };
 		CAD85714249F9BB1001705CC /* ListModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD85713249F9BB1001705CC /* ListModalViewController.swift */; };
 		CD0146AD249FD482002AB8CB /* ShoppingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0146AC249FD482002AB8CB /* ShoppingListTableViewCell.swift */; };
@@ -55,6 +57,8 @@
 		CAB6EAA6247699C5000CAD56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAB6EAA9247699C5000CAD56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CAB6EAAB247699C5000CAD56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAD1A97F24A35200000F6CD0 /* FoodListAddViewControlloer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListAddViewControlloer.swift; sourceTree = "<group>"; };
+		CAD1A98124A3550B000F6CD0 /* FoodListAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListAddCell.swift; sourceTree = "<group>"; };
 		CAD85711249F9BAC001705CC /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CAD85713249F9BB1001705CC /* ListModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListModalViewController.swift; sourceTree = "<group>"; };
 		CD0146AC249FD482002AB8CB /* ShoppingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewCell.swift; sourceTree = "<group>"; };
@@ -89,6 +93,8 @@
 				CAD85711249F9BAC001705CC /* DetailViewController.swift */,
 				CA1EC69C2476B39C004A16F3 /* FoodListViewController.swift */,
 				CA9DB690247FA7D80088667D /* FoodListCell.swift */,
+				CAD1A97F24A35200000F6CD0 /* FoodListAddViewControlloer.swift */,
+				CAD1A98124A3550B000F6CD0 /* FoodListAddCell.swift */,
 			);
 			path = FoodList;
 			sourceTree = "<group>";
@@ -277,8 +283,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD1A98024A35200000F6CD0 /* FoodListAddViewControlloer.swift in Sources */,
 				CD0146B1249FD54D002AB8CB /* ShoppingListModalViewController.swift in Sources */,
 				CD0146AF249FD500002AB8CB /* ShoppingListViewController.swift in Sources */,
+				CAD1A98224A3550B000F6CD0 /* FoodListAddCell.swift in Sources */,
 				CAD85714249F9BB1001705CC /* ListModalViewController.swift in Sources */,
 				CAD85712249F9BAC001705CC /* DetailViewController.swift in Sources */,
 				CA1EC69D2476B39C004A16F3 /* FoodListViewController.swift in Sources */,
