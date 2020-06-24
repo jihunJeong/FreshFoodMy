@@ -63,10 +63,7 @@ class FoodListModifyViewController: UIViewController {
         
         
         foodNameModificationText.text = modifyData?.name
-        print("text: \(formatter.string(from : modifyData!.limitDate))")
-        limitDateModificationText.text = formatter.string(from : modifyData!.limitDate)
         fridgeTypeModificationText.text = modifyData?.location
-        quantityModificationText.text = "\(modifyData?.quantity)"
         foodTypeModificationText.text = modifyData?.type
         memoModificationText.text = modifyData?.memo
         
@@ -245,6 +242,8 @@ class FoodListModifyViewController: UIViewController {
                     data.quantity = modifyData?.quantity as! Double
                     data.type = modifyData?.type as! String
                     data.memo = modifyData?.memo as! String
+                    
+                    realm.add(data, update: .all)
                     
                 }
             
