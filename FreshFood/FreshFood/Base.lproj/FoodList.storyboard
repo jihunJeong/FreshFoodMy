@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="101" width="375" height="517"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="2" id="08p-t9-Odc">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="304"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="515"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5f-Ux-Apn">
@@ -177,7 +177,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="편집"/>
                                 <connections>
-                                    <segue destination="YYq-rO-RJg" kind="show" id="yuI-Ee-dLJ"/>
+                                    <segue destination="YYq-rO-RJg" kind="show" identifier="ToModify" id="MDb-UM-lm9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dax-hL-upt">
@@ -244,6 +244,7 @@
                         <viewLayoutGuide key="safeArea" id="Y48-cC-duh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="0gz-RJ-dgQ"/>
                     <connections>
                         <outlet property="detailName" destination="rT9-eB-RAT" id="gkP-rJ-5pk"/>
                     </connections>
@@ -368,32 +369,33 @@
         <scene sceneID="vs6-Vi-B2x">
             <objects>
                 <viewController id="YYq-rO-RJg" customClass="FoodListModifyViewController" customModule="FreshFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="q4Y-Yc-vJ5" customClass="V">
+                    <view key="view" contentMode="scaleToFill" id="q4Y-Yc-vJ5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6mN-FQ-Cds">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6mN-FQ-Cds">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J70-MK-wQP">
-                                        <rect key="frame" x="27.5" y="0.0" width="320" height="81"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4e-qO-ADA">
                                                 <rect key="frame" x="0.0" y="31.5" width="70.5" height="18"/>
                                                 <state key="normal" title="세부정보" image="lessthan" catalog="system"/>
                                                 <connections>
                                                     <action selector="dismiss:" destination="msB-VU-Sqa" eventType="touchUpInside" id="Zky-C6-vXg"/>
+                                                    <segue destination="msB-VU-Sqa" kind="show" id="Cnc-Oz-Fd2"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="O4e-qO-ADA" firstAttribute="leading" secondItem="J70-MK-wQP" secondAttribute="leading" id="UHG-Ym-gPd"/>
-                                            <constraint firstItem="O4e-qO-ADA" firstAttribute="centerY" secondItem="J70-MK-wQP" secondAttribute="centerY" id="ix4-Zw-Dko"/>
+                                            <constraint firstItem="O4e-qO-ADA" firstAttribute="leading" secondItem="J70-MK-wQP" secondAttribute="leading" id="C7L-7P-5f6"/>
+                                            <constraint firstItem="O4e-qO-ADA" firstAttribute="centerY" secondItem="J70-MK-wQP" secondAttribute="centerY" id="HaS-xL-037"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="6X6-Cd-FYE">
-                                        <rect key="frame" x="27.5" y="81" width="320" height="81"/>
+                                        <rect key="frame" x="0.0" y="81" width="375" height="81"/>
                                         <subviews>
                                             <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="식품명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyu-78-q9P">
                                                 <rect key="frame" x="20" y="15" width="44.5" height="20.5"/>
@@ -416,14 +418,14 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="lyu-78-q9P" firstAttribute="leading" secondItem="6X6-Cd-FYE" secondAttribute="leading" constant="20" id="2TC-Eb-2xe"/>
                                             <constraint firstItem="8YY-Zo-w6f" firstAttribute="top" secondItem="6X6-Cd-FYE" secondAttribute="top" constant="15" id="5Ck-9i-lnq"/>
-                                            <constraint firstItem="lyu-78-q9P" firstAttribute="leading" secondItem="6X6-Cd-FYE" secondAttribute="leading" constant="20" id="cUP-TO-Hvf"/>
                                             <constraint firstItem="8YY-Zo-w6f" firstAttribute="leading" secondItem="lyu-78-q9P" secondAttribute="trailing" constant="40" id="vOf-Yr-Lk7"/>
                                             <constraint firstItem="lyu-78-q9P" firstAttribute="top" secondItem="6X6-Cd-FYE" secondAttribute="top" constant="15" id="w72-rT-cuX"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhA-Sc-AnO">
-                                        <rect key="frame" x="27.5" y="162" width="320" height="80.5"/>
+                                        <rect key="frame" x="0.0" y="162" width="375" height="80.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="유통기한" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbz-Gd-j0y">
                                                 <rect key="frame" x="20" y="15" width="59" height="20.5"/>
@@ -456,7 +458,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJR-qp-2mb">
-                                        <rect key="frame" x="27.5" y="242.5" width="320" height="81"/>
+                                        <rect key="frame" x="0.0" y="242.5" width="375" height="81"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="냉장고" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqI-0n-9Aj">
                                                 <rect key="frame" x="20" y="15" width="44.5" height="20.5"/>
@@ -483,7 +485,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ee-qP-6Kg">
-                                        <rect key="frame" x="27.5" y="323.5" width="320" height="81"/>
+                                        <rect key="frame" x="0.0" y="323.5" width="375" height="81"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D9c-Kj-lbd">
                                                 <rect key="frame" x="99.5" y="15" width="140" height="30"/>
@@ -510,7 +512,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9U-H1-CMM">
-                                        <rect key="frame" x="27.5" y="404.5" width="320" height="81"/>
+                                        <rect key="frame" x="0.0" y="404.5" width="375" height="81"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jkS-eX-1Az">
                                                 <rect key="frame" x="99.5" y="15" width="140" height="30"/>
@@ -540,7 +542,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vnZ-fZ-fgT">
-                                        <rect key="frame" x="27.5" y="485.5" width="320" height="80.5"/>
+                                        <rect key="frame" x="0.0" y="485.5" width="375" height="80.5"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F9I-Yy-uXo">
                                                 <rect key="frame" x="99.5" y="15" width="140" height="30"/>
@@ -570,10 +572,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="Eyf-kr-bvu">
-                                        <rect key="frame" x="27.5" y="566" width="320" height="81"/>
+                                        <rect key="frame" x="0.0" y="566" width="375" height="81"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6v-cz-n3E">
-                                                <rect key="frame" x="145" y="25.5" width="30" height="30"/>
+                                                <rect key="frame" x="172.5" y="25.5" width="30" height="30"/>
                                                 <state key="normal" title="수정"/>
                                                 <connections>
                                                     <action selector="modifyButtonClicked:" destination="YYq-rO-RJg" eventType="touchUpInside" id="Msm-d3-8UT"/>
@@ -600,10 +602,9 @@
                         <constraints>
                             <constraint firstItem="6mN-FQ-Cds" firstAttribute="centerY" secondItem="q4Y-Yc-vJ5" secondAttribute="centerY" id="5NN-HE-6Iq"/>
                             <constraint firstItem="6mN-FQ-Cds" firstAttribute="top" secondItem="Pti-rI-oS9" secondAttribute="top" id="9nW-1d-0dS"/>
-                            <constraint firstItem="6mN-FQ-Cds" firstAttribute="centerX" secondItem="q4Y-Yc-vJ5" secondAttribute="centerX" id="TuH-RZ-mMy"/>
-                            <constraint firstItem="Pti-rI-oS9" firstAttribute="trailing" secondItem="6mN-FQ-Cds" secondAttribute="trailing" id="gkp-DJ-Sww"/>
-                            <constraint firstItem="6mN-FQ-Cds" firstAttribute="leading" secondItem="Pti-rI-oS9" secondAttribute="leading" id="oVX-Yq-944"/>
-                            <constraint firstItem="6mN-FQ-Cds" firstAttribute="leading" secondItem="Pti-rI-oS9" secondAttribute="leading" id="ysr-k6-GBx"/>
+                            <constraint firstItem="Pti-rI-oS9" firstAttribute="trailing" secondItem="6mN-FQ-Cds" secondAttribute="trailing" id="GvS-DR-bN7"/>
+                            <constraint firstItem="6mN-FQ-Cds" firstAttribute="centerX" secondItem="q4Y-Yc-vJ5" secondAttribute="centerX" id="Tf4-r1-sSW"/>
+                            <constraint firstItem="6mN-FQ-Cds" firstAttribute="leading" secondItem="Pti-rI-oS9" secondAttribute="leading" id="e31-Yn-GLf"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -630,9 +631,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53r-NR-6Oo" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3688" y="-659"/>
+            <point key="canvasLocation" x="3870" y="-660"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Cnc-Oz-Fd2"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="exclamationmark.circle" catalog="system" width="128" height="121"/>
         <image name="lessthan" catalog="system" width="128" height="111"/>
