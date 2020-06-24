@@ -207,8 +207,8 @@ class AddViewController: UIViewController, BarcodeDelegate{
      
      
      override func viewWillAppear(_ animated: Bool) {
-         ingredientNameText.text = ingredientName
-         print(ingredientName)
+        // ingredientNameText.text = ingredientName
+         //print(ingredientName)
          //limitDateText.text = limitDate
         /* var toAddDate = String(limitDate.trimmingCharacters(in: .whitespacesAndNewlines))
          toAddDate.replacingOccurrences(of: "일", with: "")
@@ -220,6 +220,16 @@ class AddViewController: UIViewController, BarcodeDelegate{
          limitDateText.text = "\(limitDatePicker.date)"*/
          
      }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        ingredientNameText.text = ""
+        limitDateText.text = ""
+        fridgeTypeText.text = ""
+        quantityText.text = ""
+        foodTypeText.text = ""
+        memoText.text = ""
+    }
+    
     @IBAction func presentBarcodeScanner(_ sender: Any) {
         let viewController = makeBarcodeScannerViewController()
         viewController.title = "바코드 인식기"
