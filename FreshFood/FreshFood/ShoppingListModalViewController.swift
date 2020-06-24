@@ -13,6 +13,9 @@ class ShoppingListModalViewController: UIViewController {
     @IBOutlet weak var shoppingListFoodName: UILabel!
     @IBOutlet weak var shoppingListDate: UILabel!
     @IBOutlet weak var shoppingListQuantity: UILabel!
+    @IBOutlet weak var shoppingListMemo: UILabel!
+    @IBOutlet weak var shoppingListType: UILabel!
+    
     
     var tempString:String?
     var isShowingAlert = false

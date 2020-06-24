@@ -19,6 +19,11 @@ class ShoppingListTableViewCell: UITableViewCell {
     var isButtonChecked:Bool!
     var date : Date?
     var index : Int?
+    var type:String?
+    var memo:String?
+    
+//    var ListInformation:Object?
+    
     let realm = try! Realm()
     weak var delegate : ShoppingListTableViewCellDelegator?
         
@@ -49,10 +54,10 @@ class ShoppingListTableViewCell: UITableViewCell {
         
     }
     @IBAction func detailButtonPressed(_ sender: UIButton) {
-        self.delegate?.shoppingListTableViewCell(self, shoppingListButtonPressedFor: foodName.text!, date: date!, quantity: quauntityofFood.text!)
+        self.delegate?.shoppingListTableViewCell(self, shoppingListButtonPressedFor: foodName.text!, date: date!, quantity: quauntityofFood.text!, type:self.type!, memo: self.memo! )
     }
 }
 protocol ShoppingListTableViewCellDelegator: AnyObject{
-    func shoppingListTableViewCell(_ shoppingListTableViewCell: ShoppingListTableViewCell, shoppingListButtonPressedFor name:String, date:Date, quantity:String)
+    func shoppingListTableViewCell(_ shoppingListTableViewCell: ShoppingListTableViewCell, shoppingListButtonPressedFor name:String, date:Date, quantity:String, type:String, memo:String)
 //    func checkBox(check:Bool, checkindex:Int)
 }
