@@ -479,7 +479,7 @@ extension FoodListAddViewController: FoodListAddDelegator{
     func getData(ingredientName: String!, ingredientDate: String!, ingredientType: String!) {
         print("++++++++")
         print(ingredientDate)
-        getBarcodeData(ingredientName: ingredientName, ingredientDate: ingredientDate, ingredientType: ingredientType)
+        self.getBarcodeData(ingredientName: ingredientName, ingredientDate: ingredientDate, ingredientType: ingredientType)
     
     }
 

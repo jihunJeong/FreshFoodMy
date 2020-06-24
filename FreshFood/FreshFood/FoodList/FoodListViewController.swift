@@ -112,14 +112,17 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
     
     //첫 자음을 얻는 함수
     func splitText(text: String) -> UnicodeScalar{
-           let text = text.first
+        let text = text.first
 
-           let val = (UnicodeScalar(String(text!))?.value)!
+        let val = (UnicodeScalar(String(text!))?.value)!
            
-           let s = (val - 0xac00) / 28 / 21
-           let sc = UnicodeScalar(0x1100 + s)
+        var s = (val - 0xac00) / 28 / 21
+        if (s == 2 || s == 4 || s == 8 || s == 10 || s == 13) {
+            s -= 1
+        }
+        let sc = UnicodeScalar(0x1100 + s)
            
-           return sc!
+        return sc!
     }
     
     @IBAction func addButton(_ sender: Any) {
