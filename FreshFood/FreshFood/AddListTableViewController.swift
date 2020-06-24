@@ -16,6 +16,8 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
+//for git
+
 struct BasicFood{
     var limitdate:String
     var type:String
