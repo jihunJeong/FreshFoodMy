@@ -23,6 +23,8 @@ class ShoppingListAddViewController: UIViewController {
     var datePicker: UIDatePicker = UIDatePicker()
     var pickerView: UIView = UIView()
     let formatter = DateFormatter()
+    var ingredientName : String = ""
+    var foodType : String = ""
 
 
     weak var delegate :ShoppingListAddViewControllerDelegator?
@@ -34,7 +36,18 @@ class ShoppingListAddViewController: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         purchasDateTextField.text = formatter.string(from: Date())
-        typeDataTextField.text = "기타"
+        if ingredientName != ""
+        {
+            nameTextField.text = ingredientName
+
+        }
+        if foodType != ""
+        {
+            typeDataTextField.text = foodType
+        }
+        else{
+            typeDataTextField.text = "기타"
+        }
 
 
         // Do any additional setup after loading the view.
@@ -76,22 +89,30 @@ class ShoppingListAddViewController: UIViewController {
         guard let dataName = self.nameTextField.text, !nameTextField.text!.isEmpty else {
             showAlert(emptyType: "식품명")
             return  }
-        guard let dataPurchaseDate = self.purchasDateTextField.text, !quantityTextField.text!.isEmpty else {
+        guard let dataPurchaseDate = self.purchasDateTextField.text, !purchasDateTextField.text!.isEmpty else {
                    return}
         guard let dataQuantity = self.quantityTextField.text, !quantityTextField.text!.isEmpty else {
                 showAlert(emptyType: "수량")
             return}
-        guard let dataType = self.quantityTextField.text , !quantityTextField.text!.isEmpty else {
-                   return}
-        guard let dataMemo = self.quantityTextField.text , !quantityTextField.text!.isEmpty else {
-            return}
+        
+        var dataType = self.typeDataTextField.text
+        var dataMemo = self.memoDataTextField.text
+        
+        if dataType == nil
+        {
+            dataType = "기타"
+        }
+        if dataMemo == nil
+        {
+            dataMemo = ""
+        }
         
         let data = Shopping()
         data.name = dataName
         data.purchaseDate = formatter.date(from: dataPurchaseDate)!
         data.quantity = Double(dataQuantity)!
-        data.memo = dataMemo
-        data.type = dataType
+        data.memo = dataMemo!
+        data.type = dataType!
         
         let realm = try! Realm()
 
@@ -173,13 +194,12 @@ class ShoppingListAddViewController: UIViewController {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String)->Bool
     {
-        print("-----------****")
         guard let textFieldString = textField.text, let range = Range(range, in: textFieldString)else{
             return false
         }
         let newString = textFieldString.replacingCharacters(in: range, with: string)
         if newString.isEmpty{
-            textField.text == "기타"
+            textField.text = "기타"
             return false
         }else if textField.text == "0"{
             textField.text = string
@@ -187,6 +207,17 @@ class ShoppingListAddViewController: UIViewController {
         }
         return true
     }
+    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShoppingListTempSegue"{
+            var vc:ShoppingListAddTempTableViewController? = nil
+            vc = segue.destination as! ShoppingListAddTempTableViewController
+            vc!.delegate = self
+        }
+    }
+    
+
     
     
     /*
@@ -203,4 +234,12 @@ class ShoppingListAddViewController: UIViewController {
 
 protocol ShoppingListAddViewControllerDelegator: AnyObject{
     func create()
+}
+
+extension ShoppingListAddViewController: ShoppingListAddTempTableViewControllerDelegator{
+    func getData(ingredientName: String, ingredientType: String) {
+            self.nameTextField?.text = ingredientName
+            self.typeDataTextField?.text = ingredientType
+        }
+
 }
