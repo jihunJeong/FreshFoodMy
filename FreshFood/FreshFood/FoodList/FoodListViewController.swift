@@ -68,6 +68,8 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.updateInformation()
         self.reload()
     }
     

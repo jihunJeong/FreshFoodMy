@@ -270,13 +270,13 @@ class FoodListModifyViewController: UIViewController {
                      if fridgeTypeModificationText.text!.isEmpty{
                          showAlert(emptyType: "냉장고 타입")
                      }else{
-                         modifyData?.name = fridgeTypeModificationText.text!
+                        modifyData?.location = fridgeTypeModificationText.text!
                      }
                      
                      if quantityModificationText.text!.isEmpty{
                          showAlert(emptyType: "수량")
                      }else{
-                         modifyData?.name = quantityModificationText.text!
+                         modifyData?.quantity = Double(quantityModificationText.text!)!
                      }
 
                      modifyData?.type = foodTypeModificationText.text!
