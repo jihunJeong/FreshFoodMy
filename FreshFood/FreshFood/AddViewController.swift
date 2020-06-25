@@ -199,6 +199,8 @@ class AddViewController: UIViewController, BarcodeDelegate{
          timeFormatter.dateFormat = "yyyy.MM.dd"
          
          var strDate = timeFormatter.string(from : sender.date)
+        
+         formedLimitDate = sender.date
          limitDateText.text = strDate
          // do what you want to do with the string.
      }

@@ -26,6 +26,7 @@ class FoodListModifyViewController: UIViewController {
     var firstName: String = ""
     
     
+    
 
     @IBOutlet weak var backToDetailButton: UIButton!
     
@@ -54,6 +55,8 @@ class FoodListModifyViewController: UIViewController {
     var formatter = DateFormatter()
     
 
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -291,7 +294,9 @@ class FoodListModifyViewController: UIViewController {
                     
                     realm.add(modifyData!, update: .modified)
                     
-                    dismiss(animated: true, completion: nil)
+                    //dismiss(animated: true, completion: nil)
+                
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 }
             
     }

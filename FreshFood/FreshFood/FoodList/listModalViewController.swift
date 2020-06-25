@@ -43,7 +43,7 @@ class ListModalViewController: UIViewController {
         
         super.viewDidLoad()
         
-        detailName.text = food!.name
+        detailName.text? = food.name
         data.append(ListData(type: "유통기한", data: formatter.string(from: food!.limitDate)))
         data.append(ListData(type: "수량", data: String(food!.quantity)))
         data.append(ListData(type: "위치", data: food!.location))
@@ -86,7 +86,8 @@ class ListModalViewController: UIViewController {
            if segue.identifier == "ToModify"{
                   if let modifyListController = segue.destination as? FoodListModifyViewController{
                     modifyListController.modifyData = self.food
-                      self.present(modifyListController, animated: true, completion: nil)
+                      //self.present(modifyListController, animated: true, completion: nil)
+                    self.performSegue(withIdentifier: "ToModify", sender: self)
              }
      
 

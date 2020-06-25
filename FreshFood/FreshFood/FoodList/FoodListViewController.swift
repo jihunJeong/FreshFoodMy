@@ -9,6 +9,11 @@
 import UIKit
 import RealmSwift
 
+
+
+
+
+
 class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalActionDelegate {
     
     @IBOutlet weak var tableView: UITableView!
@@ -39,6 +44,8 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
     var sortedDateSection: [DateStruct] = []
     var sortedLocation: [String] = []
 
+    let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+    
     //OrderOption Section
     var orderOption = 1
     
@@ -50,11 +57,9 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
     override func viewDidLoad() {
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+ 
           
          // let tap2:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissPicker")
-          
-         view.addGestureRecognizer(tap)
         
         self.navigationController?.navigationBar.tintColor = UIColor.white
         //searchController = UISearchController(searchResultsController: nil)
@@ -64,6 +69,8 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
 
         definesPresentationContext = true
         
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         super.viewDidLoad()
         self.updateInformation()
         self.reload()
@@ -295,6 +302,16 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+        view.addGestureRecognizer(tap)
+    }
+
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        view.removeGestureRecognizer(tap)
+    }
+    
     func updateSearchResults(for searchController: UISearchController) {
         /*
         if let searchText = searchController.searchBar.text {
@@ -343,6 +360,7 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
                 }
             }
             detailView.delegate = self
+
             self.present(detailView, animated: true, completion: nil)
         }}
 }
@@ -361,5 +379,12 @@ extension FoodListViewController: FoodListCellDelegate {
         rvc.food = food
         rvc.delegate = self
         self.present(rvc, animated: true, completion: nil)
+        //self.perform
+        //self.performSegue(withIdentifier: "ListModal", sender: self)
     }
+    
 }
+
+
+    
+
