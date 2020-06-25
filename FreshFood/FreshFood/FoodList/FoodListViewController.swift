@@ -74,7 +74,13 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
         self.reload()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        searchBar.searchTextField.text = ""
+    }
+    
     func updateInformation() {
+        searchActive = false
+        filtered.removeAll()
         initCharacter.removeAll()
         sortedDateSection.removeAll()
         sortedLocationSection.removeAll()
@@ -238,7 +244,10 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
         let foodList = Array(temp).sorted{ $0.name < $1.name }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodListCell", for: indexPath) as! FoodListCell
-        
+        if filtered.count == 0 {
+            searchActive = false
+            orderOption = 1
+        }
         if (searchActive) {
             cell.foodName.text = filtered[indexPath.row].name
             cell.limitDate.text = formatter.string(from: filtered[indexPath.row].limitDate)
