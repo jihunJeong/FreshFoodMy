@@ -77,7 +77,9 @@ class FoodListViewController: UIViewController, UISearchResultsUpdating, ModalAc
     func updateInformation() {
         initCharacter.removeAll()
         sortedDateSection.removeAll()
+        sortedLocationSection.removeAll()
         sortByDate = [[],[],[],[],[],[]]
+        sortedLocation = [[],[],[],[]]
         
         let foodList = Array(temp).sorted{ $0.name < $1.name }
     
@@ -280,11 +282,30 @@ extension FoodListViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return ""
     }
-    
+    /*
     //Swipe Delete function
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        var tempList : [Food] = []
+        if (searchActive) {
+            tempList = filtered
+        } else if (orderOption == 1) {
+            tempList = sortByDate[indexPath.section]
+        } else if (orderOption == 2) {
+            tempList =
+        } else if (orderOption == 3) {
+            
+        }
+        do{
+            try self.realm.write{
+                let predicate = NSPredicate(format: "id = %@ ", tempList[indexPath.row].id)
+                self.realm.delete(self.realm.objects(Shopping.self).filter(predicate))
+            }
+        } catch{ print("\(error)")}
+        
+        self.shoppingListTableview.deleteRows(at: [indexPath], with: .automatic)
+        self.shoppingListTableview.reloadData()
     }
-    
+    */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }

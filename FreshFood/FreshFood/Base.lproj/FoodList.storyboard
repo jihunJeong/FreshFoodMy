@@ -43,49 +43,38 @@
                                         <color key="separatorColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FoodListCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FoodListCell" id="pDo-60-UEc" customClass="FoodListCell" customModule="FreshFood" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="55.333332061767578" width="384" height="44.333332061767578"/>
+                                                <rect key="frame" x="0.0" y="55.333332061767578" width="384" height="42.666667938232422"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pDo-60-UEc" id="YV1-oH-GlC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="44.333332061767578"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="42.666667938232422"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="foodName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nli-ra-Qzm">
-                                                            <rect key="frame" x="20" y="10.999999999999998" width="80" height="22.333333333333329"/>
+                                                            <rect key="frame" x="20" y="11.000000000000002" width="80" height="20.666666666666671"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezV-RH-liB">
-                                                            <rect key="frame" x="337.33333333333331" y="10.999999999999998" width="19.666666666666686" height="22.333333333333329"/>
-                                                            <color key="tintColor" red="0.30088704529999999" green="0.5741790926" blue="0.31173071670000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <state key="normal" image="exclamationmark.circle" catalog="system"/>
-                                                            <connections>
-                                                                <action selector="subscribeButtonTapped:" destination="pDo-60-UEc" eventType="touchUpInside" id="EQa-UA-AdO"/>
-                                                            </connections>
-                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="limitDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hsz-Wa-Mvq">
-                                                            <rect key="frame" x="261.66666666666669" y="10.999999999999998" width="67.666666666666686" height="22.333333333333329"/>
+                                                            <rect key="frame" x="276.33333333333331" y="11.000000000000002" width="67.666666666666686" height="20.666666666666671"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="Hsz-Wa-Mvq" firstAttribute="top" secondItem="ezV-RH-liB" secondAttribute="top" id="6ZJ-mY-BIL"/>
                                                         <constraint firstItem="nli-ra-Qzm" firstAttribute="firstBaseline" secondItem="Hsz-Wa-Mvq" secondAttribute="firstBaseline" id="PP4-X6-2Qs"/>
-                                                        <constraint firstItem="Hsz-Wa-Mvq" firstAttribute="bottom" secondItem="ezV-RH-liB" secondAttribute="bottom" id="QAZ-5F-doz"/>
                                                         <constraint firstItem="nli-ra-Qzm" firstAttribute="top" secondItem="YV1-oH-GlC" secondAttribute="topMargin" id="W9n-q8-cAa"/>
-                                                        <constraint firstItem="ezV-RH-liB" firstAttribute="leading" secondItem="Hsz-Wa-Mvq" secondAttribute="trailing" constant="8" id="h9n-hC-yM7"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="Hsz-Wa-Mvq" secondAttribute="trailing" constant="20" id="gIX-X3-KFH"/>
                                                         <constraint firstItem="nli-ra-Qzm" firstAttribute="leading" secondItem="YV1-oH-GlC" secondAttribute="leadingMargin" id="hgP-Kp-xE2"/>
                                                         <constraint firstItem="nli-ra-Qzm" firstAttribute="baseline" secondItem="Hsz-Wa-Mvq" secondAttribute="baseline" id="pMj-GV-Z9a"/>
                                                         <constraint firstItem="nli-ra-Qzm" firstAttribute="centerY" secondItem="YV1-oH-GlC" secondAttribute="centerY" id="xQo-63-QoG"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="ezV-RH-liB" secondAttribute="trailing" constant="7" id="y0T-mD-D01"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="foodName" destination="nli-ra-Qzm" id="cs2-bI-STx"/>
                                                     <outlet property="limitDate" destination="Hsz-Wa-Mvq" id="qXV-MX-iUM"/>
-                                                    <segue destination="msB-VU-Sqa" kind="presentation" identifier="ListModal" id="ZwG-LO-RWj"/>
+                                                    <segue destination="msB-VU-Sqa" kind="presentation" identifier="ListModal" id="1bK-RT-zma"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -823,11 +812,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZwG-LO-RWj"/>
+        <segue reference="1bK-RT-zma"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="background" width="700" height="700"/>
-        <image name="exclamationmark.circle" catalog="system" width="128" height="121"/>
         <image name="lessthan" catalog="system" width="128" height="111"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="plus" catalog="system" width="128" height="113"/>
