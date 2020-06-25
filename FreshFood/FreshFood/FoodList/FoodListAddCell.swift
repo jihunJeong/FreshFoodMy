@@ -12,11 +12,12 @@
 //  Copyright © 2020 GI BEOM HONG. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import Firebase
 import FirebaseFirestore
 
-struct BasicFood{
+struct FoodListBasicFood{
     var limitdate:String
     var type:String
     var name:String
@@ -29,9 +30,11 @@ struct BasicFood{
     
 }
 
+protocol FoodListAddDelegator: AnyObject {
+    func getData(ingredientName: String!, ingredientDate: String!, ingredientType: String!)
+}
 
-
-class AddListViewCell: UITableViewCell{
+class FoodListAddViewCell: UITableViewCell{
     
     var foodNameText: UILabel!
     var limitDateText: UILabel!
@@ -74,7 +77,7 @@ class AddListViewCell: UITableViewCell{
 
 
 
-class AddListViewController: UITableViewController {
+class FoodListAddViewListController: UITableViewController, UISearchBarDelegate {
 
     
   
@@ -87,10 +90,9 @@ class AddListViewController: UITableViewController {
     
     var searchActive : Bool = false
     var filtered:[BasicFood] = []
-
+    weak var delegate: FoodListAddDelegator?
     
     var formatter = DateFormatter()
-    
     @IBOutlet weak var searchBar: UISearchBar!
     var searchController:UISearchController!
     
@@ -167,7 +169,7 @@ class AddListViewController: UITableViewController {
 
         
         
-        let cell = AddListViewCell()
+        let cell = FoodListAddViewCell()
         
         if(searchActive) {
 
@@ -190,34 +192,17 @@ class AddListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedRow = indexPath.row
-        self.performSegue(withIdentifier: "toAddSegue", sender: self)
-    }
-    
+        
+         selectedRow = indexPath.row
+         let row = tableView.indexPathForSelectedRow?.row ?? 0
+         let dataObject = basicFoodList[row]
+         let name = dataObject.name
+         self.delegate?.getData(ingredientName: name, ingredientDate: dataObject.limitdate, ingredientType:  dataObject.type)
+        self.dismiss(animated: true, completion: nil)
 
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toAddSegue"{
-            let row = tableView.indexPathForSelectedRow?.row ?? 0
-            if(searchActive){
-                let filteredObject = filtered[row]
-                if let nextViewcontroller = segue.destination as? AddViewController{
-                   // nextViewcontroller.ingredientName = dataObject.name
-                   // nextViewcontroller.limitDate = dataObject.limitdate
-                   nextViewcontroller.getBarcodeData(ingredientName: filteredObject.name, ingredientDate: filteredObject.limitdate, ingredientType:  filteredObject.type)
-                }
-                
-            }else{
-                 let dataObject = basicFoodList[row]
-                 if let nextViewcontroller = segue.destination as? AddViewController{
-                    // nextViewcontroller.ingredientName = dataObject.name
-                    // nextViewcontroller.limitDate = dataObject.limitdate
-                    nextViewcontroller.getBarcodeData(ingredientName: dataObject.name, ingredientDate: dataObject.limitdate, ingredientType:  dataObject.type)
-                 }
-            }
-        }
+         
     }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -265,13 +250,13 @@ class AddListViewController: UITableViewController {
 
 }
 
-extension AddListViewController {
+extension FoodListAddViewListController {
     func updateSearchResults(for searchController: UISearchController) {
         
     }
 }
 
-extension AddListViewController: UISearchBarDelegate{
+extension FoodListAddViewListController{
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true;
@@ -301,9 +286,8 @@ extension AddListViewController: UISearchBarDelegate{
                     searchActive = true;
                 }
                 self.tableView.reloadData()
-            }
-        }
-
+    }
+}
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

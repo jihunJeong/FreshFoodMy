@@ -44,12 +44,11 @@ class ListModalViewController: UIViewController {
         super.viewDidLoad()
         
         detailName.text = food!.name
-        
         data.append(ListData(type: "유통기한", data: formatter.string(from: food!.limitDate)))
         data.append(ListData(type: "수량", data: String(food!.quantity)))
         data.append(ListData(type: "위치", data: food!.location))
         data.append(ListData(type: "범주", data: food!.type))
-        data.append(ListData(type: "유통기한", data: food!.memo))
+        data.append(ListData(type: "메모", data: food!.memo))
     }
     
     @IBAction func deleteAlert(_ sender: Any) {
@@ -63,10 +62,11 @@ class ListModalViewController: UIViewController {
             (action) in
             do {
                 try self.realm.write {
+
                     //let predicate = NSPredicate(format: "counterid = \(c.id)")
                     //let children = self.realm.objects(Food.self).filter(predicate)
                     //self.realm.delete(children)
-                    let predicate = NSPredicate(format: "name = %@", self.food?.name as! CVarArg)
+                    let predicate = NSPredicate(format: "id = %@", self.food?.id as! CVarArg)
                     self.realm.delete(self.realm.objects(Food.self).filter(predicate)) //this should be deleted after
                 }
             } catch {
@@ -81,28 +81,40 @@ class ListModalViewController: UIViewController {
         alertController.addAction(deleteButton)
         return self.present(alertController, animated: true, completion: nil)
     }
-    /*
+    
+     
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == "ToModify"{
+                  if let modifyListController = segue.destination as? FoodListModifyViewController{
+                    modifyListController.modifyData = self.food
+                      self.present(modifyListController, animated: true, completion: nil)
+             }
+     
+
+         }
+     }
+    
+}
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
-}
 
 extension ListModalViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "자세한 정보"
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ModalCell", for: indexPath) as! ModalTableViewCell
-        cell.label.text = data[indexPath.row].type
-        cell.data.text = data[indexPath.row].data
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ModalTableViewCell", for: indexPath)
+        
+        cell.textLabel!.text = data[indexPath.row].type
+        cell.detailTextLabel!.text = data[indexPath.row].data
         
         return cell
     }

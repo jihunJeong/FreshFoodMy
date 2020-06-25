@@ -1,3 +1,12 @@
+//
+//  FoodListAddViewControlloer.swift
+//  FreshFood
+//
+//  Created by 정지훈 on 2020/06/24.
+//  Copyright © 2020 정지훈. All rights reserved.
+//
+
+import Foundation
 import UIKit
 import RealmSwift
 
@@ -6,7 +15,7 @@ import RealmSwift
 
 
 
-protocol BarcodeDelegate
+protocol FoodListBarcodeDelegate
 {
     
     
@@ -37,7 +46,7 @@ protocol BarcodeDelegate
 
 
 @objcMembers
-class AddViewController: UIViewController, BarcodeDelegate{
+class FoodListAddViewController: UIViewController, BarcodeDelegate{
 
     
     // Camera view
@@ -70,26 +79,25 @@ class AddViewController: UIViewController, BarcodeDelegate{
     var toolBar = UIToolbar()
     
     @IBOutlet weak var toBarcodeButton: UIButton!
-    
     @IBOutlet weak var ingredientNameText: UITextField!
-    
     @IBOutlet weak var limitDateText: UITextField!
-    
     @IBOutlet weak var fridgeTypeText: UITextField!
-    
     @IBOutlet weak var quantityText: UITextField!
-    
     @IBOutlet weak var foodTypeText: UITextField!
-    
-    
     @IBOutlet weak var memoText: UITextField!
-    
     @IBOutlet weak var addButton: UIButton!
     
+    @IBOutlet weak var inputViewBottomAnchor: NSLayoutConstraint!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        memoText.delegate = self
+        foodTypeText.delegate = self
+        quantityText.delegate = self
+        
+        setupNotification()
+        
            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
              
             // let tap2:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissPicker")
@@ -125,7 +133,8 @@ class AddViewController: UIViewController, BarcodeDelegate{
              limitDateText.inputView = .none
             fridgeTypeText.inputView = fridgePicker
         fridgeTypeText.inputAccessoryView = toolBar
-             
+        
+            
              
          
              
@@ -137,11 +146,7 @@ class AddViewController: UIViewController, BarcodeDelegate{
     
         
     }
-    
-
-    
-    
-    
+ 
     @objc func donePicker(){
         fridgeTypeText?.text = fridgeString
         fridgePicker.removeFromSuperview()
@@ -207,8 +212,8 @@ class AddViewController: UIViewController, BarcodeDelegate{
      
      
      override func viewWillAppear(_ animated: Bool) {
-        // ingredientNameText.text = ingredientName
-         //print(ingredientName)
+         ingredientNameText.text = ingredientName
+         print(ingredientName)
          //limitDateText.text = limitDate
         /* var toAddDate = String(limitDate.trimmingCharacters(in: .whitespacesAndNewlines))
          toAddDate.replacingOccurrences(of: "일", with: "")
@@ -220,23 +225,14 @@ class AddViewController: UIViewController, BarcodeDelegate{
          limitDateText.text = "\(limitDatePicker.date)"*/
          
      }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        ingredientNameText.text = ""
-        limitDateText.text = ""
-        fridgeTypeText.text = ""
-        quantityText.text = ""
-        foodTypeText.text = ""
-        memoText.text = ""
-    }
-    
+        
     @IBAction func presentBarcodeScanner(_ sender: Any) {
         let viewController = makeBarcodeScannerViewController()
         viewController.title = "바코드 인식기"
         present(viewController, animated: true)
       // present(viewController, animated: true, completion: {self.makeRectangle(view: viewController)})
     }
-    
+
 /*    func makeRectangle(view:BarcodeViewController){
         qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
         qrCodeFrameView.layer.borderWidth = 2
@@ -436,11 +432,10 @@ class AddViewController: UIViewController, BarcodeDelegate{
             try! realm.write() {
                 realm.create(Food.self, value: data)
 
-                tabBarController?.selectedIndex = 3
-        
                 // Reading from or modifying a `RealmOptional` is done via the `value` property
                 //person.age.value = 28
             }
+            navigationController?.popViewController(animated: true)
         }
         
         func showAlert(emptyType: String){
@@ -458,12 +453,16 @@ class AddViewController: UIViewController, BarcodeDelegate{
                        present(alertController, animated: true)
         }
     
-    
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FoodListTempListSegue"{
+        guard let vc = segue.destination as? FoodListAddViewListController else {return}
+            vc.delegate = self
+        }
+    }
         
     }
 
-extension AddViewController : UIPickerViewDelegate{
+extension FoodListAddViewController : UIPickerViewDelegate{
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -472,7 +471,7 @@ extension AddViewController : UIPickerViewDelegate{
 
 }
 
-extension AddViewController : UIPickerViewDataSource{
+extension FoodListAddViewController : UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return foodLocation.count
@@ -485,4 +484,45 @@ extension AddViewController : UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
          fridgeString = foodLocation[row] as String
         }
+}
+
+extension FoodListAddViewController: FoodListAddDelegator{
+
+    func getData(ingredientName: String!, ingredientDate: String!, ingredientType: String!) {
+        print("++++++++")
+        print(ingredientDate)
+        self.getBarcodeData(ingredientName: ingredientName, ingredientDate: ingredientDate, ingredientType: ingredientType)
+    
+    }
+
+}
+
+extension FoodListAddViewController: UITextFieldDelegate {
+    func setupNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        print("Keyboard hide")
+        handleKeyboardIssue(notification: notification, isAppearing: false)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        print("keyboard show")
+        handleKeyboardIssue(notification: notification, isAppearing: true)
+    }
+    
+    fileprivate func handleKeyboardIssue(notification: Notification, isAppearing: Bool) {
+        guard let userInfo = notification.userInfo as? [String: Any] else {return}
+        guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+        guard let keyboardShowAnimateDuartion = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber else {return}
+        
+        let keyboardHeight = keyboardFrame.cgRectValue.height
+        let heightConstant = isAppearing ? keyboardHeight : 0
+        inputViewBottomAnchor.constant = heightConstant
+        UIView.animate(withDuration: keyboardShowAnimateDuartion.doubleValue) {
+            self.view.layoutIfNeeded()
+        }
+    }
 }

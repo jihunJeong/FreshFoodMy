@@ -84,6 +84,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             setDate = date
         }
         shoppingListTableview.reloadData()
+
     }
     
 
@@ -103,12 +104,14 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         let myCell = tableView.dequeueReusableCell(withIdentifier: "ShoppingListCell",for:indexPath) as!ShoppingListTableViewCell
         let FoodLists = Array(savedDates)
         let tempList = FoodLists.filter{formatter.string(from: $0.purchaseDate) == formatter.string(from: setDate)}
-        
+        //prev
         myCell.foodName.text = tempList[indexPath.row].name
         myCell.quauntityofFood.text = String(tempList[indexPath.row].quantity)
         myCell.isButtonChecked = tempList[indexPath.row].buttonPressed
         myCell.date = tempList[indexPath.row].purchaseDate
-
+        myCell.type = tempList[indexPath.row].type
+        myCell.memo = tempList[indexPath.row].memo
+        
         if (myCell.isButtonChecked){
             myCell.checkButton.setTitleColor(UIColor.orange, for: UIControl.State.normal)
         }else{
@@ -118,6 +121,20 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         myCell.delegate = self
         
         return myCell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let FoodLists = Array(savedDates)
+        let tempList = FoodLists.filter{formatter.string(from: $0.purchaseDate) == formatter.string(from: setDate)}
+        do{
+            try self.realm.write{
+                let predicate = NSPredicate(format: "name = %@ ", tempList[indexPath.row].name)
+                self.realm.delete(self.realm.objects(Shopping.self).filter(predicate))
+            }
+        } catch{ print("\(error)")}
+        
+        self.shoppingListTableview.deleteRows(at: [indexPath], with: .automatic)
+        self.shoppingListTableview.reloadData()
     }
     
     var vc:ShoppingListModalViewController? = nil
@@ -156,11 +173,13 @@ extension ShoppingListViewController:ShoppingListTableViewCellDelegator{
 ////        print("***** \(shoppingLists[index].name) buttonPressed : \(check)")
 //    }
     
-    func shoppingListTableViewCell(_ shoppingListTableViewCell: ShoppingListTableViewCell, shoppingListButtonPressedFor name: String, date: Date, quantity: String) {
+    func shoppingListTableViewCell(_ shoppingListTableViewCell: ShoppingListTableViewCell, shoppingListButtonPressedFor name: String, date: Date, quantity: String, type:String, memo:String) {
         formatter.dateFormat = "yyyy.MM.dd"
         vc!.shoppingListFoodName.text = name
         vc!.shoppingListDate.text = formatter.string(from: date)
         vc!.shoppingListQuantity.text = quantity
+        vc!.shoppingListType.text = type
+        vc!.shoppingListMemo.text = memo
     }
     
 }
@@ -176,7 +195,7 @@ extension ShoppingListViewController:ShoppingListCalendarDelegator{
 }
 
 extension ShoppingListViewController:ShoppingListModalViewControllerDelegator{
-    func deleteData() {
+    func updateData() {
         shoppingListTableview.reloadData()
     }
     
