@@ -87,10 +87,17 @@ class FoodListAddViewController: UIViewController, BarcodeDelegate{
     @IBOutlet weak var memoText: UITextField!
     @IBOutlet weak var addButton: UIButton!
     
+    @IBOutlet weak var inputViewBottomAnchor: NSLayoutConstraint!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        memoText.delegate = self
+        foodTypeText.delegate = self
+        quantityText.delegate = self
+        
+        setupNotification()
+        
            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
              
             // let tap2:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissPicker")
@@ -126,7 +133,8 @@ class FoodListAddViewController: UIViewController, BarcodeDelegate{
              limitDateText.inputView = .none
             fridgeTypeText.inputView = fridgePicker
         fridgeTypeText.inputAccessoryView = toolBar
-             
+        
+            
              
          
              
@@ -138,11 +146,7 @@ class FoodListAddViewController: UIViewController, BarcodeDelegate{
     
         
     }
-    
-
-    
-    
-    
+ 
     @objc func donePicker(){
         fridgeTypeText?.text = fridgeString
         fridgePicker.removeFromSuperview()
@@ -221,13 +225,14 @@ class FoodListAddViewController: UIViewController, BarcodeDelegate{
          limitDateText.text = "\(limitDatePicker.date)"*/
          
      }
+        
     @IBAction func presentBarcodeScanner(_ sender: Any) {
         let viewController = makeBarcodeScannerViewController()
         viewController.title = "바코드 인식기"
         present(viewController, animated: true)
       // present(viewController, animated: true, completion: {self.makeRectangle(view: viewController)})
     }
-    
+
 /*    func makeRectangle(view:BarcodeViewController){
         qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
         qrCodeFrameView.layer.borderWidth = 2
@@ -490,4 +495,34 @@ extension FoodListAddViewController: FoodListAddDelegator{
     
     }
 
+}
+
+extension FoodListAddViewController: UITextFieldDelegate {
+    func setupNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        print("Keyboard hide")
+        handleKeyboardIssue(notification: notification, isAppearing: false)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        print("keyboard show")
+        handleKeyboardIssue(notification: notification, isAppearing: true)
+    }
+    
+    fileprivate func handleKeyboardIssue(notification: Notification, isAppearing: Bool) {
+        guard let userInfo = notification.userInfo as? [String: Any] else {return}
+        guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+        guard let keyboardShowAnimateDuartion = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber else {return}
+        
+        let keyboardHeight = keyboardFrame.cgRectValue.height
+        let heightConstant = isAppearing ? keyboardHeight : 0
+        inputViewBottomAnchor.constant = heightConstant
+        UIView.animate(withDuration: keyboardShowAnimateDuartion.doubleValue) {
+            self.view.layoutIfNeeded()
+        }
+    }
 }
